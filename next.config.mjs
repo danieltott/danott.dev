@@ -1,10 +1,10 @@
-import nextMDX from "@next/mdx";
-import remarkGfm from "remark-gfm";
-import rehypePrism from "@mapbox/rehype-prism";
+import nextMDX from '@next/mdx';
+import remarkGfm from 'remark-gfm';
+import rehypePrism from '@mapbox/rehype-prism';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  pageExtensions: ["js", "jsx", "mdx"],
+  pageExtensions: ['js', 'jsx', 'mdx'],
   reactStrictMode: true,
   experimental: {
     scrollRestoration: true,
