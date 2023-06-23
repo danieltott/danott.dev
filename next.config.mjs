@@ -16,6 +16,7 @@ const withMDX = nextMDX({
   options: {
     remarkPlugins: [remarkGfm],
     rehypePlugins: [rehypePrism],
+    providerImportSource: '@mdx-js/react',
   },
 });
 
