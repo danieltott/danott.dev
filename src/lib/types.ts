@@ -1,5 +1,17 @@
 import { type SVGProps } from 'react';
 import type Link from 'next/link';
+import type { Metadata } from 'next';
 
 export type SvgElementProps = SVGProps<SVGSVGElement>;
-export type LinkHref = React.ComponentProps<typeof Link>['href'];
+export type LinkProps = React.ComponentProps<typeof Link>;
+export type LinkHref = LinkProps['href'];
+
+export type ArticleMeta = Metadata & {
+  date: string;
+  dateUpdated: string;
+};
+
+export type ArticleListItem = ArticleMeta & {
+  slug: string;
+  summary: React.ReactNode;
+};
