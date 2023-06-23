@@ -21,9 +21,10 @@ import image3 from '@/images/photos/image-3.jpg';
 import image4 from '@/images/photos/image-4.jpg';
 import image5 from '@/images/photos/image-5.jpg';
 import { formatDate } from '@/lib/formatDate';
-import { generateRssFeed } from '@/lib/generateRssFeed';
+// import { generateRssFeed } from '@/lib/generateRssFeed';
 import { getAllArticles } from '@/lib/getAllArticles';
 import type { SvgElementProps, LinkHref, ArticleListItem } from '@/lib/types';
+import { Metadata } from 'next';
 
 function MailIcon(props: SvgElementProps) {
   return (
@@ -287,7 +288,7 @@ function Photos() {
   );
 }
 
-export const meta = {
+export const metadata: Metadata = {
   title: `Spencer Sharp - Software designer, founder, and amateur astronaut`,
   description:
     'I’m Spencer, a software designer and entrepreneur based in New York City. I’m the founder and CEO of Planetaria, where we develop technologies that empower regular people to explore space on their own terms.',
