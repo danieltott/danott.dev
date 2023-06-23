@@ -4,7 +4,7 @@ import rehypePrism from '@mapbox/rehype-prism';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  pageExtensions: ['js', 'jsx', 'mdx'],
+  pageExtensions: ['js', 'jsx', 'mdx', 'tsx', 'ts', 'jsx', 'js'],
   reactStrictMode: true,
   experimental: {
     scrollRestoration: true,
@@ -16,7 +16,6 @@ const withMDX = nextMDX({
   options: {
     remarkPlugins: [remarkGfm],
     rehypePlugins: [rehypePrism],
-    providerImportSource: '@mdx-js/react',
   },
 });
 
