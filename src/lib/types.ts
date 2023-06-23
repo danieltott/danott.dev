@@ -6,7 +6,9 @@ export type SvgElementProps = SVGProps<SVGSVGElement>;
 export type LinkProps = React.ComponentProps<typeof Link>;
 export type LinkHref = LinkProps['href'];
 
-export type ArticleMeta = Metadata & {
+export type ArticleMeta = {
+  title: string;
+  description: string;
   date: string;
   dateUpdated: string;
 };

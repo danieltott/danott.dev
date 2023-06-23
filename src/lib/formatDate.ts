@@ -1,4 +1,4 @@
-export function formatDate(dateString) {
+export function formatDate(dateString: string) {
   let formattedString = '';
 
   if (dateString.indexOf(' ') > -1) {

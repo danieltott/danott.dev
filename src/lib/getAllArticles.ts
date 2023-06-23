@@ -5,15 +5,11 @@ import type { ArticleMeta, ArticleListItem } from '@/lib/types';
 async function importArticle(
   articleFilename: string
 ): Promise<ArticleListItem> {
-  let {
-    articleMeta,
-    summary,
-  }: { articleMeta: ArticleMeta; summary: React.ReactNode } = await import(
-    `../app/thoughts/${articleFilename}`
-  );
+  let { meta, summary }: { meta: ArticleMeta; summary: React.ReactNode } =
+    await import(`../app/thoughts/${articleFilename}`);
   return {
     slug: articleFilename.replace(/(\/index)?\.mdx$/, ''),
-    ...articleMeta,
+    ...meta,
     summary,
   };
 }

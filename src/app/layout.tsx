@@ -42,7 +42,10 @@ const modeScript = `
 `;
 
 export const metadata: Metadata = {
-  title: 'Front-End Design and Development ~  Daniel T. Ott',
+  title: {
+    template: '%s ~ Dan Ott',
+    default: 'Front-End Design and Development ~ Dan Ott',
+  },
   description: `Dan Ott's portfolio, information, and thoughts on HTML, CSS, Javascript, and the web development industry in general.`,
   alternates: {
     canonical: 'https://dtott.com',
