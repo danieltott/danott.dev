@@ -3,6 +3,15 @@ import { Prose } from '@/components/Prose';
 import { formatDate } from '@/lib/formatDate';
 import { Metadata } from 'next';
 // import { Metadata, ResolvingMetadata } from 'next'
+import { getAllArticles } from '@/lib/getAllArticles';
+
+export async function generateStaticParams() {
+  const articles = await getAllArticles();
+
+  return articles.map((articles) => ({
+    slug: articles.slug,
+  }));
+}
 
 type Props = {
   params: { slug: string };
@@ -16,7 +25,7 @@ Promise<Metadata> {
     meta,
   }: {
     meta: ArticleMeta;
-  } = await import(`@/app/thoughts/${params.slug}.mdx`);
+  } = require(`../${params.slug}.mdx`);
 
   return {
     title: meta.title,
@@ -25,13 +34,16 @@ Promise<Metadata> {
 }
 
 export default async function Page({ params }: Props) {
+  console.log('IMPORTING ');
+  console.log(`../${params.slug}.mdx`);
+
   const {
     default: MdxPage,
     meta,
   }: {
     default: React.ComponentType;
     meta: ArticleMeta;
-  } = await import(`@/app/thoughts/${params.slug}.mdx`);
+  } = require(`../${params.slug}.mdx`);
   return (
     <div className="xl:relative">
       <div className="mx-auto max-w-2xl">
