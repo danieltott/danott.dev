@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import type { SvgElementProps, LinkHref } from '@/lib/types';
+import type { LinkHref } from '@/lib/types';
 import { Container } from '@/components/Container';
 
 function NavLink({

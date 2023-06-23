@@ -1,7 +1,9 @@
+'use client';
+
 import { Fragment, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { usePathname } from 'next/navigation';
 import { Popover, Transition } from '@headlessui/react';
 import clsx from 'clsx';
 import { Container } from '@/components/Container';
@@ -148,7 +150,7 @@ function NavItem({
   href: LinkHref;
   children: React.ReactNode;
 }) {
-  let isActive = useRouter().pathname === href;
+  let isActive = usePathname === href;
 
   return (
     <li>
@@ -266,7 +268,7 @@ function Avatar({
 }
 
 export function Header() {
-  let isHomePage = useRouter().pathname === '/';
+  let isHomePage = usePathname() === '/';
 
   let headerRef = useRef<HTMLDivElement>(null);
   let avatarRef = useRef<HTMLDivElement>(null);
