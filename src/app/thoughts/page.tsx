@@ -20,7 +20,9 @@ function Article({ article }: { article: ArticleListItem }) {
         >
           {formatDate(article.date)}
         </Card.Eyebrow>
-        <Card.Description>{article.description}</Card.Description>
+        <Card.Description>
+          {article.summary ? article.summary : <p>{article.description}</p>}
+        </Card.Description>
         <Card.Cta>Read article</Card.Cta>
       </Card>
       <Card.Eyebrow
