@@ -25,7 +25,7 @@ Promise<Metadata> {
     meta,
   }: {
     meta: ArticleMeta;
-  } = require(`../${params.slug}.mdx`);
+  } = require(`../../../content/${params.slug}.mdx`);
 
   return {
     title: meta.title,
@@ -43,7 +43,7 @@ export default async function Page({ params }: Props) {
   }: {
     default: React.ComponentType;
     meta: ArticleMeta;
-  } = require(`../${params.slug}.mdx`);
+  } = require(`../../../content/${params.slug}.mdx`);
   return (
     <div className="xl:relative">
       <div className="mx-auto max-w-2xl">

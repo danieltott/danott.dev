@@ -6,7 +6,7 @@ async function importArticle(
   articleFilename: string
 ): Promise<ArticleListItem> {
   let { meta, summary }: { meta: ArticleMeta; summary: React.ReactNode } =
-    await import(`../app/thoughts/${articleFilename}`);
+    await import(`../content/${articleFilename}`);
   return {
     slug: articleFilename.replace(/(\/index)?\.mdx$/, ''),
     ...meta,
@@ -18,7 +18,7 @@ export async function getAllArticles(
   limit?: number
 ): Promise<ArticleListItem[]> {
   let articleFilenames = await glob(['*.mdx', '*/index.mdx'], {
-    cwd: path.join(process.cwd(), 'src/app/thoughts'),
+    cwd: path.join(process.cwd(), 'src/content'),
   });
 
   let articles = await Promise.all(articleFilenames.map(importArticle));
