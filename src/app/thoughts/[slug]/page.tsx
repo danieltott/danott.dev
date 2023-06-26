@@ -34,9 +34,6 @@ Promise<Metadata> {
 }
 
 export default async function Page({ params }: Props) {
-  console.log('IMPORTING ');
-  console.log(`../${params.slug}.mdx`);
-
   const {
     default: MdxPage,
     meta,
