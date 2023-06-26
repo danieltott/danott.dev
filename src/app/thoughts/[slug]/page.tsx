@@ -4,6 +4,10 @@ import { formatDate } from '@/lib/formatDate';
 import { Metadata } from 'next';
 // import { Metadata, ResolvingMetadata } from 'next'
 import { getAllArticles } from '@/lib/getAllArticles';
+import Codepen from '@/components/Codepen';
+import { type MDXProps } from 'mdx/types';
+
+const components = { Codepen };
 
 export async function generateStaticParams() {
   const articles = await getAllArticles();
@@ -38,7 +42,7 @@ export default async function Page({ params }: Props) {
     default: MdxPage,
     meta,
   }: {
-    default: React.ComponentType;
+    default: React.ComponentType<MDXProps>;
     meta: ArticleMeta;
   } = require(`../../../content/${params.slug}.mdx`);
   return (
@@ -58,7 +62,7 @@ export default async function Page({ params }: Props) {
             </time>
           </header>
           <Prose className="mt-8">
-            <MdxPage />
+            <MdxPage components={components} />
           </Prose>
         </article>
       </div>
