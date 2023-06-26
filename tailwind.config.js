@@ -121,7 +121,7 @@ module.exports = {
 
           // Images
           img: {
-            borderRadius: theme('borderRadius.3xl'),
+            borderRadius: theme('borderRadius.lg'),
           },
 
           // Inline elements
@@ -218,7 +218,7 @@ module.exports = {
             fontSize: theme('fontSize.sm')[0],
             fontWeight: theme('fontWeight.medium'),
             backgroundColor: 'var(--tw-prose-pre-bg)',
-            borderRadius: theme('borderRadius.3xl'),
+            borderRadius: theme('borderRadius.lg'),
             padding: theme('spacing.8'),
             overflowX: 'auto',
             border: '1px solid',
