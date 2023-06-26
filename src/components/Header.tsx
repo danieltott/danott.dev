@@ -150,7 +150,7 @@ function NavItem({
   href: LinkHref;
   children: React.ReactNode;
 }) {
-  let isActive = usePathname === href;
+  let isActive = usePathname() === href;
 
   return (
     <li>

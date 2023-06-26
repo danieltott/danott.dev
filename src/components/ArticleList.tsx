@@ -18,47 +18,55 @@ export default function ArticleList({
   const { meta, articles: list } = articles;
   return (
     <>
-      {list.map((article) => (
-        <article
-          className="md:grid md:grid-cols-4 md:items-baseline"
-          key={article.slug}
-        >
-          <Card className="md:col-span-3">
-            <Card.Title href={`/thoughts/${article.slug}`}>
-              {article.title}
-            </Card.Title>
-            <Card.Eyebrow
-              as="time"
-              dateTime={article.date}
-              className="md:hidden"
-              decorate
+      <div className="md:border-l md:border-zinc-100 md:pl-6 md:dark:border-zinc-700/40">
+        <div className="flex max-w-3xl flex-col space-y-16">
+          {list.map((article) => (
+            <article
+              className="md:grid md:grid-cols-4 md:items-baseline"
+              key={article.slug}
             >
-              {formatDate(article.date)}
-            </Card.Eyebrow>
-            <Card.Description>
-              {article.summary ? article.summary : <p>{article.description}</p>}
-            </Card.Description>
-            <Card.Cta>Read article</Card.Cta>
-          </Card>
-          <Card.Eyebrow
-            as="time"
-            dateTime={article.date}
-            className="mt-1 hidden md:block"
-          >
-            {formatDate(article.date)}
-          </Card.Eyebrow>
-        </article>
-      ))}
+              <Card className="md:col-span-3">
+                <Card.Title href={`/thoughts/${article.slug}`}>
+                  {article.title}
+                </Card.Title>
+                <Card.Eyebrow
+                  as="time"
+                  dateTime={article.date}
+                  className="md:hidden"
+                  decorate
+                >
+                  {formatDate(article.date)}
+                </Card.Eyebrow>
+                <Card.Description>
+                  {article.summary ? (
+                    article.summary
+                  ) : (
+                    <p>{article.description}</p>
+                  )}
+                </Card.Description>
+                <Card.Cta>Read article</Card.Cta>
+              </Card>
+              <Card.Eyebrow
+                as="time"
+                dateTime={article.date}
+                className="mt-1 hidden md:block"
+              >
+                {formatDate(article.date)}
+              </Card.Eyebrow>
+            </article>
+          ))}
+        </div>
+      </div>
 
-      <nav className="flex items-center justify-between border-t border-gray-200 px-4 sm:px-0">
+      <nav className="mt-16 flex items-center justify-between border-t border-zinc-100 px-4 dark:border-zinc-700/40 sm:px-0">
         <div className="-mt-px flex w-0 flex-1">
           {meta.prev && (
             <Link
               href={`/thoughts/page/${meta.prev}`}
-              className="inline-flex items-center border-t-2 border-transparent pr-1 pt-4 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
+              className="inline-flex items-center border-t-2 border-transparent pr-1 pt-4 text-sm font-medium text-zinc-500 hover:border-zinc-200 hover:text-zinc-700 dark:text-zinc-400 dark:hover:border-zinc-300/40 dark:hover:text-zinc-300"
             >
               <ArrowLongLeftIcon
-                className="mr-3 h-5 w-5 text-gray-400"
+                className="mr-3 h-5 w-5 text-zinc-400"
                 aria-hidden="true"
               />
               Previous
@@ -73,8 +81,8 @@ export default function ArticleList({
               className={clsx(
                 'inline-flex items-center border-t-2 px-4 pt-4',
                 page === meta.page
-                  ? 'border-indigo-500 text-indigo-600'
-                  : 'border-transparent text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700'
+                  ? 'border-teal-400 text-teal-600 dark:border-teal-400 dark:text-teal-500'
+                  : 'border-transparent text-sm font-medium text-zinc-500 hover:border-zinc-200 hover:text-zinc-700 dark:text-zinc-400 dark:hover:border-zinc-300/40 dark:hover:text-zinc-300'
               )}
             >
               {page}
@@ -85,11 +93,11 @@ export default function ArticleList({
           {meta.next && (
             <Link
               href={`/thoughts/page/${meta.next}`}
-              className="inline-flex items-center border-t-2 border-transparent pl-1 pt-4 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
+              className="inline-flex items-center border-t-2 border-transparent pl-1 pt-4 text-sm font-medium text-zinc-500 hover:border-zinc-200 hover:text-zinc-700 dark:text-zinc-400 dark:hover:border-zinc-300/40 dark:hover:text-zinc-300"
             >
               Next
               <ArrowLongRightIcon
-                className="ml-3 h-5 w-5 text-gray-400"
+                className="ml-3 h-5 w-5 text-zinc-400"
                 aria-hidden="true"
               />
             </Link>

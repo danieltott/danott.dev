@@ -13,6 +13,6 @@ export default async function ArticlesIndex({
   params: { page: string };
 }) {
   const articles = await getArticles(params.page);
-  console.log(articles.meta);
+
   return <ArticleList articles={articles} />;
 }
