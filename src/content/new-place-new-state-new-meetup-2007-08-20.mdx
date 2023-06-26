@@ -1,3 +1,6 @@
+import Image from 'next/image';
+import meetupbadge from './images/meetupbadge.gif';
+
 export const summary = (
   <>
     <p>
@@ -37,18 +40,14 @@ One unfortunate byproduct of the move was that it made me miss the [Cleveland Ar
 
 Speaking of Meetup groups, there aren't any like-minded meetups in the Bloomington/Indianapolis area, so as of today:
 
-<div class="post_image_container">
-  <p className="text-center">
-    <a
-      href="http://webstandards.meetup.com/129/"
-      title="The Indianapolis/Bloomington Web Standards Meetup Group"
-    >
-      <img
-        src="/images/meetupbadge.gif"
-        alt="Bloomington/Indianapolis Wed Standards Meetup"
-      />
-    </a>
-  </p>
-</div>
+<a
+  href="http://webstandards.meetup.com/129/"
+  title="The Indianapolis/Bloomington Web Standards Meetup Group"
+>
+  <Image
+    src={meetupbadge}
+    alt="Bloomington/Indianapolis Wed Standards Meetup"
+  />
+</a>
 
 We'll see what happens, but I'm excited.

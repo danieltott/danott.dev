@@ -1,3 +1,6 @@
+import Image from 'next/image';
+import slackEventReminders from './images/slack-event-reminders.png';
+
 export const summary = (
   <>
     <p>
@@ -32,7 +35,7 @@ At Virtual Coffee, we have events almost every day, and we hang out in Slack eve
 
 When we moved from Meetingplace to our own CMS, I took the chance to do some upgrades, and convert to Javascript, at the same time. Follow along and we can get some event reminders going for you!
 
-![Slack event reminders screenshot](/images/slack-event-reminders.png)]
+<Image src={slackEventReminders} alt="Slack event reminders screenshot" />
 
 ## Here's what you need:
 

@@ -1,3 +1,7 @@
+import Image from 'next/image';
+import earlybird_original from './images/earlybird_original.jpg';
+import earlybird_firefox from './images/earlybird_firefox.jpg';
+
 export const summary = (
   <>
     <p>
@@ -25,15 +29,11 @@ I've finally finished with my [cssoff entry](http://cssoff.com/2007/07/14/july-1
 
 ### Original CSSOff File
 
-<p>
-  <img src="/images/earlybird_original.jpg" alt="Earlybird Original" />
-</p>
+<Image src={earlybird_original} alt="Earlybird Original" />
 
 ### My entry
 
-<p>
-  <img src="/images/earlybird_firefox.jpg" alt="My Entry" />
-</p>
+<Image src={earlybird_firefox} alt="My Entry" />
 
 It looks about the same in most browsers and it validates, so I'm happy. I even made a favicon!
 

@@ -1,3 +1,6 @@
+import Image from 'next/image';
+import clock2 from './images/clock2.png';
+
 export const summary = (
   <>
     <p>
@@ -17,7 +20,7 @@ export const meta = {
   description: '',
 };
 
-<img src="/images/uploads/clock2.png" class="insetRight" alt="CSS Clock" />
+<Image src={clock2} class="insetRight" alt="CSS Clock" />
 
 A little experiment I built: [a word clock](http://danieltott.github.io/CSS3-clock/) using CSS3 transforms and a little Javascript to run the actual clock. Useful? Maybe not. Fun? Definitely.
 
