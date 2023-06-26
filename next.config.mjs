@@ -8,7 +8,7 @@ const nextConfig = {
   reactStrictMode: true,
   experimental: {
     scrollRestoration: true,
-    mdxRs: true,
+    // mdxRs: true,
   },
 };
 
@@ -16,7 +16,7 @@ const withMDX = nextMDX({
   extension: /\.mdx?$/,
   options: {
     remarkPlugins: [remarkGfm],
-    rehypePlugins: [rehypePrism],
+    rehypePlugins: [[rehypePrism, { ignoreMissing: true }]],
   },
 });
 
