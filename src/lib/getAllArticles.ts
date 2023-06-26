@@ -14,7 +14,9 @@ async function importArticle(
   };
 }
 
-export async function getAllArticles(limit?: number) {
+export async function getAllArticles(
+  limit?: number
+): Promise<ArticleListItem[]> {
   let articleFilenames = await glob(['*.mdx', '*/index.mdx'], {
     cwd: path.join(process.cwd(), 'src/app/thoughts'),
   });
