@@ -133,7 +133,6 @@ function MobileNavigation(props: React.ComponentProps<typeof Popover>) {
                 <MobileNavItem href="/thoughts">Thoughts</MobileNavItem>
                 <MobileNavItem href="/projects">Projects</MobileNavItem>
                 <MobileNavItem href="/speaking">Speaking</MobileNavItem>
-                <MobileNavItem href="/uses">Uses</MobileNavItem>
               </ul>
             </nav>
           </Popover.Panel>
@@ -180,7 +179,6 @@ function DesktopNavigation(props: React.ComponentProps<'nav'>) {
         <NavItem href="/thoughts">Thoughts</NavItem>
         <NavItem href="/projects">Projects</NavItem>
         <NavItem href="/speaking">Speaking</NavItem>
-        <NavItem href="/uses">Uses</NavItem>
       </ul>
     </nav>
   );
