@@ -103,7 +103,7 @@ Card.Eyebrow = function CardEyebrow<T extends React.ElementType = 'p'>({
     <Component
       className={clsx(
         className,
-        'relative z-10 order-first mb-3 flex items-center text-sm text-zinc-400 dark:text-zinc-500',
+        'relative z-10 order-first mb-3 flex items-center gap-1 text-sm text-zinc-400 dark:text-zinc-500',
         decorate && 'pl-3.5'
       )}
       {...props}
