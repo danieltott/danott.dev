@@ -44,7 +44,16 @@ function Article({ article }: { article: ArticleListItem }) {
       <Card.Eyebrow as="time" dateTime={article.date} decorate>
         {formatDate(article.date)}
       </Card.Eyebrow>
-      <Card.Description>{article.description}</Card.Description>
+      <Card.Description>
+        {article.summary ? (
+          <div
+            className="my-0 [&>*:first-child]:mt-0 [&>*:last-child]:mb-0"
+            dangerouslySetInnerHTML={{ __html: article.summary }}
+          />
+        ) : (
+          <p>{article.description}</p>
+        )}
+      </Card.Description>
       <Card.Cta>Read article</Card.Cta>
     </Card>
   );

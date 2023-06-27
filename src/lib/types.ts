@@ -15,5 +15,5 @@ export type ArticleMeta = {
 
 export type ArticleListItem = ArticleMeta & {
   slug: string;
-  summary: React.ReactNode;
+  summary: string;
 };
