@@ -5,12 +5,7 @@ import clsx from 'clsx';
 import { Button } from '@/components/Button';
 import { Card } from '@/components/Card';
 import { Container } from '@/components/Container';
-import {
-  GitHubIcon,
-  InstagramIcon,
-  LinkedInIcon,
-  TwitterIcon,
-} from '@/components/SocialIcons';
+import { GitHubIcon, TwitterIcon } from '@/components/SocialIcons';
 import logoAirbnb from '@/images/logos/airbnb.svg';
 import logoFacebook from '@/images/logos/facebook.svg';
 import logoPlanetaria from '@/images/logos/planetaria.svg';
