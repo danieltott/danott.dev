@@ -16,4 +16,5 @@ export type ArticleMeta = {
 export type ArticleListItem = ArticleMeta & {
   slug: string;
   summary: string;
+  tags?: string[];
 };
