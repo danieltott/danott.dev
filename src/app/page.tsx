@@ -11,6 +11,7 @@ import { getAllArticles } from '@/lib/getAllArticles';
 import type { SvgElementProps, LinkHref, ArticleListItem } from '@/lib/types';
 import { Metadata } from 'next';
 import avatarImage from '@/images/avatar.jpg';
+import { RssIcon } from '@heroicons/react/20/solid';
 
 function BriefcaseIcon(props: SvgElementProps) {
   return (
@@ -63,7 +64,7 @@ function SocialLink({
   icon: Icon,
   ...props
 }: React.ComponentProps<typeof Link> & {
-  icon: React.ComponentType<SvgElementProps>;
+  icon: React.ComponentType<SvgElementProps> | typeof RssIcon;
 }) {
   return (
     <Link className="group -m-1 p-1" {...props}>
@@ -193,12 +194,15 @@ export default async function HomePage() {
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
             Full-Stack Design and Development
           </h1>
-          <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-            I&rsquo;m Dan, an independent developer and designer based in
-            Cleveland, Ohio. I&rsquo;ve been working with clients since 2005 to
-            plan, design, and implement their ideas. I also am an org maintainer
-            at <a href="https://virtualcoffee.io">Virtual Coffee</a>.
-          </p>
+          <div className="prose">
+            <p>
+              I&rsquo;m Dan, an independent developer and designer based in
+              Cleveland, Ohio. I&rsquo;ve been working with clients since 2005
+              to plan, design, and implement their ideas. I also am an org
+              maintainer at{' '}
+              <a href="https://virtualcoffee.io">Virtual Coffee</a>.
+            </p>
+          </div>
           <div className="mt-6 flex gap-6">
             <SocialLink
               href="https://twitter.com/danieltott"
@@ -209,6 +213,11 @@ export default async function HomePage() {
               href="https://github.com/danieltott"
               aria-label="Follow on GitHub"
               icon={GitHubIcon}
+            />
+            <SocialLink
+              href="https://dtott.com/thoughts/feed.rss"
+              aria-label="Subscribe to RSS feed"
+              icon={RssIcon}
             />
           </div>
         </div>
