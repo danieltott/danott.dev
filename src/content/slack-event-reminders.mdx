@@ -1,26 +1,8 @@
 import Image from 'next/image';
 import slackEventReminders from './images/slack-event-reminders.png';
 
-export const summary = (
-  <>
-    <p>
-      At Virtual Coffee, we have events almost every day, and we hang out in
-      Slack every day! So, it was inevitable that we'd get some sort of event
-      reminders going in Slack. Our first pass was by the late Mike Rogers (we
-      miss you, Mike ❤️). Our events were listed on MeetingPlace.io, so Mike
-      wrote a Ruby app to pull date down from MeetingPlace and post to Slack:{' '}
-      <a href="https://github.com/Virtual-Coffee/bot-meetingplace-events">
-        Meetingplace Events Bot
-      </a>
-      .
-    </p>
-    <p>
-      When we moved from Meetingplace to our own CMS, I took the chance to do
-      some upgrades, and convert to Javascript, at the same time. Follow along
-      and we can get some event reminders going for you!
-    </p>
-  </>
-);
+export const summary = `<p>At Virtual Coffee, we have events almost every day, and we hang out in Slack every day! So, it was inevitable that we'd get some sort of event reminders going in Slack. Our first pass was by the late Mike Rogers (we miss you, Mike ❤️). Our events were listed on MeetingPlace.io, so Mike wrote a Ruby app to pull date down from MeetingPlace and post to Slack: <a href="https://github.com/Virtual-Coffee/bot-meetingplace-events">Meetingplace Events Bot </a>. </p>
+<p>When we moved from Meetingplace to our own CMS, I took the chance to do some upgrades, and convert to Javascript, at the same time. Follow along and we can get some event reminders going for you! </p>`;
 
 export const tags = ['netlify', 'slack', 'netlify functions', 'javascript'];
 
