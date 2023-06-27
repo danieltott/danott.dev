@@ -24,6 +24,6 @@ export async function getAllArticles(
   let articles = await Promise.all(articleFilenames.map(importArticle));
 
   return articles
-    .slice(0, limit || articles.length)
-    .sort((a, z) => new Date(z.date).getTime() - new Date(a.date).getTime());
+    .sort((a, z) => new Date(z.date).getTime() - new Date(a.date).getTime())
+    .slice(0, limit || articles.length);
 }
