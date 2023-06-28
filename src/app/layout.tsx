@@ -2,12 +2,19 @@ import '@/styles/tailwind.css';
 import type { Metadata } from 'next';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
-import { Crimson_Pro } from 'next/font/google';
+import { Crimson_Pro, Rampart_One } from 'next/font/google';
 
 const crimson = Crimson_Pro({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-crimson',
+});
+
+const rampart = Rampart_One({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-rampart',
+  weight: '400',
 });
 
 // const inter = Inter({ subsets: ['latin'] });
@@ -77,7 +84,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`h-full antialiased ${crimson.variable}  font-serif`}
+      className={`h-full antialiased ${crimson.variable} ${rampart.variable}  font-serif`}
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: modeScript }} />
