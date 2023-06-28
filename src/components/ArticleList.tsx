@@ -18,7 +18,7 @@ export default function ArticleList({
   const { meta, articles: list } = articles;
   return (
     <>
-      <div className="md:border-l md:border-zinc-100 md:pl-6 md:dark:border-zinc-700/40">
+      <div className="md:border-l md:border-stone-100 md:pl-6 md:dark:border-stone-700/40">
         <div className="flex max-w-3xl flex-col space-y-16">
           {list.map((article) => (
             <article
@@ -61,15 +61,15 @@ export default function ArticleList({
         </div>
       </div>
 
-      <nav className="mt-16 flex items-center justify-between border-t border-zinc-100 px-4 dark:border-zinc-700/40 sm:px-0">
+      <nav className="mt-16 flex items-center justify-between border-t border-stone-100 px-4 dark:border-stone-700/40 sm:px-0">
         <div className="-mt-px flex w-0 flex-1">
           {meta.prev && (
             <Link
               href={`/thoughts/page/${meta.prev}`}
-              className="inline-flex items-center border-t-2 border-transparent pr-1 pt-4 text-sm font-medium text-zinc-500 hover:border-zinc-200 hover:text-zinc-700 dark:text-zinc-400 dark:hover:border-zinc-300/40 dark:hover:text-zinc-300 md:text-base lg:text-lg"
+              className="inline-flex items-center border-t-2 border-transparent pr-1 pt-4 text-sm font-medium text-stone-500 hover:border-stone-200 hover:text-stone-700 dark:text-stone-400 dark:hover:border-stone-300/40 dark:hover:text-stone-300 md:text-base lg:text-lg"
             >
               <ArrowLongLeftIcon
-                className="mr-3 h-5 w-5 text-zinc-400"
+                className="mr-3 h-5 w-5 text-stone-400"
                 aria-hidden="true"
               />
               Previous
@@ -85,7 +85,7 @@ export default function ArticleList({
                 'inline-flex items-center border-t-2 px-4 pt-4',
                 page === meta.page
                   ? 'border-primary-400 text-primary-600 dark:border-primary-400 dark:text-primary-500'
-                  : 'border-transparent text-sm font-medium text-zinc-500 hover:border-zinc-200 hover:text-zinc-700 dark:text-zinc-400 dark:hover:border-zinc-300/40 dark:hover:text-zinc-300 md:text-base lg:text-lg'
+                  : 'border-transparent text-sm font-medium text-stone-500 hover:border-stone-200 hover:text-stone-700 dark:text-stone-400 dark:hover:border-stone-300/40 dark:hover:text-stone-300 md:text-base lg:text-lg'
               )}
             >
               {page}
@@ -96,11 +96,11 @@ export default function ArticleList({
           {meta.next && (
             <Link
               href={`/thoughts/page/${meta.next}`}
-              className="inline-flex items-center border-t-2 border-transparent pl-1 pt-4 text-sm font-medium text-zinc-500 hover:border-zinc-200 hover:text-zinc-700 dark:text-zinc-400 dark:hover:border-zinc-300/40 dark:hover:text-zinc-300 md:text-base lg:text-lg"
+              className="inline-flex items-center border-t-2 border-transparent pl-1 pt-4 text-sm font-medium text-stone-500 hover:border-stone-200 hover:text-stone-700 dark:text-stone-400 dark:hover:border-stone-300/40 dark:hover:text-stone-300 md:text-base lg:text-lg"
             >
               Next
               <ArrowLongRightIcon
-                className="ml-3 h-5 w-5 text-zinc-400"
+                className="ml-3 h-5 w-5 text-stone-400"
                 aria-hidden="true"
               />
             </Link>

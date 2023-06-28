@@ -49,16 +49,16 @@ export default function MailLink() {
       <SocialLink
         href={`mailto:${realEmail}`}
         icon={MailIcon}
-        className="mt-8 border-t border-zinc-100 pt-8 dark:border-zinc-700/40"
+        className="mt-8 border-t border-stone-100 pt-8 dark:border-stone-700/40"
       >
         {realEmail}
       </SocialLink>
     );
   } else {
     return (
-      <li className="mt-8 flex border-t border-zinc-100 pt-8 dark:border-zinc-700/40">
-        <div className="flex text-sm font-medium text-zinc-800  dark:text-zinc-200">
-          <MailIcon className="h-6 w-6 flex-none fill-zinc-500 transition group-hover:fill-primary-500" />
+      <li className="mt-8 flex border-t border-stone-100 pt-8 dark:border-stone-700/40">
+        <div className="flex text-sm font-medium text-stone-800  dark:text-stone-200">
+          <MailIcon className="h-6 w-6 flex-none fill-stone-500 transition group-hover:fill-primary-500" />
           <span className="ml-4">
             <strong>dan</strong> at this domain
           </span>

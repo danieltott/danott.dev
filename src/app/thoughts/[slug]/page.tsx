@@ -55,9 +55,9 @@ export default async function Page({ params }: Props) {
             </h1>
             <time
               dateTime={meta.date}
-              className="order-first flex items-center text-base text-zinc-400 dark:text-zinc-500"
+              className="order-first flex items-center text-base text-stone-400 dark:text-stone-500"
             >
-              <span className="h-4 w-0.5 rounded-full bg-zinc-200 dark:bg-zinc-500" />
+              <span className="h-4 w-0.5 rounded-full bg-stone-200 dark:bg-stone-500" />
               <span className="ml-3">{formatDate(meta.date)}</span>
             </time>
           </header>

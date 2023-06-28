@@ -11,7 +11,7 @@ export function SimplePage({
     <>
       <header className="max-w-2xl">
         <h1 className="font-title text-4xl sm:text-5xl">{title}</h1>
-        <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400 md:text-lg lg:text-xl">
+        <p className="mt-6 text-base text-stone-600 dark:text-stone-400 md:text-lg lg:text-xl">
           {intro}
         </p>
       </header>

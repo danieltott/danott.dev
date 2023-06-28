@@ -45,7 +45,7 @@ export function Card<T extends React.ElementType = 'div'>({
 Card.Link = function CardLink({ children, ...props }: LinkProps) {
   return (
     <>
-      <div className="absolute -inset-x-4 -inset-y-6 z-0 scale-95 bg-zinc-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 dark:bg-zinc-800/50 sm:-inset-x-6 sm:rounded-2xl" />
+      <div className="absolute -inset-x-4 -inset-y-6 z-0 scale-95 bg-stone-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 dark:bg-stone-800/50 sm:-inset-x-6 sm:rounded-2xl" />
       <Link {...props}>
         <span className="absolute -inset-x-4 -inset-y-6 z-20 sm:-inset-x-6 sm:rounded-2xl" />
         <span className="relative z-10">{children}</span>
@@ -107,7 +107,7 @@ Card.Eyebrow = function CardEyebrow<T extends React.ElementType = 'p'>({
     <Component
       className={clsx(
         className,
-        'relative z-10 order-first mb-3 flex items-center gap-1 text-xs uppercase text-zinc-400 dark:text-zinc-500 md:text-sm',
+        'relative z-10 order-first mb-3 flex items-center gap-1 text-xs uppercase text-stone-400 dark:text-stone-500 md:text-sm',
         decorate && 'pl-3.5'
       )}
       {...props}
@@ -117,7 +117,7 @@ Card.Eyebrow = function CardEyebrow<T extends React.ElementType = 'p'>({
           className="absolute inset-y-0 left-0 flex items-center"
           aria-hidden="true"
         >
-          <span className="h-4 w-0.5 rounded-full bg-zinc-200 dark:bg-zinc-500" />
+          <span className="h-4 w-0.5 rounded-full bg-stone-200 dark:bg-stone-500" />
         </span>
       )}
       {children}
