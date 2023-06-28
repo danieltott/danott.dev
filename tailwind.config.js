@@ -9,7 +9,21 @@ module.exports = {
     fontSize: defaultTheme.fontSize,
     extend: {
       fontFamily: {
-        serif: ['var(--font-crimson)'],
+        serif: ['var(--font-crimson)', ...defaultTheme.fontFamily.serif],
+      },
+      colors: {
+        cerise: {
+          50: '#fdfcfb',
+          100: '#fbf0f0',
+          200: '#f8cce1',
+          300: '#ef9ec2',
+          400: '#ee6d9e',
+          500: '#e34980',
+          600: '#cf305f',
+          700: '#a92445',
+          800: '#7c1a2c',
+          900: '#4c1017',
+        },
       },
 
       // fontSize: {
@@ -56,10 +70,10 @@ module.exports = {
           css: {
             '--tw-prose-body': theme('colors.zinc.600'),
             '--tw-prose-headings': theme('colors.zinc.900'),
-            '--tw-prose-links': theme('colors.teal.500'),
-            '--tw-prose-links-hover': theme('colors.teal.600'),
-            '--tw-prose-underline': theme('colors.teal.500 / 0.2'),
-            '--tw-prose-underline-hover': theme('colors.teal.500'),
+            '--tw-prose-links': theme('colors.cerise.500'),
+            '--tw-prose-links-hover': theme('colors.cerise.600'),
+            '--tw-prose-underline': theme('colors.cerise.500 / 0.2'),
+            '--tw-prose-underline-hover': theme('colors.cerise.500'),
             '--tw-prose-bold': theme('colors.zinc.900'),
             '--tw-prose-counters': theme('colors.zinc.900'),
             '--tw-prose-bullets': theme('colors.zinc.900'),
@@ -76,10 +90,10 @@ module.exports = {
 
             '--tw-prose-invert-body': theme('colors.zinc.400'),
             '--tw-prose-invert-headings': theme('colors.zinc.200'),
-            '--tw-prose-invert-links': theme('colors.teal.400'),
-            '--tw-prose-invert-links-hover': theme('colors.teal.400'),
-            '--tw-prose-invert-underline': theme('colors.teal.400 / 0.3'),
-            '--tw-prose-invert-underline-hover': theme('colors.teal.400'),
+            '--tw-prose-invert-links': theme('colors.cerise.400'),
+            '--tw-prose-invert-links-hover': theme('colors.cerise.400'),
+            '--tw-prose-invert-underline': theme('colors.cerise.400 / 0.3'),
+            '--tw-prose-invert-underline-hover': theme('colors.cerise.400'),
             '--tw-prose-invert-bold': theme('colors.zinc.200'),
             '--tw-prose-invert-counters': theme('colors.zinc.200'),
             '--tw-prose-invert-bullets': theme('colors.zinc.200'),

@@ -191,7 +191,7 @@ export default async function HomePage() {
     <>
       <Container className="mt-9">
         <div className="max-w-2xl">
-          <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
+          <h1 className="font-heading text-4xl text-zinc-800 dark:text-zinc-100 sm:text-5xl">
             Full-Stack Design and Development
           </h1>
           <div className="prose mt-6 md:prose-lg lg:prose-xl">

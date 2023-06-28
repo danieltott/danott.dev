@@ -1,5 +1,4 @@
 import '@/styles/tailwind.css';
-// import { Inter } from 'next/font/google';
 import type { Metadata } from 'next';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
@@ -71,7 +70,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`h-full antialiased ${crimson.variable} font-serif`}
+      className={`h-full antialiased ${crimson.variable}  font-serif`}
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: modeScript }} />

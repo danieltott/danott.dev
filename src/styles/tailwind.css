@@ -2,3 +2,9 @@
 @import 'tailwindcss/components';
 @import './prism.css';
 @import 'tailwindcss/utilities';
+
+@layer components {
+  .font-heading {
+    @apply font-black italic tracking-tight;
+  }
+}
