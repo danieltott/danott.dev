@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Crimson_Pro, Rampart_One } from 'next/font/google';
+import Star from '@/components/Star';
 
 const crimson = Crimson_Pro({
   subsets: ['latin'],
@@ -76,6 +77,8 @@ export const metadata: Metadata = {
   },
 };
 
+const stars = Array.from({ length: 100 }, (_, i) => <Star key={i} />);
+
 export default function RootLayout({
   children,
 }: {
@@ -90,18 +93,19 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: modeScript }} />
       </head>
       <body className="flex h-full flex-col bg-east-bay-50 dark:bg-black">
-        <>
-          <div className="fixed inset-0 flex justify-center sm:px-8">
-            <div className="flex w-full max-w-7xl lg:px-8">
-              <div className="w-full bg-white ring-1 ring-stone-100 dark:bg-stone-900 dark:ring-stone-300/20" />
-            </div>
+        <div className="absolute left-[calc((100vw_-_76rem)_/_4)] top-1/2  grid h-8 w-8 -translate-x-1/2 -translate-y-1/2 items-center justify-center">
+          {stars}
+        </div>
+        <div className="fixed inset-0 flex justify-center sm:px-8">
+          <div className="flex w-full max-w-7xl lg:px-8">
+            <div className="w-full bg-white ring-1 ring-stone-100 dark:bg-stone-900 dark:ring-stone-300/20" />
           </div>
-          <div className="relative">
-            <Header />
-            <main>{children}</main>
-            <Footer />
-          </div>
-        </>
+        </div>
+        <div className="relative">
+          <Header />
+          <main>{children}</main>
+          <Footer />
+        </div>
       </body>
     </html>
   );
