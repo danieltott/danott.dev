@@ -58,7 +58,7 @@ export default function MailLink() {
     return (
       <li className="mt-8 flex border-t border-zinc-100 pt-8 dark:border-zinc-700/40">
         <div className="flex text-sm font-medium text-zinc-800  dark:text-zinc-200">
-          <MailIcon className="h-6 w-6 flex-none fill-zinc-500 transition group-hover:fill-cerise-500" />
+          <MailIcon className="h-6 w-6 flex-none fill-zinc-500 transition group-hover:fill-primary-500" />
           <span className="ml-4">
             <strong>dan</strong> at this domain
           </span>

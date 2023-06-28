@@ -5,9 +5,23 @@
 
 @layer components {
   .font-heading {
-    @apply font-black italic tracking-tight;
+    @apply font-black italic tracking-tight text-zinc-800 dark:text-zinc-100;
   }
   .font-title {
-    @apply bg-gradient-to-br from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% bg-clip-text pb-2 font-rampart font-black	tracking-tight text-transparent;
+    @apply bg-gradient-to-r
+    from-east-bay-500
+    via-green-metal-400
+    to-coral-500
+
+    bg-clip-text pb-2 font-rampart font-black	tracking-tight text-transparent;
   }
 }
+
+/*
+bg-gradient-to-br
+    from-indigo-500
+    from-10%
+    via-sky-500
+    via-30%
+    to-green-metal-500
+    to-90% */

@@ -84,7 +84,7 @@ export default function ArticleList({
               className={clsx(
                 'inline-flex items-center border-t-2 px-4 pt-4',
                 page === meta.page
-                  ? 'border-cerise-400 text-cerise-600 dark:border-cerise-400 dark:text-cerise-500'
+                  ? 'border-primary-400 text-primary-600 dark:border-primary-400 dark:text-primary-500'
                   : 'border-transparent text-sm font-medium text-zinc-500 hover:border-zinc-200 hover:text-zinc-700 dark:text-zinc-400 dark:hover:border-zinc-300/40 dark:hover:text-zinc-300 md:text-base lg:text-lg'
               )}
             >
