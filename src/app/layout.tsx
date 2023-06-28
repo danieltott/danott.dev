@@ -52,6 +52,13 @@ export const metadata: Metadata = {
     template: '%s ~ Dan Ott',
     default: 'Full-Stack Design and Development ~ Dan Ott',
   },
+  manifest: '/site.webmanifest',
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: ['/favicon-32x32.png', '/favicon-16x16.png'],
+    apple: '/apple-touch-icon.png',
+  },
+
   description: `Dan Ott's portfolio, information, and thoughts on HTML, CSS, Javascript, and the web development industry in general.`,
   alternates: {
     canonical: 'https://dtott.com',
