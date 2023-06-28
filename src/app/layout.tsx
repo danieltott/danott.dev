@@ -3,6 +3,13 @@ import '@/styles/tailwind.css';
 import type { Metadata } from 'next';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
+import { Crimson_Pro } from 'next/font/google';
+
+const crimson = Crimson_Pro({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-crimson',
+});
 
 // const inter = Inter({ subsets: ['latin'] });
 
@@ -62,7 +69,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="h-full antialiased">
+    <html
+      lang="en"
+      className={`h-full antialiased ${crimson.variable} font-serif`}
+    >
       <head>
         <script dangerouslySetInnerHTML={{ __html: modeScript }} />
       </head>

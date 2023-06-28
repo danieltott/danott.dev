@@ -8,6 +8,13 @@ export function Prose({
   children: React.ReactNode;
 }) {
   return (
-    <div className={clsx(className, 'prose dark:prose-invert')}>{children}</div>
+    <div
+      className={clsx(
+        className,
+        'prose dark:prose-invert  md:prose-lg lg:prose-xl'
+      )}
+    >
+      {children}
+    </div>
   );
 }

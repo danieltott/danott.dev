@@ -66,7 +66,7 @@ export default function ArticleList({
           {meta.prev && (
             <Link
               href={`/thoughts/page/${meta.prev}`}
-              className="inline-flex items-center border-t-2 border-transparent pr-1 pt-4 text-sm font-medium text-zinc-500 hover:border-zinc-200 hover:text-zinc-700 dark:text-zinc-400 dark:hover:border-zinc-300/40 dark:hover:text-zinc-300"
+              className="inline-flex items-center border-t-2 border-transparent pr-1 pt-4 text-sm font-medium text-zinc-500 hover:border-zinc-200 hover:text-zinc-700 dark:text-zinc-400 dark:hover:border-zinc-300/40 dark:hover:text-zinc-300 md:text-base lg:text-lg"
             >
               <ArrowLongLeftIcon
                 className="mr-3 h-5 w-5 text-zinc-400"
@@ -85,7 +85,7 @@ export default function ArticleList({
                 'inline-flex items-center border-t-2 px-4 pt-4',
                 page === meta.page
                   ? 'border-teal-400 text-teal-600 dark:border-teal-400 dark:text-teal-500'
-                  : 'border-transparent text-sm font-medium text-zinc-500 hover:border-zinc-200 hover:text-zinc-700 dark:text-zinc-400 dark:hover:border-zinc-300/40 dark:hover:text-zinc-300'
+                  : 'border-transparent text-sm font-medium text-zinc-500 hover:border-zinc-200 hover:text-zinc-700 dark:text-zinc-400 dark:hover:border-zinc-300/40 dark:hover:text-zinc-300 md:text-base lg:text-lg'
               )}
             >
               {page}
@@ -96,7 +96,7 @@ export default function ArticleList({
           {meta.next && (
             <Link
               href={`/thoughts/page/${meta.next}`}
-              className="inline-flex items-center border-t-2 border-transparent pl-1 pt-4 text-sm font-medium text-zinc-500 hover:border-zinc-200 hover:text-zinc-700 dark:text-zinc-400 dark:hover:border-zinc-300/40 dark:hover:text-zinc-300"
+              className="inline-flex items-center border-t-2 border-transparent pl-1 pt-4 text-sm font-medium text-zinc-500 hover:border-zinc-200 hover:text-zinc-700 dark:text-zinc-400 dark:hover:border-zinc-300/40 dark:hover:text-zinc-300 md:text-base lg:text-lg"
             >
               Next
               <ArrowLongRightIcon

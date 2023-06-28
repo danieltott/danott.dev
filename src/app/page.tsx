@@ -122,7 +122,7 @@ function Resume() {
 
   return (
     <div className="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
-      <h2 className="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+      <h2 className="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100 md:text-base lg:text-lg">
         <BriefcaseIcon className="h-6 w-6 flex-none" />
         <span className="ml-3">Work</span>
       </h2>
@@ -134,16 +134,16 @@ function Resume() {
             </div>
             <dl className="flex flex-auto flex-wrap gap-x-2">
               <dt className="sr-only">Company</dt>
-              <dd className="w-full flex-none text-sm font-medium text-zinc-900 dark:text-zinc-100">
+              <dd className="w-full flex-none text-sm font-medium text-zinc-900 dark:text-zinc-100 md:text-base lg:text-lg">
                 {role.company}
               </dd>
               <dt className="sr-only">Role</dt>
-              <dd className="text-xs text-zinc-500 dark:text-zinc-400">
+              <dd className="text-xs text-zinc-500 dark:text-zinc-400 md:text-sm lg:text-base">
                 {role.title}
               </dd>
               <dt className="sr-only">Date</dt>
               <dd
-                className="ml-auto text-xs text-zinc-400 dark:text-zinc-500"
+                className="ml-auto text-xs text-zinc-400 dark:text-zinc-500 md:text-sm lg:text-base"
                 aria-label={`${
                   typeof role.start === 'string' ? role.start : role.start.label
                 } until ${
@@ -194,7 +194,7 @@ export default async function HomePage() {
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
             Full-Stack Design and Development
           </h1>
-          <div className="prose">
+          <div className="prose mt-6 md:prose-lg lg:prose-xl">
             <p>
               I&rsquo;m Dan, an independent developer and designer based in
               Cleveland, Ohio. I&rsquo;ve been working with clients since 2005
