@@ -90,7 +90,7 @@ export default function RootLayout({
       <head>
         <script dangerouslySetInnerHTML={{ __html: modeScript }} />
       </head>
-      <body className="flex h-full flex-col bg-east-bay-50 dark:bg-black">
+      <body className="relative flex min-h-full flex-col bg-east-bay-50 dark:bg-black">
         <div className="absolute bottom-0 left-0 top-0 z-50 w-full min-w-[2rem] max-w-[calc((100vw_-_80rem)_/_2_+_4rem)]">
           <Stars />
         </div>
