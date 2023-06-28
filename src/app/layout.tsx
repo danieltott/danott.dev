@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Crimson_Pro, Rampart_One } from 'next/font/google';
-import Star from '@/components/Star';
+import Stars from '@/components/Star';
 
 const crimson = Crimson_Pro({
   subsets: ['latin'],
@@ -77,8 +77,6 @@ export const metadata: Metadata = {
   },
 };
 
-const stars = Array.from({ length: 100 }, (_, i) => <Star key={i} />);
-
 export default function RootLayout({
   children,
 }: {
@@ -87,14 +85,14 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`h-full antialiased ${crimson.variable} ${rampart.variable}  font-serif`}
+      className={`h-full antialiased ${crimson.variable} ${rampart.variable} font-serif`}
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: modeScript }} />
       </head>
       <body className="flex h-full flex-col bg-east-bay-50 dark:bg-black">
-        <div className="absolute left-[calc((100vw_-_76rem)_/_4)] top-1/2  grid h-8 w-8 -translate-x-1/2 -translate-y-1/2 items-center justify-center">
-          {stars}
+        <div className="absolute bottom-0 left-0 top-0 z-50 w-full min-w-[2rem] max-w-[calc((100vw_-_80rem)_/_2_+_4rem)]">
+          <Stars />
         </div>
         <div className="fixed inset-0 flex justify-center sm:px-8">
           <div className="flex w-full max-w-7xl lg:px-8">
