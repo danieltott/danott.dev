@@ -280,7 +280,7 @@ function StarList({
         'dark:text-stone-200',
         'sm:block',
         'md:min-w-[4rem]',
-        '2xl:max-w-[calc((100vw_-_64rem)_/_2_-_2rem)]',
+        '2xl:max-w-[calc((100vw_-_64rem)_/_2_-_2rem)]'
       )}
     >
       {Array.from({ length: steps }, (_, i) => (
