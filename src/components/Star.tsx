@@ -356,7 +356,7 @@ export function Star({ step }: { step: number }) {
         viewBox="0 0 24 24"
         strokeWidth={1.1}
         stroke="currentColor"
-        className={clsx('h-8 w-8', random(fills))}
+        className={clsx('h-8 w-8 scale-75 md:scale-100', random(fills))}
       >
         <path
           strokeLinecap="round"
