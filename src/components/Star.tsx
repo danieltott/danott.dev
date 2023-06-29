@@ -1,6 +1,7 @@
-import clsx from 'clsx';
+'use client';
 
-const STEPS = 30;
+import clsx from 'clsx';
+import { useEffect, useState } from 'react';
 
 function random(list: string[]) {
   return list[Math.floor(Math.random() * list.length)];
@@ -327,10 +328,25 @@ const lefts = [
   'left-[46.56%]',
   'left-[48.28%]',
 ];
+
+const durations = [
+  'duration-75',
+  'duration-100',
+  'duration-150',
+  'duration-200',
+  'duration-300',
+  'duration-500',
+  'duration-700',
+  'duration-1000',
+];
 // calc((100vw - 76rem) / 2)
 
-export function generateClassName(step: number, leftStart: number) {
-  let leftIndex = leftStart + step * Math.floor(lefts.length / STEPS);
+export function generateClassName(
+  step: number,
+  leftStart: number,
+  steps: number,
+) {
+  let leftIndex = leftStart + step * Math.floor(lefts.length / steps);
   if (leftIndex > lefts.length - 1) {
     leftIndex = leftIndex - lefts.length;
   }
@@ -343,18 +359,32 @@ export function generateClassName(step: number, leftStart: number) {
     ),
     random(rotates),
     // random(tops.slice(topsStepLength * step, topsStepLength * (step + 1))),
-    tops[step],
     lefts[leftIndex],
+    random(durations),
   );
 }
 
-export function Star({ step, leftStart }: { step: number; leftStart: number }) {
+export function Star({
+  step,
+  leftStart,
+  show,
+  steps,
+}: {
+  step: number;
+  leftStart: number;
+  show: boolean;
+  steps: number;
+}) {
   const fill = random(fills);
   return (
     <div
+      style={{
+        top: `${(step / (steps - 1)) * 100}%`,
+      }}
       className={clsx(
-        'absolute h-8 w-8 -translate-x-1/2 ',
-        generateClassName(step, leftStart),
+        'absolute h-8 w-8 -translate-x-1/2 transition-opacity',
+        show ? 'opacity-100' : 'opacity-0',
+        generateClassName(step, leftStart, steps),
       )}
     >
       <svg
@@ -405,31 +435,65 @@ export function Star({ step, leftStart }: { step: number; leftStart: number }) {
   );
 }
 
-export default function Stars({ flip }: { flip?: boolean }) {
-  const leftStart = Math.floor(Math.random() * lefts.length);
+const STEP_RATIO = 0.013;
 
-  return (
-    <div
-      className={clsx(
-        flip ? 'right-0 -scale-x-100' : 'left-0',
-        'absolute',
-        'bottom-0',
-        'top-0',
-        'z-50',
-        'hidden',
-        'w-full',
-        'min-w-[2rem]',
-        'max-w-[calc((100vw_-_80rem)_/_2_+_4rem)]',
-        'text-stone-800',
-        'dark:text-stone-200',
-        'sm:block',
-        'md:min-w-[4rem]',
-        '2xl:max-w-[calc((100vw_-_64rem)_/_2_-_2rem)]',
-      )}
-    >
-      {Array.from({ length: STEPS }, (_, i) => (
-        <Star step={i} leftStart={leftStart} key={i} />
-      ))}
-    </div>
-  );
+export default function Stars({ flip }: { flip?: boolean }) {
+  // 0.013
+
+  const [steps, setSteps] = useState(0);
+  const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    const docHeight = window?.document?.body?.offsetHeight;
+    const docWidth = window?.document?.body?.offsetWidth;
+
+    let timeout: NodeJS.Timeout;
+
+    if (docHeight && docWidth && docWidth > 640) {
+      setSteps(Math.floor(docHeight * STEP_RATIO));
+
+      timeout = setTimeout(() => {
+        setShow(true);
+      }, 300);
+    }
+
+    return () => clearTimeout(timeout);
+  }, []);
+
+  if (steps) {
+    console.log({ steps });
+    const leftStart = Math.floor(Math.random() * lefts.length);
+
+    return (
+      <div
+        className={clsx(
+          flip ? 'right-0 -scale-x-100' : 'left-0',
+          'absolute',
+          'bottom-0',
+          'top-0',
+          'z-50',
+          'hidden',
+          'w-full',
+          'min-w-[2rem]',
+          'max-w-[calc((100vw_-_80rem)_/_2_+_4rem)]',
+          'text-stone-800',
+          'dark:text-stone-200',
+          'sm:block',
+          'md:min-w-[4rem]',
+          '2xl:max-w-[calc((100vw_-_64rem)_/_2_-_2rem)]',
+        )}
+      >
+        {Array.from({ length: steps }, (_, i) => (
+          <Star
+            step={i}
+            show={show}
+            steps={steps}
+            leftStart={leftStart}
+            key={i}
+          />
+        ))}
+      </div>
+    );
+  }
+  return null;
 }
