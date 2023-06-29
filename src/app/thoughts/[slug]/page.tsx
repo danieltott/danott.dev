@@ -6,6 +6,7 @@ import { Metadata } from 'next';
 import { getAllArticles } from '@/lib/getAllArticles';
 import Codepen from '@/components/Codepen';
 import { type MDXProps } from 'mdx/types';
+import Comments from '@/components/Comments';
 
 const components = { Codepen };
 
@@ -66,6 +67,7 @@ export default async function Page({ params }: Props) {
           <Prose className="mt-8">
             <MdxPage components={components} />
           </Prose>
+          <Comments slug={params.slug} />
         </article>
       </div>
     </div>

@@ -4,6 +4,7 @@ import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Crimson_Pro, Rampart_One } from 'next/font/google';
 import Stars from '@/components/Star';
+import Script from 'next/script';
 
 const crimson = Crimson_Pro({
   subsets: ['latin'],
@@ -17,43 +18,6 @@ const rampart = Rampart_One({
   variable: '--font-rampart',
   weight: '400',
 });
-
-// const inter = Inter({ subsets: ['latin'] });
-
-const modeScript = `
-  let darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
-
-  updateMode()
-  darkModeMediaQuery.addEventListener('change', updateModeWithoutTransitions)
-  window.addEventListener('storage', updateModeWithoutTransitions)
-
-  function updateMode() {
-    let isSystemDarkMode = darkModeMediaQuery.matches
-    let isDarkMode = window.localStorage.isDarkMode === 'true' || (!('isDarkMode' in window.localStorage) && isSystemDarkMode)
-
-    if (isDarkMode) {
-      document.documentElement.classList.add('dark')
-    } else {
-      document.documentElement.classList.remove('dark')
-    }
-
-    if (isDarkMode === isSystemDarkMode) {
-      delete window.localStorage.isDarkMode
-    }
-  }
-
-  function disableTransitionsTemporarily() {
-    document.documentElement.classList.add('[&_*]:!transition-none')
-    window.setTimeout(() => {
-      document.documentElement.classList.remove('[&_*]:!transition-none')
-    }, 0)
-  }
-
-  function updateModeWithoutTransitions() {
-    disableTransitionsTemporarily()
-    updateMode()
-  }
-`;
 
 export const metadata: Metadata = {
   title: {
@@ -88,7 +52,48 @@ export default function RootLayout({
       className={`h-full antialiased ${crimson.variable} ${rampart.variable} font-serif`}
     >
       <head>
-        <script dangerouslySetInnerHTML={{ __html: modeScript }} />
+        <Script id="darkmodetoggling">
+          {`
+  let darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
+
+  updateMode()
+  darkModeMediaQuery.addEventListener('change', updateModeWithoutTransitions)
+  window.addEventListener('storage', updateModeWithoutTransitions)
+
+  function updateMode() {
+    let isSystemDarkMode = darkModeMediaQuery.matches
+    let isDarkMode = window.localStorage.isDarkMode === 'true' || (!('isDarkMode' in window.localStorage) && isSystemDarkMode)
+
+    if (isDarkMode) {
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+
+    if (isDarkMode === isSystemDarkMode) {
+      delete window.localStorage.isDarkMode
+    }
+  }
+
+  function disableTransitionsTemporarily() {
+    document.documentElement.classList.add('[&_*]:!transition-none')
+    window.setTimeout(() => {
+      document.documentElement.classList.remove('[&_*]:!transition-none')
+    }, 0)
+  }
+
+  function updateModeWithoutTransitions() {
+    disableTransitionsTemporarily()
+    updateMode()
+  }
+`}
+        </Script>
+        {process.env.NODE_ENV === 'production' && (
+          <Script
+            data-domain="dtott.com"
+            src="https://plausible.io/js/plausible.js"
+          />
+        )}
       </head>
       <body className="relative flex min-h-full flex-col bg-east-bay-50 dark:bg-black">
         <Stars />
