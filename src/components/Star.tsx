@@ -329,31 +329,32 @@ const lefts = [
 ];
 // calc((100vw - 76rem) / 2)
 
-export function generateClassName(step: number) {
-  let scalesStepLength = Math.max(1, scales.length / STEPS);
-  let topsStepLength = Math.max(1, tops.length / STEPS);
+export function generateClassName(step: number, leftStart: number) {
+  let leftIndex = leftStart + step * Math.floor(lefts.length / STEPS);
+  if (leftIndex > lefts.length - 1) {
+    leftIndex = leftIndex - lefts.length;
+  }
 
-  let leftstep = (lefts.length / 4) * (lefts.length % step);
   return clsx(
     // random(hueRotations),
     random(
-      scales
+      scales,
       // .slice(scalesStepLength * step, scalesStepLength * (step + 1))
     ),
     random(rotates),
     // random(tops.slice(topsStepLength * step, topsStepLength * (step + 1))),
     tops[step],
-    lefts[step * Math.floor(lefts.length / STEPS)]
+    lefts[leftIndex],
   );
 }
 
-export function Star({ step }: { step: number }) {
+export function Star({ step, leftStart }: { step: number; leftStart: number }) {
   const fill = random(fills);
   return (
     <div
       className={clsx(
         'absolute h-8 w-8 -translate-x-1/2 ',
-        generateClassName(step)
+        generateClassName(step, leftStart),
       )}
     >
       <svg
@@ -374,7 +375,7 @@ export function Star({ step }: { step: number }) {
           random(miniscales),
           fill,
           random(rotates),
-          random(hueRotations)
+          random(hueRotations),
         )}
       >
         <path
@@ -391,7 +392,7 @@ export function Star({ step }: { step: number }) {
           random(miniscales),
           fill,
           random(rotates),
-          random(hueRotations)
+          random(hueRotations),
         )}
       >
         <path
@@ -404,11 +405,30 @@ export function Star({ step }: { step: number }) {
   );
 }
 
-export default function Stars() {
+export default function Stars({ flip }: { flip?: boolean }) {
+  const leftStart = Math.floor(Math.random() * lefts.length);
+
   return (
-    <div className="absolute bottom-0 left-0 top-0 z-50 hidden w-full min-w-[2rem] max-w-[calc((100vw_-_80rem)_/_2_+_4rem)] text-stone-800 dark:text-stone-200 sm:block md:min-w-[4rem] 2xl:max-w-[calc((100vw_-_64rem)_/_2_-_2rem)]">
+    <div
+      className={clsx(
+        flip ? 'right-0 -scale-x-100' : 'left-0',
+        'absolute',
+        'bottom-0',
+        'top-0',
+        'z-50',
+        'hidden',
+        'w-full',
+        'min-w-[2rem]',
+        'max-w-[calc((100vw_-_80rem)_/_2_+_4rem)]',
+        'text-stone-800',
+        'dark:text-stone-200',
+        'sm:block',
+        'md:min-w-[4rem]',
+        '2xl:max-w-[calc((100vw_-_64rem)_/_2_-_2rem)]',
+      )}
+    >
       {Array.from({ length: STEPS }, (_, i) => (
-        <Star step={i} key={i} />
+        <Star step={i} leftStart={leftStart} key={i} />
       ))}
     </div>
   );

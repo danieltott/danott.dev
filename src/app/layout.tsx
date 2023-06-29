@@ -92,6 +92,7 @@ export default function RootLayout({
       </head>
       <body className="relative flex min-h-full flex-col bg-east-bay-50 dark:bg-black">
         <Stars />
+        <Stars flip />
 
         <div className="fixed inset-0 flex justify-center sm:px-8">
           <div className="flex w-full max-w-7xl lg:px-8">
