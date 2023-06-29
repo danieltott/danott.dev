@@ -11,7 +11,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier --ignore-unknown --write ."
+    "format": "prettier --ignore-unknown --write --list-different ."
   },
   "dependencies": {
     "@headlessui/react": "^1.7.15",
