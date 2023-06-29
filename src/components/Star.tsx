@@ -1,20 +1,20 @@
 'use client';
 
+import { Transition } from '@headlessui/react';
 import clsx from 'clsx';
-import { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
+import {
+  memo,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+  useReducer,
+} from 'react';
 
 function random(list: string[]) {
   return list[Math.floor(Math.random() * list.length)];
 }
-
-const hueRotations = [
-  // 'hue-rotate-0',
-  'hue-rotate-15',
-  'hue-rotate-30',
-  'hue-rotate-60',
-  'hue-rotate-90',
-  'hue-rotate-180',
-];
 
 const fills = [
   'fill-pink-salmon-50',
@@ -71,159 +71,6 @@ const fills = [
   'fill-coral-600',
   'fill-coral-700',
   'fill-coral-800',
-];
-
-const scales = [
-  'scale-[2.15]',
-  'scale-[2.13]',
-  'scale-[2.11]',
-  'scale-[2.09]',
-  'scale-[2.07]',
-  'scale-[2.05]',
-  'scale-[2.03]',
-  'scale-[2.01]',
-  'scale-[1.99]',
-  'scale-[1.97]',
-  'scale-[1.95]',
-  'scale-[1.93]',
-  'scale-[1.91]',
-  'scale-[1.89]',
-  'scale-[1.87]',
-  'scale-[1.85]',
-  'scale-[1.83]',
-  'scale-[1.81]',
-  'scale-[1.79]',
-  'scale-[1.77]',
-  'scale-[1.75]',
-  'scale-[1.73]',
-  'scale-[1.71]',
-  'scale-[1.69]',
-  'scale-[1.67]',
-  'scale-[1.65]',
-  'scale-[1.63]',
-  'scale-[1.61]',
-  'scale-[1.59]',
-  'scale-[1.57]',
-  'scale-[1.55]',
-  'scale-[1.53]',
-  'scale-[1.51]',
-  'scale-[1.49]',
-  'scale-[1.47]',
-  'scale-[1.45]',
-  'scale-[1.43]',
-  'scale-[1.41]',
-  'scale-[1.39]',
-  'scale-[1.37]',
-  'scale-[1.35]',
-  'scale-[1.33]',
-  'scale-[1.31]',
-  'scale-[1.29]',
-  'scale-[1.27]',
-  'scale-[1.25]',
-  'scale-[1.23]',
-  'scale-[1.21]',
-  'scale-[1.19]',
-  'scale-[1.17]',
-  'scale-[1.15]',
-  'scale-[1.13]',
-  'scale-[1.11]',
-  'scale-[1.09]',
-  'scale-[1.07]',
-  'scale-[1.05]',
-  'scale-[1.03]',
-  'scale-[1.01]',
-  'scale-[0.99]',
-  'scale-[0.97]',
-  'scale-[0.95]',
-  'scale-[0.93]',
-  'scale-[0.91]',
-  'scale-[0.89]',
-  'scale-[0.87]',
-  'scale-[0.85]',
-  'scale-[0.83]',
-  'scale-[0.81]',
-];
-
-const miniscales = [
-  'scale-[0.79]',
-  'scale-[0.77]',
-  'scale-[0.75]',
-  'scale-[0.73]',
-  'scale-[0.71]',
-  'scale-[0.69]',
-  'scale-[0.67]',
-  'scale-[0.65]',
-  'scale-[0.63]',
-  'scale-[0.61]',
-  'scale-[0.59]',
-  'scale-[0.57]',
-  'scale-[0.55]',
-  'scale-[0.53]',
-  'scale-[0.51]',
-  'scale-[0.49]',
-  'scale-[0.47]',
-  'scale-[0.45]',
-  'scale-[0.43]',
-  'scale-[0.41]',
-  'scale-[0.39]',
-  'scale-[0.37]',
-  'scale-[0.35]',
-  'scale-[0.33]',
-  'scale-[0.31]',
-  'scale-[0.29]',
-  'scale-[0.27]',
-  'scale-[0.25]',
-  'scale-[0.23]',
-  'scale-[0.21]',
-  'scale-[0.19]',
-  'scale-[0.17]',
-];
-
-const rotates = [
-  'rotate-0',
-  'rotate-12',
-  'rotate-[30deg]',
-  'rotate-45',
-  'rotate-[72deg]',
-  'rotate-90',
-  'rotate-[102deg',
-  'rotate-[120deg]',
-  'rotate-[135deg]',
-  'rotate-[150deg]',
-  'rotate-180',
-];
-
-const tops = [
-  'top-[0%]',
-  'top-[3%]',
-  'top-[7%]',
-  'top-[10%]',
-  'top-[13%]',
-  'top-[17%]',
-  'top-[20%]',
-  'top-[23%]',
-  'top-[27%]',
-  'top-[30%]',
-  'top-[33%]',
-  'top-[37%]',
-  'top-[40%]',
-  'top-[43%]',
-  'top-[47%]',
-  'top-[50%]',
-  'top-[53%]',
-  'top-[57%]',
-  'top-[60%]',
-  'top-[63%]',
-  'top-[67%]',
-  'top-[70%]',
-  'top-[73%]',
-  'top-[77%]',
-  'top-[80%]',
-  'top-[83%]',
-  'top-[87%]',
-  'top-[90%]',
-  'top-[93%]',
-  'top-[97%]',
 ];
 
 const lefts = [
@@ -329,63 +176,39 @@ const lefts = [
   'left-[48.28%]',
 ];
 
-const durations = [
-  'duration-75',
-  'duration-100',
-  'duration-150',
-  'duration-200',
-  'duration-300',
-  'duration-500',
-  'duration-700',
-  'duration-1000',
-];
 // calc((100vw - 76rem) / 2)
 
-export function generateClassName(
-  step: number,
-  leftStart: number,
-  steps: number,
-) {
+function getRandom(min: number, max: number) {
+  return Math.random() * (max - min) + min;
+}
+
+function randomRotate() {
+  return `.2 .2 1 ${getRandom(0, 360)}deg`;
+}
+
+type StarProps = {
+  step: number;
+  leftStart: number;
+  steps: number;
+};
+
+export function Star({ step, leftStart, steps }: StarProps) {
+  const fill = random(fills);
+
   let leftIndex = leftStart + step * Math.floor(lefts.length / steps);
   if (leftIndex > lefts.length - 1) {
     leftIndex = leftIndex - lefts.length;
   }
 
-  return clsx(
-    // random(hueRotations),
-    random(
-      scales,
-      // .slice(scalesStepLength * step, scalesStepLength * (step + 1))
-    ),
-    random(rotates),
-    // random(tops.slice(topsStepLength * step, topsStepLength * (step + 1))),
-    lefts[leftIndex],
-    random(durations),
-  );
-}
-
-export function Star({
-  step,
-  leftStart,
-  show,
-  steps,
-}: {
-  step: number;
-  leftStart: number;
-  show: boolean;
-  steps: number;
-}) {
-  const fill = random(fills);
   return (
     <div
       style={{
         top: `${(step / (steps - 1)) * 100}%`,
+        rotate: randomRotate(),
+        transitionDuration: `${getRandom(20, 1200)}ms`,
+        scale: getRandom(0.8, 2),
       }}
-      className={clsx(
-        'absolute h-8 w-8 -translate-x-1/2 transition-opacity',
-        show ? 'opacity-100' : 'opacity-0',
-        generateClassName(step, leftStart, steps),
-      )}
+      className={clsx('absolute h-8 w-8 -translate-x-1/2', lefts[leftIndex])}
     >
       <svg
         viewBox="0 0 24 24"
@@ -400,13 +223,13 @@ export function Star({
 
       <svg
         viewBox="0 0 24 24"
-        className={clsx(
-          'star -translate-x-9',
-          random(miniscales),
-          fill,
-          random(rotates),
-          random(hueRotations),
-        )}
+        style={{
+          rotate: randomRotate(),
+          scale: getRandom(0.2, 0.8),
+          filter: `hue-rotate(${getRandom(15, 180)}deg)`,
+          translate: `${getRandom(-44, -34)}px 0`,
+        }}
+        className={clsx('star', fill)}
       >
         <path
           strokeLinecap="round"
@@ -417,13 +240,13 @@ export function Star({
 
       <svg
         viewBox="0 0 24 24"
-        className={clsx(
-          'star translate-x-9',
-          random(miniscales),
-          fill,
-          random(rotates),
-          random(hueRotations),
-        )}
+        style={{
+          rotate: randomRotate(),
+          scale: getRandom(0.2, 0.8),
+          filter: `hue-rotate(${getRandom(15, 180)}deg)`,
+          translate: `${getRandom(34, 44)}px 0`,
+        }}
+        className={clsx('star', fill)}
       >
         <path
           strokeLinecap="round"
@@ -437,62 +260,130 @@ export function Star({
 
 const STEP_RATIO = 0.013;
 
+function StarList({
+  leftStart,
+  steps,
+  flip,
+  height,
+}: {
+  leftStart: number;
+  steps: number;
+  height: number;
+  flip?: boolean;
+}) {
+  return (
+    <div
+      style={{ height }}
+      className={clsx(
+        flip ? 'right-0 -scale-x-100' : 'left-0',
+        'absolute',
+        'top-0',
+        'z-50',
+        'hidden',
+        'w-full',
+        'min-w-[2rem]',
+        'max-w-[calc((100vw_-_80rem)_/_2_+_4rem)]',
+        'text-stone-800',
+        'dark:text-stone-200',
+        'sm:block',
+        'md:min-w-[4rem]',
+        '2xl:max-w-[calc((100vw_-_64rem)_/_2_-_2rem)]',
+      )}
+    >
+      {Array.from({ length: steps }, (_, i) => (
+        <Star step={i} steps={steps} leftStart={leftStart} key={i} />
+      ))}
+    </div>
+  );
+}
+
+type State = {
+  paths: string[];
+  map: Record<string, React.JSX.Element>;
+};
+
+type Action = {
+  pathname: string;
+  docHeight: number;
+  flip?: boolean;
+};
+
+const initialState: State = {
+  paths: [],
+  map: {},
+};
+
+function reducer(state: State, action: Action): State {
+  if (state.map[action.pathname]) {
+    return state;
+  }
+
+  const leftStart = Math.floor(getRandom(0, lefts.length));
+  const steps = Math.floor(action.docHeight * STEP_RATIO);
+
+  return {
+    paths: [...state.paths, action.pathname],
+    map: {
+      ...state.map,
+      [action.pathname]: (
+        <StarList
+          flip={action.flip}
+          height={action.docHeight}
+          leftStart={leftStart}
+          steps={steps}
+        />
+      ),
+    },
+  };
+}
+
 export default function Stars({ flip }: { flip?: boolean }) {
   // 0.013
 
-  const [steps, setSteps] = useState(0);
-  const [show, setShow] = useState(false);
+  const pathname = usePathname();
+  const prevPathname = useRef('');
+
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
-    const docHeight = window?.document?.body?.offsetHeight;
-    const docWidth = window?.document?.body?.offsetWidth;
+    console.log({ state });
+  }, [state]);
 
-    let timeout: NodeJS.Timeout;
-
-    if (docHeight && docWidth && docWidth > 640) {
-      setSteps(Math.floor(docHeight * STEP_RATIO));
-
-      timeout = setTimeout(() => {
-        setShow(true);
-      }, 300);
-    }
-
-    return () => clearTimeout(timeout);
+  useEffect(() => {
+    console.log('mounting');
   }, []);
 
-  if (steps) {
-    console.log({ steps });
-    const leftStart = Math.floor(Math.random() * lefts.length);
+  useLayoutEffect(() => {
+    if (pathname !== prevPathname.current) {
+      prevPathname.current = pathname;
 
+      const docHeight = window?.document?.body?.offsetHeight;
+      const docWidth = window?.document?.body?.offsetWidth;
+
+      if (docHeight && docWidth && docWidth > 640) {
+        dispatch({ pathname, docHeight, flip });
+      }
+    }
+  }, [flip, pathname]);
+
+  if (state.paths.length) {
     return (
-      <div
-        className={clsx(
-          flip ? 'right-0 -scale-x-100' : 'left-0',
-          'absolute',
-          'bottom-0',
-          'top-0',
-          'z-50',
-          'hidden',
-          'w-full',
-          'min-w-[2rem]',
-          'max-w-[calc((100vw_-_80rem)_/_2_+_4rem)]',
-          'text-stone-800',
-          'dark:text-stone-200',
-          'sm:block',
-          'md:min-w-[4rem]',
-          '2xl:max-w-[calc((100vw_-_64rem)_/_2_-_2rem)]',
-        )}
-      >
-        {Array.from({ length: steps }, (_, i) => (
-          <Star
-            step={i}
-            show={show}
-            steps={steps}
-            leftStart={leftStart}
-            key={i}
-          />
+      <>
+        {state.paths.map((path) => (
+          <Transition
+            key={path}
+            show={pathname === path}
+            enter="transition-opacity duration-75"
+            enterFrom="opacity-0"
+            enterTo="opacity-100"
+            leave="transition-opacity duration-150"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+          >
+            {state.map[path]}
+          </Transition>
         ))}
-      </div>
+      </>
     );
   }
   return null;
