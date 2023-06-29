@@ -91,10 +91,8 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: modeScript }} />
       </head>
       <body className="relative flex min-h-full flex-col bg-east-bay-50 dark:bg-black">
-        <div className="absolute bottom-0 left-0 top-0 z-50 hidden w-full min-w-[2rem] max-w-[calc((100vw_-_80rem)_/_2_+_4rem)] sm:block md:min-w-[4rem]">
-          {/* <div className="absolute bottom-0 left-0 top-0 z-50 w-16 min-[80rem]:w-full min-[80rem]:min-w-[2rem] min-[80rem]:max-w-[calc((100vw_-_80rem)_/_2_+_4rem)]"> */}
-          <Stars />
-        </div>
+        <Stars />
+
         <div className="fixed inset-0 flex justify-center sm:px-8">
           <div className="flex w-full max-w-7xl lg:px-8">
             <div className="w-full bg-white ring-1 ring-stone-100 dark:bg-stone-900 dark:ring-stone-300/20" />

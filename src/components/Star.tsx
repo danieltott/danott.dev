@@ -7,7 +7,7 @@ function random(list: string[]) {
 }
 
 const hueRotations = [
-  'hue-rotate-0',
+  // 'hue-rotate-0',
   'hue-rotate-15',
   'hue-rotate-30',
   'hue-rotate-60',
@@ -141,49 +141,54 @@ const scales = [
   'scale-[0.85]',
   'scale-[0.83]',
   'scale-[0.81]',
-  // 'scale-[0.79]',
-  // 'scale-[0.77]',
-  // 'scale-[0.75]',
-  // 'scale-[0.73]',
-  // 'scale-[0.71]',
-  // 'scale-[0.69]',
-  // 'scale-[0.67]',
-  // 'scale-[0.65]',
-  // 'scale-[0.63]',
-  // 'scale-[0.61]',
-  // 'scale-[0.59]',
-  // 'scale-[0.57]',
-  // 'scale-[0.55]',
-  // 'scale-[0.53]',
-  // 'scale-[0.51]',
-  // 'scale-[0.49]',
-  // 'scale-[0.47]',
-  // 'scale-[0.45]',
-  // 'scale-[0.43]',
-  // 'scale-[0.41]',
-  // 'scale-[0.39]',
-  // 'scale-[0.37]',
-  // 'scale-[0.35]',
-  // 'scale-[0.33]',
-  // 'scale-[0.31]',
-  // 'scale-[0.29]',
-  // 'scale-[0.27]',
-  // 'scale-[0.25]',
-  // 'scale-[0.23]',
-  // 'scale-[0.21]',
-  // 'scale-[0.19]',
-  // 'scale-[0.17]',
+];
+
+const miniscales = [
+  'scale-[0.79]',
+  'scale-[0.77]',
+  'scale-[0.75]',
+  'scale-[0.73]',
+  'scale-[0.71]',
+  'scale-[0.69]',
+  'scale-[0.67]',
+  'scale-[0.65]',
+  'scale-[0.63]',
+  'scale-[0.61]',
+  'scale-[0.59]',
+  'scale-[0.57]',
+  'scale-[0.55]',
+  'scale-[0.53]',
+  'scale-[0.51]',
+  'scale-[0.49]',
+  'scale-[0.47]',
+  'scale-[0.45]',
+  'scale-[0.43]',
+  'scale-[0.41]',
+  'scale-[0.39]',
+  'scale-[0.37]',
+  'scale-[0.35]',
+  'scale-[0.33]',
+  'scale-[0.31]',
+  'scale-[0.29]',
+  'scale-[0.27]',
+  'scale-[0.25]',
+  'scale-[0.23]',
+  'scale-[0.21]',
+  'scale-[0.19]',
+  'scale-[0.17]',
 ];
 
 const rotates = [
   'rotate-0',
-  'rotate-1',
-  'rotate-2',
-  'rotate-3',
-  'rotate-6',
   'rotate-12',
+  'rotate-[30deg]',
   'rotate-45',
+  'rotate-[72deg]',
   'rotate-90',
+  'rotate-[102deg',
+  'rotate-[120deg]',
+  'rotate-[135deg]',
+  'rotate-[150deg]',
   'rotate-180',
 ];
 
@@ -343,20 +348,51 @@ export function generateClassName(step: number) {
 }
 
 export function Star({ step }: { step: number }) {
+  const fill = random(fills);
   return (
     <div
       className={clsx(
-        'absolute h-8 w-8 -translate-x-1/2 text-stone-500 dark:text-stone-900',
+        'absolute h-8 w-8 -translate-x-1/2 ',
         generateClassName(step)
       )}
     >
       <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
         viewBox="0 0 24 24"
-        strokeWidth={1.1}
-        stroke="currentColor"
-        className={clsx('h-8 w-8 scale-75 md:scale-100', random(fills))}
+        className={clsx('star scale-75 md:scale-100', fill)}
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"
+        />
+      </svg>
+
+      <svg
+        viewBox="0 0 24 24"
+        className={clsx(
+          'star -translate-x-9',
+          random(miniscales),
+          fill,
+          random(rotates),
+          random(hueRotations)
+        )}
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"
+        />
+      </svg>
+
+      <svg
+        viewBox="0 0 24 24"
+        className={clsx(
+          'star translate-x-9',
+          random(miniscales),
+          fill,
+          random(rotates),
+          random(hueRotations)
+        )}
       >
         <path
           strokeLinecap="round"
@@ -369,5 +405,11 @@ export function Star({ step }: { step: number }) {
 }
 
 export default function Stars() {
-  return Array.from({ length: STEPS }, (_, i) => <Star step={i} key={i} />);
+  return (
+    <div className="absolute bottom-0 left-0 top-0 z-50 hidden w-full min-w-[2rem] max-w-[calc((100vw_-_80rem)_/_2_+_4rem)] text-stone-800 dark:text-stone-200 sm:block md:min-w-[4rem] 2xl:max-w-[calc((100vw_-_64rem)_/_2_-_2rem)]">
+      {Array.from({ length: STEPS }, (_, i) => (
+        <Star step={i} key={i} />
+      ))}
+    </div>
+  );
 }
