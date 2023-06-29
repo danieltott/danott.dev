@@ -3,14 +3,7 @@
 import { Transition } from '@headlessui/react';
 import clsx from 'clsx';
 import { usePathname } from 'next/navigation';
-import {
-  memo,
-  useEffect,
-  useLayoutEffect,
-  useRef,
-  useState,
-  useReducer,
-} from 'react';
+import { useEffect, useRef, useReducer } from 'react';
 
 function random(list: string[]) {
   return list[Math.floor(Math.random() * list.length)];
@@ -346,14 +339,6 @@ export default function Stars({ flip }: { flip?: boolean }) {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
-    console.log({ state });
-  }, [state]);
-
-  useEffect(() => {
-    console.log('mounting');
-  }, []);
-
-  useLayoutEffect(() => {
     if (pathname !== prevPathname.current) {
       prevPathname.current = pathname;
 
