@@ -111,9 +111,10 @@ export default function ArticleList({
   );
 }
 
+export const PER_PAGE = 10;
+
 export async function getArticles(pageSlug?: string) {
   const page = pageSlug ? parseInt(pageSlug) : 1;
-  const perPage = 10;
 
   const articles = await getAllArticles();
 
@@ -127,9 +128,9 @@ export async function getArticles(pageSlug?: string) {
   } = {
     page,
     prev: page > 1 ? page - 1 : null,
-    next: page < Math.ceil(articles.length / perPage) ? page + 1 : null,
+    next: page < Math.ceil(articles.length / PER_PAGE) ? page + 1 : null,
     total: articles.length,
-    totalPages: Math.ceil(articles.length / perPage),
+    totalPages: Math.ceil(articles.length / PER_PAGE),
     pages: [],
   };
 
@@ -137,12 +138,12 @@ export async function getArticles(pageSlug?: string) {
     meta.pages.push(i);
   }
 
-  if (page > Math.ceil(articles.length / perPage)) {
+  if (page > Math.ceil(articles.length / PER_PAGE)) {
     notFound();
   }
 
   return {
     meta,
-    articles: articles.slice((page - 1) * perPage, page * perPage),
+    articles: articles.slice((page - 1) * PER_PAGE, page * PER_PAGE),
   };
 }
