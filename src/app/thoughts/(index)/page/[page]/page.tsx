@@ -1,4 +1,5 @@
-import ArticleList, { getArticles } from '@/components/ArticleList';
+import ArticleList, { getArticles, PER_PAGE } from '@/components/ArticleList';
+import { getAllArticles } from '@/lib/getAllArticles';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -6,6 +7,15 @@ export const metadata: Metadata = {
   description:
     'All of my long-form thoughts on front-end, full-stack, design, development, and more, collected in chronological order since 2007.',
 };
+
+export async function generateStaticParams() {
+  const articles = await getAllArticles();
+  const pages = Math.ceil(articles.length / PER_PAGE);
+
+  return Array.from({ length: pages }, (_, i) => ({
+    page: (i + 1).toString(),
+  }));
+}
 
 export default async function ArticlesIndex({
   params,
