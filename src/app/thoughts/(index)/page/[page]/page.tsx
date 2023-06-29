@@ -8,6 +8,8 @@ export const metadata: Metadata = {
     'All of my long-form thoughts on front-end, full-stack, design, development, and more, collected in chronological order since 2007.',
 };
 
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
   const articles = await getAllArticles();
   const pages = Math.ceil(articles.length / PER_PAGE);

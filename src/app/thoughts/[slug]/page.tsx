@@ -9,6 +9,8 @@ import { type MDXProps } from 'mdx/types';
 
 const components = { Codepen };
 
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
   const articles = await getAllArticles();
 
