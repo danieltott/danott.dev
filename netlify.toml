@@ -50,6 +50,4 @@
   query = {p = ":p"}
   to="/:p"
 
-# add gatsby cache build plugin
-[[plugins]]
-  package = "netlify-plugin-gatsby-cache"
+
