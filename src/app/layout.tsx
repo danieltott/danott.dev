@@ -2,7 +2,7 @@ import '@/styles/tailwind.css';
 import type { Metadata } from 'next';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
-import { Crimson_Pro, Rampart_One } from 'next/font/google';
+import { Crimson_Pro, Rampart_One, Inter } from 'next/font/google';
 import Stars from '@/components/Star';
 import Script from 'next/script';
 
@@ -10,6 +10,11 @@ const crimson = Crimson_Pro({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-crimson',
+});
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter',
 });
 
 const rampart = Rampart_One({
@@ -49,7 +54,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`h-full antialiased ${crimson.variable} ${rampart.variable} font-serif`}
+      className={`h-full antialiased ${crimson.variable} ${rampart.variable} ${inter.variable} font-serif`}
     >
       <head>
         <Script id="darkmodetoggling">

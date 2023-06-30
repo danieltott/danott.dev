@@ -97,6 +97,7 @@ module.exports = {
     extend: {
       fontFamily: {
         serif: ['var(--font-crimson)', ...defaultTheme.fontFamily.serif],
+        sans: ['var(--font-inter)', ...defaultTheme.fontFamily.sans],
         rampart: ['var(--font-rampart)', ...defaultTheme.fontFamily.sans],
       },
       colors: {
