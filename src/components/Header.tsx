@@ -156,7 +156,7 @@ function NavItem({
       <Link
         href={href}
         className={clsx(
-          'relative block px-3 py-2 transition',
+          'relative block px-3 py-2 font-sans text-sm font-semibold transition',
           isActive
             ? 'text-primary-500 dark:text-primary-400'
             : 'hover:text-primary-500 dark:hover:text-primary-400'
@@ -445,7 +445,7 @@ export function Header() {
                 )}
               </div>
               <div className="flex flex-1 justify-end md:justify-center">
-                <MobileNavigation className="pointer-events-auto md:hidden" />
+                <MobileNavigation className="pointer-events-auto font-sans text-sm md:hidden" />
                 <DesktopNavigation className="pointer-events-auto hidden md:block" />
               </div>
               <div className="flex justify-end md:flex-1">

@@ -32,7 +32,7 @@ export default function About() {
               I&rsquo;m Dan Ott. I do computer stuff.
             </h1>
             <Prose className="mt-6 ">
-              <p className="mt-6 text-base text-stone-600 dark:text-stone-400">
+              <p>
                 I&rsquo;m Dan, an independent developer and designer based in
                 Cleveland, Ohio. I&rsquo;ve been working with clients since 2005
                 to plan, design, and implement their ideas. I also am an org

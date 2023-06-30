@@ -61,7 +61,7 @@ Card.Title = function CardTitle<T extends React.ElementType = 'h2'>({
 }: AsProps<T> & { href?: LinkHref }) {
   const Component = as || 'h2';
   return (
-    <Component className="font-heading text-base md:text-lg lg:text-xl">
+    <Component className="font-heading text-lg md:text-xl lg:text-2xl">
       {href ? <Card.Link href={href}>{children}</Card.Link> : children}
     </Component>
   );
@@ -73,7 +73,7 @@ Card.Description = function CardDescription({
   children: React.ReactNode;
 }) {
   return (
-    <Prose className="relative z-10 mt-2 text-sm md:text-base lg:text-lg">
+    <Prose className="relative z-10 mt-2" small>
       {children}
     </Prose>
   );
