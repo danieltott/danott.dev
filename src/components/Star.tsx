@@ -172,7 +172,7 @@ function StarList({
         'min-w-[2rem]',
         'max-w-[calc((100vw_-_80rem)_/_2_+_4rem)]',
         'text-stone-800',
-        'dark:text-stone-200',
+        'dark:text-stone-600',
         'md:min-w-[4rem]',
         '2xl:max-w-[calc((100vw_-_64rem)_/_2_-_2rem)]'
       )}
