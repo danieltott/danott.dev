@@ -1,6 +1,5 @@
 import { Card } from '@/components/Card';
 import { formatDate } from '@/lib/formatDate';
-import { ArticleListItem } from '@/lib/types';
 import { getAllArticles } from '@/lib/getAllArticles';
 import { notFound } from 'next/navigation';
 import {
@@ -27,7 +26,7 @@ export default function ArticleList({
             >
               <Card className="md:col-span-3">
                 <Card.Title>
-                  <Link href={`/thoughts/${article.slug}`}>
+                  <Link className="link" href={`/thoughts/${article.slug}`}>
                     {article.title}
                   </Link>
                 </Card.Title>
@@ -49,7 +48,9 @@ export default function ArticleList({
                     <p>{article.description}</p>
                   )}
                 </Card.Description>
-                <Card.Cta>Read article</Card.Cta>
+                <Card.Cta href={`/thoughts/${article.slug}`}>
+                  Read article
+                </Card.Cta>
               </Card>
               <Card.Eyebrow
                 as="time"

@@ -87,8 +87,11 @@ Card.Cta = function CardCta({
   href?: LinkHref;
 }) {
   const props = {
-    className:
-      'relative z-10 mt-4 flex items-center text-sm font-medium text-primary-500 md:text-base lg:text-lg',
+    className: clsx(
+      'relative z-10 mt-4 flex items-center text-sm md:text-base lg:text-lg',
+      href ? 'text-link' : 'font-medium text-primary-500 dark:text-primary-400'
+    ),
+
     children: (
       <>
         {children}

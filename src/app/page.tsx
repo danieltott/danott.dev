@@ -41,7 +41,9 @@ function Article({ article }: { article: ArticleListItem }) {
   return (
     <Card as="article">
       <Card.Title>
-        <Link href={`/thoughts/${article.slug}`}>{article.title}</Link>
+        <Link className="link" href={`/thoughts/${article.slug}`}>
+          {article.title}
+        </Link>
       </Card.Title>
       <Card.Eyebrow as="time" dateTime={article.date} decorate>
         {formatDate(article.date)}
