@@ -167,7 +167,7 @@ function StarList({
         flip ? 'right-0' : 'left-0',
         'absolute',
         'top-0',
-        'z-50',
+        'z-10',
         'hidden',
         'w-full',
         'min-w-[2rem]',
