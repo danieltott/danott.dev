@@ -100,7 +100,7 @@ export default function RootLayout({
           />
         )}
       </head>
-      <body className="relative flex min-h-full flex-col bg-east-bay-50 dark:bg-black">
+      <body className="relative flex min-h-full flex-col bg-east-bay-50 dark:bg-east-bay-950">
         <Stars />
         <Stars flip />
 

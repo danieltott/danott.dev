@@ -10,10 +10,7 @@ function NavLink({
   children: React.ReactNode;
 }) {
   return (
-    <Link
-      href={href}
-      className="link-colors"
-    >
+    <Link href={href} className="link-colors">
       {children}
     </Link>
   );
@@ -21,7 +18,7 @@ function NavLink({
 
 export function Footer() {
   return (
-    <footer className="mt-32">
+    <footer className="mt-32 font-sans">
       <Container.Outer>
         <div className="border-t border-stone-100 pb-16 pt-10 dark:border-stone-700/40">
           <Container.Inner>

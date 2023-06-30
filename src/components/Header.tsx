@@ -90,7 +90,7 @@ function MobileNavItem({
 function MobileNavigation(props: React.ComponentProps<typeof Popover>) {
   return (
     <Popover {...props}>
-      <Popover.Button className="group flex items-center rounded-full bg-white/90 px-4 py-2 text-sm font-medium text-stone-800 shadow-lg shadow-stone-800/5 ring-1 ring-stone-900/5 backdrop-blur dark:bg-stone-800/90 dark:text-stone-200 dark:ring-white/10 dark:hover:ring-white/20 md:text-base lg:text-lg">
+      <Popover.Button className="group flex items-center rounded-full bg-white/90 px-4 py-2 text-sm font-medium text-stone-800 shadow-lg shadow-stone-800/5 ring-1 ring-stone-900/5 backdrop-blur dark:bg-east-bay-950/90 dark:text-stone-200 dark:ring-white/10 dark:hover:ring-white/20 md:text-base lg:text-lg">
         Menu
         <ChevronDownIcon className="ml-3 h-auto w-2 stroke-stone-500 group-hover:stroke-stone-700 dark:group-hover:stroke-stone-400" />
       </Popover.Button>
@@ -117,7 +117,7 @@ function MobileNavigation(props: React.ComponentProps<typeof Popover>) {
         >
           <Popover.Panel
             focus
-            className="fixed inset-x-4 top-8 z-50 origin-top rounded-3xl bg-white p-8 ring-1 ring-stone-900/5 dark:bg-stone-900 dark:ring-stone-800"
+            className="fixed inset-x-4 top-8 z-50 origin-top rounded-3xl bg-white p-8 ring-1 ring-stone-900/5 dark:bg-east-bay-950 dark:ring-stone-800"
           >
             <div className="flex flex-row-reverse items-center justify-between">
               <Popover.Button aria-label="Close menu" className="-m-1 p-1">
@@ -174,7 +174,7 @@ function NavItem({
 function DesktopNavigation(props: React.ComponentProps<'nav'>) {
   return (
     <nav {...props}>
-      <ul className="flex rounded-full bg-white/90 px-3 text-sm font-medium text-stone-800 shadow-lg shadow-stone-800/5 ring-1 ring-stone-900/5 backdrop-blur dark:bg-stone-800/90 dark:text-stone-200 dark:ring-white/10 md:text-base lg:text-lg">
+      <ul className="flex rounded-full bg-white/90 px-3 text-sm font-medium text-stone-800 shadow-lg shadow-east-bay-800/5 ring-1 ring-east-bay-900/5 backdrop-blur dark:bg-east-bay-950/90 dark:text-stone-200 dark:ring-white/10 md:text-base lg:text-lg">
         <NavItem href="/about">About</NavItem>
         <NavItem href="/thoughts">Thoughts</NavItem>
         <NavItem href="/projects">Projects</NavItem>
@@ -210,7 +210,7 @@ function ModeToggle() {
     <button
       type="button"
       aria-label="Toggle dark mode"
-      className="group rounded-full bg-white/90 px-3 py-2 shadow-lg shadow-stone-800/5 ring-1 ring-stone-900/5 backdrop-blur transition dark:bg-stone-800/90 dark:ring-white/10 dark:hover:ring-white/20"
+      className="group rounded-full bg-white/90 px-3 py-2 shadow-lg shadow-east-bay-800/5 ring-1 ring-east-bay-900/5 backdrop-blur transition dark:bg-east-bay-950/90 dark:ring-white/10 dark:hover:ring-white/20"
       onClick={toggleMode}
     >
       <SunIcon className="h-6 w-6 fill-stone-100 stroke-stone-500 transition group-hover:fill-stone-200 group-hover:stroke-stone-700 dark:hidden [@media(prefers-color-scheme:dark)]:fill-primary-50 [@media(prefers-color-scheme:dark)]:stroke-primary-500 [@media(prefers-color-scheme:dark)]:group-hover:fill-primary-50 [@media(prefers-color-scheme:dark)]:group-hover:stroke-primary-600" />
