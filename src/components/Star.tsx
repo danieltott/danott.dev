@@ -157,7 +157,7 @@ function StarList({
 }) {
   let goingUp = flip;
   const leftStart = Math.floor(getRandom(0, 86));
-  const leftStep = 250 / steps;
+  const leftStep = getRandom(150, 500) / steps;
   let counter = 0;
 
   return (
