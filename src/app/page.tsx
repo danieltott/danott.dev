@@ -12,6 +12,7 @@ import type { SvgElementProps, LinkHref, ArticleListItem } from '@/lib/types';
 import { Metadata } from 'next';
 import avatarImage from '@/images/avatar.jpg';
 import { RssIcon } from '@heroicons/react/20/solid';
+import { Prose } from '@/components/Prose';
 
 function BriefcaseIcon(props: SvgElementProps) {
   return (
@@ -39,8 +40,8 @@ function BriefcaseIcon(props: SvgElementProps) {
 function Article({ article }: { article: ArticleListItem }) {
   return (
     <Card as="article">
-      <Card.Title href={`/thoughts/${article.slug}`}>
-        {`${article.title}`}
+      <Card.Title>
+        <Link href={`/thoughts/${article.slug}`}>{article.title}</Link>
       </Card.Title>
       <Card.Eyebrow as="time" dateTime={article.date} decorate>
         {formatDate(article.date)}
@@ -55,7 +56,7 @@ function Article({ article }: { article: ArticleListItem }) {
           <p>{article.description}</p>
         )}
       </Card.Description>
-      <Card.Cta>Read article</Card.Cta>
+      <Card.Cta href={`/thoughts/${article.slug}`}>Read article</Card.Cta>
     </Card>
   );
 }
@@ -122,7 +123,7 @@ function Resume() {
 
   return (
     <div className="rounded-2xl border border-stone-100 p-6 dark:border-stone-700/40">
-      <h2 className="flex text-sm font-semibold text-stone-900 dark:text-stone-100 md:text-base lg:text-lg">
+      <h2 className="flex text-sm font-semibold text-stone-900 dark:text-stone-100 md:text-base lg:text-xl">
         <BriefcaseIcon className="h-6 w-6 flex-none" />
         <span className="ml-3">Work</span>
       </h2>
@@ -191,10 +192,8 @@ export default async function HomePage() {
     <>
       <Container className="mt-9">
         <div className="max-w-2xl">
-          <h1 className="font-title text-4xl sm:text-5xl">
-            Full-Stack Design and Development
-          </h1>
-          <div className="prose mt-6 md:prose-lg lg:prose-xl">
+          <h1 className="font-title">Full-Stack Design and Development</h1>
+          <Prose className="mt-6">
             <p>
               I&rsquo;m Dan, an independent developer and designer based in
               Cleveland, Ohio. I&rsquo;ve been working with clients since 2005
@@ -202,7 +201,7 @@ export default async function HomePage() {
               maintainer at{' '}
               <a href="https://virtualcoffee.io">Virtual Coffee</a>.
             </p>
-          </div>
+          </Prose>
           <div className="mt-6 flex gap-6">
             <SocialLink
               href="https://twitter.com/danieltott"

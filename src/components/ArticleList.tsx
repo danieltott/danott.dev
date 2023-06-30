@@ -26,8 +26,10 @@ export default function ArticleList({
               key={article.slug}
             >
               <Card className="md:col-span-3">
-                <Card.Title href={`/thoughts/${article.slug}`}>
-                  {article.title}
+                <Card.Title>
+                  <Link href={`/thoughts/${article.slug}`}>
+                    {article.title}
+                  </Link>
                 </Card.Title>
                 <Card.Eyebrow
                   as="time"
