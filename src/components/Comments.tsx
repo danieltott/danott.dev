@@ -45,7 +45,7 @@ export default function Comments({ slug }: { slug: string }) {
                 </div>
                 <div className="flex-auto rounded-md p-3 ring-1 ring-inset ring-gray-200">
                   <div className="flex justify-between gap-x-4">
-                    <div className="py-0.5 text-xs leading-5 text-gray-500">
+                    <div className="py-0.5 text-xs leading-5 text-gray-500 lg:text-sm">
                       <span className="font-medium text-gray-900">
                         {threadItem.author.name}
                       </span>{' '}
@@ -53,12 +53,12 @@ export default function Comments({ slug }: { slug: string }) {
                     </div>
                     <time
                       dateTime={threadItem.createdAt}
-                      className="flex-none py-0.5 text-xs leading-5 text-gray-500"
+                      className="flex-none py-0.5 text-xs leading-5 text-gray-500 lg:text-sm"
                     >
                       {formatDate(threadItem.createdAt)}
                     </time>
                   </div>
-                  <div className="prose prose-sm dark:prose-invert">
+                  <div className="prose prose-sm dark:prose-invert lg:prose-base">
                     {threadItem.message}
                   </div>
                 </div>

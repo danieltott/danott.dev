@@ -28,7 +28,7 @@ export default function About() {
             </div>
           </div>
           <div className="lg:order-first lg:row-span-2">
-            <h1 className="font-title text-4xl sm:text-5xl">
+            <h1 className="font-title">
               I&rsquo;m Dan Ott. I do computer stuff.
             </h1>
             <Prose className="mt-6 ">
