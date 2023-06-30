@@ -66,109 +66,6 @@ const fills = [
   'fill-coral-800',
 ];
 
-const lefts = [
-  'left-[50%]',
-  'left-[51.72%]',
-  'left-[53.44%]',
-  'left-[55.16%]',
-  'left-[56.88%]',
-  'left-[58.6%]',
-  'left-[60.32%]',
-  'left-[62.04%]',
-  'left-[63.76%]',
-  'left-[65.48%]',
-  'left-[67.2%]',
-  'left-[68.92%]',
-  'left-[70.64%]',
-  'left-[72.36%]',
-  'left-[74.08%]',
-  'left-[75.8%]',
-  'left-[77.52%]',
-  'left-[79.24%]',
-  'left-[80.96%]',
-  'left-[82.68%]',
-  'left-[84.4%]',
-  'left-[86.12%]',
-  'left-[84.4%]',
-  'left-[82.68%]',
-  'left-[80.96%]',
-  'left-[79.24%]',
-  'left-[77.52%]',
-  'left-[75.8%]',
-  'left-[74.08%]',
-  'left-[72.36%]',
-  'left-[70.64%]',
-  'left-[68.92%]',
-  'left-[67.2%]',
-  'left-[65.48%]',
-  'left-[63.76%]',
-  'left-[62.04%]',
-  'left-[60.32%]',
-  'left-[58.6%]',
-  'left-[56.88%]',
-  'left-[55.16%]',
-  'left-[53.44%]',
-  'left-[51.72%]',
-  'left-[50%]',
-  'left-[48.28%]',
-  'left-[46.56%]',
-  'left-[44.84%]',
-  'left-[43.12%]',
-  'left-[41.4%]',
-  'left-[39.68%]',
-  'left-[37.96%]',
-  'left-[36.24%]',
-  'left-[34.52%]',
-  'left-[32.8%]',
-  'left-[31.08%]',
-  'left-[29.36%]',
-  'left-[27.64%]',
-  'left-[25.92%]',
-  'left-[24.2%]',
-  'left-[22.48%]',
-  'left-[20.76%]',
-  'left-[19.04%]',
-  'left-[17.32%]',
-  'left-[15.6%]',
-  'left-[13.88%]',
-  'left-[12.16%]',
-  'left-[10.44%]',
-  'left-[8.72%]',
-  'left-[7%]',
-  'left-[5.28%]',
-  'left-[3.56%]',
-  'left-[1.84%]',
-  'left-[0.12%]',
-  'left-[1.84%]',
-  'left-[3.56%]',
-  'left-[5.28%]',
-  'left-[7%]',
-  'left-[8.72%]',
-  'left-[10.44%]',
-  'left-[12.16%]',
-  'left-[13.88%]',
-  'left-[15.6%]',
-  'left-[17.32%]',
-  'left-[19.04%]',
-  'left-[20.76%]',
-  'left-[22.48%]',
-  'left-[24.2%]',
-  'left-[25.92%]',
-  'left-[27.64%]',
-  'left-[29.36%]',
-  'left-[31.08%]',
-  'left-[32.8%]',
-  'left-[34.52%]',
-  'left-[36.24%]',
-  'left-[37.96%]',
-  'left-[39.68%]',
-  'left-[41.4%]',
-  'left-[43.12%]',
-  'left-[44.84%]',
-  'left-[46.56%]',
-  'left-[48.28%]',
-];
-
 // calc((100vw - 76rem) / 2)
 
 function getRandom(min: number, max: number) {
@@ -181,17 +78,12 @@ function randomRotate() {
 
 type StarProps = {
   step: number;
-  leftStart: number;
+  left: number;
   steps: number;
 };
 
-export function Star({ step, leftStart, steps }: StarProps) {
+export function Star({ step, left, steps }: StarProps) {
   const fill = random(fills);
-
-  let leftIndex = leftStart + step * Math.floor(lefts.length / steps);
-  if (leftIndex > lefts.length - 1) {
-    leftIndex = leftIndex - lefts.length;
-  }
 
   return (
     <div
@@ -200,8 +92,9 @@ export function Star({ step, leftStart, steps }: StarProps) {
         rotate: randomRotate(),
         transitionDuration: `${getRandom(20, 1200)}ms`,
         scale: getRandom(0.8, 2),
+        left: `${left}%`,
       }}
-      className={clsx('absolute h-8 w-8 -translate-x-1/2', lefts[leftIndex])}
+      className={clsx('absolute h-8 w-8 -translate-x-1/2')}
     >
       <svg
         viewBox="0 0 24 24"
@@ -254,21 +147,24 @@ export function Star({ step, leftStart, steps }: StarProps) {
 const STEP_RATIO = 0.013;
 
 function StarList({
-  leftStart,
   steps,
   flip,
   height,
 }: {
-  leftStart: number;
   steps: number;
   height: number;
   flip?: boolean;
 }) {
+  let goingUp = flip;
+  const leftStart = Math.floor(getRandom(0, 86));
+  const leftStep = 250 / steps;
+  let counter = 0;
+
   return (
     <div
       style={{ height }}
       className={clsx(
-        flip ? 'right-0 -scale-x-100' : 'left-0',
+        flip ? 'right-0' : 'left-0',
         'absolute',
         'top-0',
         'z-50',
@@ -283,9 +179,21 @@ function StarList({
         '2xl:max-w-[calc((100vw_-_64rem)_/_2_-_2rem)]'
       )}
     >
-      {Array.from({ length: steps }, (_, i) => (
-        <Star step={i} steps={steps} leftStart={leftStart} key={i} />
-      ))}
+      {Array.from({ length: steps }, (_, i) => {
+        const left = leftStart + counter * leftStep;
+
+        if (leftStart + (counter + 1) * leftStep > 86) {
+          goingUp = false;
+        }
+
+        if (leftStart + (counter - 1) * leftStep < 0) {
+          goingUp = true;
+        }
+
+        counter = goingUp ? counter + 1 : counter - 1;
+
+        return <Star left={left} step={i} steps={steps} key={i} />;
+      })}
     </div>
   );
 }
@@ -311,7 +219,6 @@ function reducer(state: State, action: Action): State {
     return state;
   }
 
-  const leftStart = Math.floor(getRandom(0, lefts.length));
   const steps = Math.floor(action.docHeight * STEP_RATIO);
 
   return {
@@ -319,12 +226,7 @@ function reducer(state: State, action: Action): State {
     map: {
       ...state.map,
       [action.pathname]: (
-        <StarList
-          flip={action.flip}
-          height={action.docHeight}
-          leftStart={leftStart}
-          steps={steps}
-        />
+        <StarList flip={action.flip} height={action.docHeight} steps={steps} />
       ),
     },
   };
