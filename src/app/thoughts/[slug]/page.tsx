@@ -50,7 +50,7 @@ export default async function Page({ params }: Props) {
   } = require(`../../../content/${params.slug}.mdx`);
   return (
     <div className="xl:relative">
-      <div className="mx-auto max-w-2xl">
+      <div className="mx-auto max-w-2xl 2xl:max-w-3xl">
         <article>
           <header className="flex flex-col">
             <h1 className="font-title mt-6 text-4xl tracking-tight sm:text-5xl">
