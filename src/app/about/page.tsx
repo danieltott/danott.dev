@@ -9,7 +9,7 @@ import { Prose } from '@/components/Prose';
 
 export const metadata: Metadata = {
   title: `About`,
-  description: 'I&rsquo;m Dan Ott. I do computer stuff.',
+  description: 'I’m Dan Ott. I do computer stuff.',
 };
 
 export default function About() {

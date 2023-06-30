@@ -187,7 +187,7 @@ function Resume() {
 export const metadata: Metadata = {
   title: `Dan Ott ~ Full-Stack Design and Development`,
   description:
-    'I&rsquo;m Dan, an independent developer and designer based in Cleveland, Ohio. I&rsquo;ve been working with clients since 2005 to plan, design, and implement their ideas. I also am an org maintainer at VirtualCoffee.io.',
+    'I’m Dan, an independent developer and designer based in Cleveland, Ohio. I’ve been working with clients since 2005 to plan, design, and implement their ideas. I also am an org maintainer at VirtualCoffee.io.',
 };
 
 export default async function HomePage() {

@@ -54,7 +54,7 @@ const projects = [
 
 export const metadata: Metadata = {
   title: `Projects`,
-  description: 'Different things I&rsquo;ve worked on over the years',
+  description: 'Different things I’ve worked on over the years',
 };
 
 const years = new Date().getFullYear() - 2005;
