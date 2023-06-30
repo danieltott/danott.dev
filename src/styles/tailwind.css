@@ -20,4 +20,17 @@
   .star {
     @apply absolute left-0 top-0 h-8 w-8  stroke-current stroke-1;
   }
+
+  .link {
+    @apply text-primary-500
+underline decoration-primary-500/20
+transition-colors duration-150
+ease-in-out hover:text-primary-600
+hover:decoration-primary-500 dark:text-primary-400
+dark:decoration-primary-400/30 dark:hover:text-primary-300 dark:hover:decoration-primary-400;
+  }
+
+  .text-link {
+    @apply link font-semibold;
+  }
 }
