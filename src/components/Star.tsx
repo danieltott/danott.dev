@@ -168,13 +168,11 @@ function StarList({
         'absolute',
         'top-0',
         'z-10',
-        'hidden',
         'w-full',
         'min-w-[2rem]',
         'max-w-[calc((100vw_-_80rem)_/_2_+_4rem)]',
         'text-stone-800',
         'dark:text-stone-200',
-        'sm:block',
         'md:min-w-[4rem]',
         '2xl:max-w-[calc((100vw_-_64rem)_/_2_-_2rem)]'
       )}
@@ -245,9 +243,8 @@ export default function Stars({ flip }: { flip?: boolean }) {
       prevPathname.current = pathname;
 
       const docHeight = window?.document?.body?.offsetHeight;
-      const docWidth = window?.document?.body?.offsetWidth;
 
-      if (docHeight && docWidth && docWidth > 640) {
+      if (docHeight) {
         dispatch({ pathname, docHeight, flip });
       }
     }

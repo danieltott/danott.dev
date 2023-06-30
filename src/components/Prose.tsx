@@ -8,13 +8,11 @@ export function Prose({
   children: React.ReactNode;
 }) {
   return (
-    <div
-      className={clsx(
-        className,
-        'prose dark:prose-invert md:prose-lg  lg:prose-xl 2xl:prose-2xl'
-      )}
-    >
-      {children}
+    <div className={clsx('relative', className)}>
+      <div className="absolute inset-0 z-0 bg-white/50 dark:bg-stone-900/50" />
+      <div className="prose relative z-10 dark:prose-invert md:prose-lg  lg:prose-xl 2xl:prose-2xl">
+        {children}
+      </div>
     </div>
   );
 }
