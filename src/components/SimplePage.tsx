@@ -1,3 +1,5 @@
+import { Prose } from './Prose';
+
 export function SimplePage({
   title,
   intro,
@@ -11,9 +13,9 @@ export function SimplePage({
     <>
       <header className="max-w-2xl">
         <h1 className="font-title">{title}</h1>
-        <p className="mt-6 text-base text-stone-600 dark:text-stone-400 md:text-lg lg:text-xl">
-          {intro}
-        </p>
+        <Prose className="mt-6">
+          {typeof intro === 'string' ? <p>{intro}</p> : intro}
+        </Prose>
       </header>
       <div className="mt-16 sm:mt-20">{children}</div>
     </>
