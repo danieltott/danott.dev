@@ -97,7 +97,6 @@ module.exports = {
     extend: {
       fontFamily: {
         serif: ['var(--font-body)', ...defaultTheme.fontFamily.serif],
-        sans: ['var(--font-inter)', ...defaultTheme.fontFamily.sans],
         freeLunch: ['var(--font-free-lunch)', ...defaultTheme.fontFamily.sans],
       },
       colors: {

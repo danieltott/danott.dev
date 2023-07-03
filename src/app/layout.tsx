@@ -2,7 +2,7 @@ import '@/styles/tailwind.css';
 import type { Metadata } from 'next';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
-import { Inter, Kreon } from 'next/font/google';
+import { Kreon } from 'next/font/google';
 import Stars from '@/components/Star';
 import Script from 'next/script';
 import localFont from 'next/font/local';
@@ -18,11 +18,6 @@ const bodyFont = Kreon({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-body',
-});
-const inter = Inter({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-inter',
 });
 
 // FreeLunch-Regular.otf
@@ -57,7 +52,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`h-full antialiased ${bodyFont.variable} ${freeLunch.variable} ${inter.variable} font-serif`}
+      className={`h-full antialiased ${bodyFont.variable} ${freeLunch.variable}  font-serif`}
     >
       <head>
         <Script id="darkmodetoggling">
