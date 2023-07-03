@@ -1,4 +1,4 @@
-import { SimplePage } from '@/components/SimplePage';
+import SimplePage from '@/components/SimplePage';
 
 export default function SimpleLayout({
   children,

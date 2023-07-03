@@ -42,7 +42,7 @@ function Appearance({
       </Card.Title>
       <Card.Eyebrow decorate>
         <span>{event}</span>
-        <span>~</span>
+        <span>&mdash;</span>
         <time dateTime={date.toISOString()}>
           {date.toLocaleDateString('en-US', {
             year: 'numeric',
@@ -51,7 +51,9 @@ function Appearance({
           })}
         </time>
       </Card.Eyebrow>
-      <Card.Description>{description}</Card.Description>
+      <Card.Description>
+        <p>{description}</p>
+      </Card.Description>
       <Card.Cta>{cta}</Card.Cta>
     </Card>
   );

@@ -73,7 +73,7 @@ Card.Description = function CardDescription({
   children: React.ReactNode;
 }) {
   return (
-    <Prose className="relative z-10 mt-2" small>
+    <Prose className="relative z-10 mt-2 prose-p:leading-normal" small>
       {children}
     </Prose>
   );
