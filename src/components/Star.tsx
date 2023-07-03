@@ -91,7 +91,7 @@ export function Star({ step, left, steps }: StarProps) {
         top: `${(step / (steps - 1)) * 100}%`,
         rotate: randomRotate(),
         transitionDuration: `${getRandom(20, 1200)}ms`,
-        scale: getRandom(0.8, 2),
+        scale: getRandom(0.8, 3),
         left: `${left}%`,
       }}
       className={clsx('absolute h-8 w-8 -translate-x-1/2')}
