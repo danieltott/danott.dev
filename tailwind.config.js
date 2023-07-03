@@ -96,9 +96,9 @@ module.exports = {
     fontSize: defaultTheme.fontSize,
     extend: {
       fontFamily: {
-        serif: ['var(--font-crimson)', ...defaultTheme.fontFamily.serif],
+        serif: ['var(--font-body)', ...defaultTheme.fontFamily.serif],
         sans: ['var(--font-inter)', ...defaultTheme.fontFamily.sans],
-        rampart: ['var(--font-rampart)', ...defaultTheme.fontFamily.sans],
+        freeLunch: ['var(--font-free-lunch)', ...defaultTheme.fontFamily.sans],
       },
       colors: {
         ...additionalColors,

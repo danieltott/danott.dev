@@ -8,13 +8,14 @@
     @apply font-black italic tracking-tight text-stone-800 dark:text-stone-100;
   }
   .font-title {
+    font-feature-settings: 'dlig', 'liga', 'calt';
     @apply bg-gradient-to-r
     from-east-bay-500
     via-green-metal-500
     to-coral-600
     bg-clip-text
     pb-2
-    font-rampart
+    font-freeLunch
     text-4xl
     font-black
     tracking-tight

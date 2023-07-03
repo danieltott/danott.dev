@@ -2,14 +2,22 @@ import '@/styles/tailwind.css';
 import type { Metadata } from 'next';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
-import { Crimson_Pro, Rampart_One, Inter } from 'next/font/google';
+import { Inter, Kreon } from 'next/font/google';
 import Stars from '@/components/Star';
 import Script from 'next/script';
+import localFont from 'next/font/local';
 
-const crimson = Crimson_Pro({
+// Font files can be colocated inside of `app`
+const freeLunch = localFont({
+  src: './FreeLunch-Regular.otf',
+  display: 'swap',
+  variable: '--font-free-lunch',
+});
+
+const bodyFont = Kreon({
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-crimson',
+  variable: '--font-body',
 });
 const inter = Inter({
   subsets: ['latin'],
@@ -17,12 +25,7 @@ const inter = Inter({
   variable: '--font-inter',
 });
 
-const rampart = Rampart_One({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-rampart',
-  weight: '400',
-});
+// FreeLunch-Regular.otf
 
 export const metadata: Metadata = {
   title: {
@@ -54,7 +57,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`h-full antialiased ${crimson.variable} ${rampart.variable} ${inter.variable} font-serif`}
+      className={`h-full antialiased ${bodyFont.variable} ${freeLunch.variable} ${inter.variable} font-serif`}
     >
       <head>
         <Script id="darkmodetoggling">
