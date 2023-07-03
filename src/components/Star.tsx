@@ -156,7 +156,7 @@ function StarList({
   flip?: boolean;
 }) {
   let goingUp = flip;
-  const leftStart = Math.floor(getRandom(0, 86));
+  const leftStart = Math.floor(getRandom(0, 90));
   const leftStep = getRandom(150, 500) / steps;
   let counter = 0;
 
@@ -168,13 +168,9 @@ function StarList({
         'absolute',
         'top-0',
         'z-10',
-        'w-full',
-        'min-w-[2rem]',
-        'max-w-[calc((100vw_-_80rem)_/_2_+_4rem)]',
+        'w-5/12',
         'text-stone-800',
-        'dark:text-stone-600',
-        'md:min-w-[4rem]',
-        '2xl:max-w-[calc((100vw_-_64rem)_/_2_-_2rem)]'
+        'dark:text-stone-600'
       )}
     >
       {Array.from({ length: steps }, (_, i) => {
