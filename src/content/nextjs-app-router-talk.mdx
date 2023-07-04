@@ -1,0 +1,96 @@
+export const summary = `<p>Next.js recently released their new App Router, which introduces an entirely new paradigm for creating Next.js apps. As part of Virtual Coffee's Lunch & Learn series, I gave a two-part presentation where we dove in to how the App Router works.</p>
+<p>You'll find some value here whether you're experienced with Next.js already or have never touched it - it's a great tool and the ways that it hooks in to both the React ecosystem and the Javascript/Typescript ecosystem as a whole offers a lot to learn.</p>`;
+
+export const tags = [];
+
+export const meta = {
+  title: 'NextJS App Router Intro and Tour',
+  description: 'I gave a two-part talk on the new Next.js App Router.',
+  date: '2023-06-03 20:00:00',
+  dateUpdated: '2023-06-03 20:00:00',
+};
+
+Next.js recently released their new App Router, which introduces an entirely new paradigm for creating Next.js apps. As part of Virtual Coffee's Lunch & Learn series, I gave a two-part presentation where we dove in to how the App Router works.
+
+[In Part 1](https://www.youtube.com/watch?v=faE-G7_bQqU), we cover some JS history, and then dive in to the new App Router. We also spent some time on React Server Components.
+
+[In Part 2](https://www.youtube.com/watch?v=ywaMkjvTWiY), we take a look at data fetching in the App Router, and ways Next.js can help optimize your app with little work on your end.
+
+You'll find some value here whether you're experienced with Next.js already or have never touched it - it's a great tool and the ways that it hooks in to both the React ecosystem and the Javascript/Typescript ecosystem as a whole offers a lot to learn.
+
+- [Video for Part 1](https://www.youtube.com/watch?v=faE-G7_bQqU)
+- [Video for Part 2](https://www.youtube.com/watch?v=ywaMkjvTWiY)
+
+I created a [companion GitHub repository](https://github.com/danieltott/nextjs-app-router-example) that contains examples. The talk is broken up into sections - and each section has a corresponding Pull Request.
+
+The `main` branch has the full thing, each Pull Request is based off of the other, starting with the Base Install.
+
+See the full running app [here on Vercel](https://nextjs-app-router-example.vercel.app/)
+
+## Resources
+
+- [Next.js Docs](https://nextjs.org/docs)
+- [App Router Playground](https://app-router.vercel.app/)
+- [Next.js on React Server Components](https://nextjs.org/docs/getting-started/react-essentials#server-components)
+- [React Server Components on patterns.dev](https://www.patterns.dev/posts/react-server-components)
+- [Hacker News thread by Dan Abramov](https://news.ycombinator.com/item?id=25499171)
+
+## Talk Sections:
+
+### 0: Base install
+
+_(branch only, no PR)_
+
+We start with the output of `npx create-next-app@latest`, with a couple small adjustments
+
+- Update design
+- Use `pnpm`
+
+### [1: Intro, Routes and Layouts](https://github.com/danieltott/nextjs-app-router-example/pull/6)
+
+[Running App on Vercel](https://nextjs-app-router-example-git-01-intro-routes-3bd35e-danieltott.vercel.app)
+
+- Add some basic [routes](https://nextjs.org/docs/app/building-your-application/routing/defining-routes)
+- Add a [Root Layout](https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts#root-layout-required)
+- Add some [nested layouts](https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts#nesting-layouts)
+- Add some examples of [Client Components](https://nextjs.org/docs/getting-started/react-essentials)
+
+### [2: Route Groups and Dynamic Routes](https://github.com/danieltott/nextjs-app-router-example/pull/7)
+
+[Running App on Vercel](https://nextjs-app-router-example-git-02-groups-and-dynamic-danieltott.vercel.app)
+
+- Add a [Route Group](https://nextjs.org/docs/app/building-your-application/routing/route-groups)
+- Add a [Dynamic Route](https://nextjs.org/docs/app/building-your-application/routing/dynamic-routes)
+- Add [Dynamic Metadata](https://nextjs.org/docs/app/building-your-application/optimizing/metadata#dynamic-metadata)
+
+### [3: Handling Errors](https://github.com/danieltott/nextjs-app-router-example/pull/8)
+
+[Running App on Vercel](https://nextjs-app-router-example-git-03-errors-danieltott.vercel.app)
+
+- Add [error handlers](https://nextjs.org/docs/app/building-your-application/routing/error-handling)
+- Add [404 handlers](https://nextjs.org/docs/app/api-reference/file-conventions/not-found)
+
+### [4: Data Fetching](https://github.com/danieltott/nextjs-app-router-example/pull/9)
+
+[Running App on Vercel](https://nextjs-app-router-example-git-04-data-fetching-danieltott.vercel.app)
+
+- Add [Data Fetching](https://nextjs.org/docs/app/building-your-application/data-fetching/fetching) to Route
+- Add [Data Fetching](https://nextjs.org/docs/app/building-your-application/data-fetching/fetching) to Layout
+- Add [`loading.js` files](https://nextjs.org/docs/app/building-your-application/routing/loading-ui-and-streaming)
+
+### [5: Suspense](https://github.com/danieltott/nextjs-app-router-example/pull/10)
+
+[Running App on Vercel](https://nextjs-app-router-example-git-05-suspense-danieltott.vercel.app)
+
+- Add [`Suspense`](https://nextjs.org/docs/app/building-your-application/routing/loading-ui-and-streaming#streaming-with-suspense) example
+
+### [6: Rendering and Caching](https://github.com/danieltott/nextjs-app-router-example/pull/11)
+
+[Running App on Vercel](https://nextjs-app-router-example-git-06-caching-danieltott.vercel.app)
+
+- Data `fetch` on [static route](https://nextjs.org/docs/app/building-your-application/rendering/static-and-dynamic-rendering#static-rendering-default)
+- Data `fetch` on [dynamic route](https://nextjs.org/docs/app/building-your-application/rendering/static-and-dynamic-rendering#dynamic-rendering)
+- `fetch` with [`cache: no-store`](https://nextjs.org/docs/app/building-your-application/data-fetching/caching)
+- `fetch` with [`revalidate: 0`](https://nextjs.org/docs/app/building-your-application/data-fetching/revalidating)
+- `fetch` with [`revalidate: 5`](https://nextjs.org/docs/app/building-your-application/data-fetching/revalidating)
+- `fetch` with a Static page + [`revalidate = true` Route Segment Config](https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#revalidate)
