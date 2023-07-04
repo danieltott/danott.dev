@@ -166,6 +166,7 @@ function StarList({
       className={clsx(
         flip ? 'right-0' : 'left-0',
         'absolute',
+        'overflow-y-hidden',
         'top-0',
         'z-10',
         'w-5/12',
