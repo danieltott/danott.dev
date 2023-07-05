@@ -23,6 +23,10 @@ const bodyFont = Kreon({
 // FreeLunch-Regular.otf
 
 export const metadata: Metadata = {
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL || 'https://dtott.com'
+  ),
+
   title: {
     template: '%s ~ Dan Ott',
     default: 'Full-Stack Design and Development ~ Dan Ott',
