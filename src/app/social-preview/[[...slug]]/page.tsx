@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import SocialCard from '@/components/SocialCard';
-import { getMetaAndOptions } from '../../social/util';
+import { getMetaAndOptions } from '@/lib/socialImages';
 
 export default async function Preview({
   params,
@@ -8,7 +8,7 @@ export default async function Preview({
   params: { slug: string[] };
 }) {
   try {
-    const { meta, options } = getMetaAndOptions(params.slug?.join('/'));
+    const { meta, options } = await getMetaAndOptions(params.slug?.join('/'));
 
     return (
       <div

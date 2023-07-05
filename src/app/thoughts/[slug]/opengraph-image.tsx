@@ -1,29 +1,32 @@
-import { type NextRequest, ImageResponse } from 'next/server';
+import { ImageResponse } from 'next/server';
 import { getAllArticles } from '@/lib/getAllArticles';
 import { notFound } from 'next/navigation';
 import SocialCard from '@/components/SocialCard';
 import { getMetaAndOptions } from '@/lib/socialImages';
 
-// export const dynamicParams = false;
+export const dynamicParams = false;
 
-// export async function generateStaticParams() {
-//   const articles = await getAllArticles();
+export async function generateStaticParams() {
+  const articles = await getAllArticles();
 
-//   return articles.map((articles) => ({
-//     slug: articles.slug,
-//   }));
-// }
+  return articles.map((articles) => ({
+    slug: articles.slug,
+  }));
+}
 
-export async function GET(
-  request: NextRequest,
-  {
-    params,
-  }: {
-    params: { slug: string[] };
-  }
-) {
+export const size = {
+  width: 1200,
+  height: 630,
+};
+export const contentType = 'image/png';
+
+export default async function GET({ params }: { params: { slug: string } }) {
   try {
-    const { meta, options } = await getMetaAndOptions(params.slug?.join('/'));
+    const { meta, options } = await getMetaAndOptions(
+      `thoughts/${params.slug}`
+    );
+
+    console.log({ murl: import.meta.url });
 
     const element = <SocialCard meta={meta} />;
 
