@@ -1,16 +1,13 @@
 import { StarSvg } from '@/components/Star';
 import { formatDate } from '@/lib/formatDate';
+import { ArticleMeta } from '@/lib/types';
+import { Metadata } from 'next';
 
 export default function SocialCard({
   meta,
   preview,
 }: {
-  meta: {
-    title: string;
-    description: string;
-    date?: string;
-    dateUpdated?: string;
-  };
+  meta: ArticleMeta | Metadata;
   preview?: boolean;
 }) {
   return (
@@ -79,7 +76,7 @@ export default function SocialCard({
           }}
           className={preview ? 'font-freeLunch' : undefined}
         >
-          {meta.title}
+          {`${meta.title}`}
         </div>
 
         <p
@@ -111,7 +108,7 @@ export default function SocialCard({
         >
           <div>Dan Ott</div>
           <div>dtott.com</div>
-          {meta.date && <div>{formatDate(meta.date)}</div>}
+          {'date' in meta && meta.date && <div>{formatDate(meta.date)}</div>}
         </div>
       </div>
     </div>

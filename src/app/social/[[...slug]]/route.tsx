@@ -23,7 +23,7 @@ export async function GET(
   }
 ) {
   try {
-    const { meta, options } = getMetaAndOptions(params.slug.join('/'));
+    const { meta, options } = getMetaAndOptions(params.slug?.join('/'));
 
     const element = <SocialCard meta={meta} />;
 

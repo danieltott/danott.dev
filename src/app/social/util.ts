@@ -2,6 +2,7 @@ import type { ImageResponseOptions } from 'next/server';
 import type { ArticleMeta } from '@/lib/types';
 import { readFileSync } from 'fs';
 import { join } from 'path';
+import { Metadata } from 'next';
 
 export function getThoughtsMeta(slug: string) {
   const {
@@ -13,23 +14,33 @@ export function getThoughtsMeta(slug: string) {
   return meta;
 }
 
-export function getPageMeta(slug: string) {
+export function getPageMeta(slug: string | undefined) {
+  if (!slug) {
+    const {
+      metadata,
+    }: {
+      metadata: Metadata;
+    } = require(`../page.tsx`);
+
+    return metadata;
+  }
+
   const {
-    meta,
+    metadata,
   }: {
-    meta: ArticleMeta;
+    metadata: Metadata;
   } = require(`../${slug}/page.tsx`);
 
-  return meta;
+  return metadata;
 }
 
-export function getMetaAndOptions(slug: string) {
-  let meta: ArticleMeta;
+export function getMetaAndOptions(slug: string | undefined) {
+  let meta: ArticleMeta | Metadata;
 
   // src/app/social/[...slug]/util.ts
   // src/content/a-sass-mixin-for-long-shadows-2013-07-03.mdx
 
-  if (slug.startsWith('thoughts/')) {
+  if (slug?.startsWith('thoughts/')) {
     meta = getThoughtsMeta(slug);
   } else {
     meta = getPageMeta(slug);
@@ -43,7 +54,7 @@ export function getMetaAndOptions(slug: string) {
   );
 
   const ret: {
-    meta: ArticleMeta;
+    meta: ArticleMeta | Metadata;
     options: ImageResponseOptions;
   } = {
     meta,
