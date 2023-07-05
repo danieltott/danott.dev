@@ -3,12 +3,37 @@ import type { ArticleMeta } from '@/lib/types';
 import { readFileSync } from 'fs';
 import { join } from 'path';
 
-export function getMetaAndOptions(slug: string) {
+export function getThoughtsMeta(slug: string) {
   const {
     meta,
   }: {
     meta: ArticleMeta;
-  } = require(`../../../../content/${slug}.mdx`);
+  } = require(`../../content/${slug.split('thoughts/')[1]}.mdx`);
+
+  return meta;
+}
+
+export function getPageMeta(slug: string) {
+  const {
+    meta,
+  }: {
+    meta: ArticleMeta;
+  } = require(`../${slug}/page.tsx`);
+
+  return meta;
+}
+
+export function getMetaAndOptions(slug: string) {
+  let meta: ArticleMeta;
+
+  // src/app/social/[...slug]/util.ts
+  // src/content/a-sass-mixin-for-long-shadows-2013-07-03.mdx
+
+  if (slug.startsWith('thoughts/')) {
+    meta = getThoughtsMeta(slug);
+  } else {
+    meta = getPageMeta(slug);
+  }
 
   const freeLunch = readFileSync(
     join(process.cwd(), 'src', 'app', 'FreeLunch-Regular.otf')

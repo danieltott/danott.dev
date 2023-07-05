@@ -9,8 +9,7 @@ export async function generateRssFeed() {
   let articles = await getAllArticles();
   let siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://dtott.com';
   let author = {
-    name: 'Spencer Sharp',
-    email: 'spencer@planetaria.tech',
+    name: 'Dan Ott',
   };
 
   let feed = new Feed({

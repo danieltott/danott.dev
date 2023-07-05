@@ -2,28 +2,28 @@ import { type NextRequest, ImageResponse } from 'next/server';
 import { getAllArticles } from '@/lib/getAllArticles';
 import { notFound } from 'next/navigation';
 import SocialCard from '@/components/SocialCard';
-import { getMetaAndOptions } from './util';
+import { getMetaAndOptions } from '../util';
 
-export const dynamicParams = false;
+// export const dynamicParams = false;
 
-export async function generateStaticParams() {
-  const articles = await getAllArticles();
+// export async function generateStaticParams() {
+//   const articles = await getAllArticles();
 
-  return articles.map((articles) => ({
-    slug: articles.slug,
-  }));
-}
+//   return articles.map((articles) => ({
+//     slug: articles.slug,
+//   }));
+// }
 
 export async function GET(
   request: NextRequest,
   {
     params,
   }: {
-    params: { slug: string };
+    params: { slug: string[] };
   }
 ) {
   try {
-    const { meta, options } = getMetaAndOptions(params.slug);
+    const { meta, options } = getMetaAndOptions(params.slug.join('/'));
 
     const element = <SocialCard meta={meta} />;
 
