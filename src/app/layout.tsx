@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Kreon } from 'next/font/google';
-import Stars from '@/components/Star';
+import Stars from '@/components/Stars';
 import Script from 'next/script';
 import localFont from 'next/font/local';
 

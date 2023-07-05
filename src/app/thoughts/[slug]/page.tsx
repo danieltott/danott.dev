@@ -7,6 +7,7 @@ import { getAllArticles } from '@/lib/getAllArticles';
 import Codepen from '@/components/Codepen';
 import { type MDXProps } from 'mdx/types';
 import Comments from '@/components/Comments';
+import { notFound } from 'next/navigation';
 
 const components = { Codepen };
 
@@ -41,33 +42,38 @@ Promise<Metadata> {
 }
 
 export default async function Page({ params }: Props) {
-  const {
-    default: MdxPage,
-    meta,
-  }: {
-    default: React.ComponentType<MDXProps>;
-    meta: ArticleMeta;
-  } = require(`../../../content/${params.slug}.mdx`);
-  return (
-    <div className="xl:relative">
-      <div className="mx-auto max-w-2xl 2xl:max-w-3xl">
-        <article>
-          <header className="flex flex-col">
-            <h1 className="font-title mt-6 ">{meta.title}</h1>
-            <time
-              dateTime={meta.date}
-              className="order-first flex items-center text-base text-stone-400 dark:text-stone-500 lg:text-lg"
-            >
-              <span className="h-4 w-0.5 rounded-full bg-stone-200 dark:bg-stone-500" />
-              <span className="ml-3">{formatDate(meta.date)}</span>
-            </time>
-          </header>
-          <Prose className="mt-8">
-            <MdxPage components={components} />
-          </Prose>
-          <Comments slug={params.slug} />
-        </article>
+  try {
+    const {
+      default: MdxPage,
+      meta,
+    }: {
+      default: React.ComponentType<MDXProps>;
+      meta: ArticleMeta;
+    } = require(`../../../content/${params.slug}.mdx`);
+    return (
+      <div className="xl:relative">
+        <div className="mx-auto max-w-2xl 2xl:max-w-3xl">
+          <article>
+            <header className="flex flex-col">
+              <h1 className="font-title mt-6 ">{meta.title}</h1>
+              <time
+                dateTime={meta.date}
+                className="order-first flex items-center text-base text-stone-400 dark:text-stone-500 lg:text-lg"
+              >
+                <span className="h-4 w-0.5 rounded-full bg-stone-200 dark:bg-stone-500" />
+                <span className="ml-3">{formatDate(meta.date)}</span>
+              </time>
+            </header>
+            <Prose className="mt-8">
+              <MdxPage components={components} />
+            </Prose>
+            <Comments slug={params.slug} />
+          </article>
+        </div>
       </div>
-    </div>
-  );
+    );
+  } catch (error) {
+    console.log(error);
+    notFound();
+  }
 }
