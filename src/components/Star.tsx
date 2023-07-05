@@ -72,32 +72,49 @@ function getRandom(min: number, max: number) {
   return Math.random() * (max - min) + min;
 }
 
-function randomRotate() {
-  return `.2 .2 1 ${getRandom(0, 360)}deg`;
+function randomRotate(rotate3d?: boolean) {
+  return rotate3d
+    ? `.2 .2 1 ${getRandom(0, 360)}deg`
+    : `${getRandom(0, 360)}deg`;
 }
 
 type StarProps = {
-  step: number;
   left: number;
-  steps: number;
+  top: number;
+  /**
+   * Is this being displayed on a web page? If so, we'll add some transitions and 3d rotation.
+   */
+  web?: boolean;
 };
 
-export function Star({ step, left, steps }: StarProps) {
+export function Star({ top, left, web }: StarProps) {
   const fill = random(fills);
 
   return (
     <div
       style={{
-        top: `${(step / (steps - 1)) * 100}%`,
-        rotate: randomRotate(),
-        transitionDuration: `${getRandom(20, 1200)}ms`,
-        scale: getRandom(0.8, 3),
+        top: `${top}%`,
         left: `${left}%`,
+        position: 'absolute',
+        height: 32,
+        width: 32,
+        transform: `translate(-50%) rotate(${randomRotate(
+          web
+        )}) scale(${getRandom(0.8, 3)})`,
+        ...(web ? { transitionDuration: `${getRandom(20, 1200)}ms` } : {}),
       }}
-      className={clsx('absolute h-8 w-8 -translate-x-1/2')}
     >
       <svg
         viewBox="0 0 24 24"
+        style={{
+          position: 'absolute',
+          left: 0,
+          top: 0,
+          height: 32,
+          width: 32,
+          stroke: 'currentcolor',
+          strokeWidth: 1,
+        }}
         className={clsx('star scale-75 md:scale-100', fill)}
       >
         <path
@@ -110,7 +127,7 @@ export function Star({ step, left, steps }: StarProps) {
       <svg
         viewBox="0 0 24 24"
         style={{
-          rotate: randomRotate(),
+          rotate: randomRotate(web),
           scale: getRandom(0.2, 0.8),
           filter: `hue-rotate(${getRandom(15, 180)}deg)`,
           translate: `${getRandom(-44, -34)}px 0`,
@@ -127,7 +144,7 @@ export function Star({ step, left, steps }: StarProps) {
       <svg
         viewBox="0 0 24 24"
         style={{
-          rotate: randomRotate(),
+          rotate: randomRotate(web),
           scale: getRandom(0.2, 0.8),
           filter: `hue-rotate(${getRandom(15, 180)}deg)`,
           translate: `${getRandom(34, 44)}px 0`,
@@ -186,8 +203,9 @@ function StarList({
         }
 
         counter = goingUp ? counter + 1 : counter - 1;
+        const top = (i / (steps - 1)) * 100;
 
-        return <Star left={left} step={i} steps={steps} key={i} />;
+        return <Star left={left} top={top} key={i} web />;
       })}
     </div>
   );
