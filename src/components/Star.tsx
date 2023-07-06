@@ -201,14 +201,14 @@ export function StarSvg({
 
     if (position === 'left') {
       starStyle.transform = `${starStyle.transform} translateX(${getRandom(
-        -44,
+        -64,
         -34
       )}px)`;
     }
 
     if (position === 'right') {
       starStyle.transform = `${starStyle.transform} translateX(${getRandom(
-        44,
+        64,
         34
       )}px)`;
     }
