@@ -4,7 +4,10 @@ import { getAllArticles } from '@/lib/getAllArticles';
 
 export async function getFeed(type: 'rss' | 'json') {
   let articles = await getAllArticles();
-  let siteUrl = process.env.NEXT_PUBLIC_SITE_URL || `https://dtott.com`;
+  let siteUrl =
+    process.env.NEXT_PUBLIC_SITE_URL ||
+    process.env.VERCEL_URL ||
+    'https://dtott.com';
   let author = {
     name: 'Dan Ott',
   };

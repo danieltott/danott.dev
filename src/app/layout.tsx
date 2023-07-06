@@ -22,10 +22,13 @@ const bodyFont = Kreon({
 
 // FreeLunch-Regular.otf
 
+const baseUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  process.env.VERCEL_URL ||
+  'https://dtott.com';
+
 export const metadata: Metadata = {
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL || 'https://dtott.com'
-  ),
+  metadataBase: new URL(baseUrl),
 
   title: {
     template: '%s ~ Dan Ott',
@@ -42,8 +45,8 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://dtott.com',
     types: {
-      'application/rss+xml': `${process.env.NEXT_PUBLIC_SITE_URL}/rss/feed.xml`,
-      'application/feed+json': `${process.env.NEXT_PUBLIC_SITE_URL}/rss/feed.json`,
+      'application/rss+xml': `${baseUrl}/rss/feed.xml`,
+      'application/feed+json': `${baseUrl}/rss/feed.json`,
     },
   },
 };
