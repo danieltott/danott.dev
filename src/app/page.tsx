@@ -6,7 +6,6 @@ import { GitHubIcon, TwitterIcon } from '@/components/SocialIcons';
 import logoVC from '@/app/projects/logos/virtual-coffee.png';
 import logoMalleys from '@/app/projects/logos/malleys.png';
 import { formatDate } from '@/lib/formatDate';
-// import { generateRssFeed } from '@/lib/generateRssFeed';
 import { getAllArticles } from '@/lib/getAllArticles';
 import type { SvgElementProps, LinkHref, ArticleListItem } from '@/lib/types';
 import { Metadata } from 'next';
