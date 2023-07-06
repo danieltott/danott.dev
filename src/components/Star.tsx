@@ -190,7 +190,9 @@ export function StarSvg({
   };
 
   if (randomize) {
-    starStyle.filter = `hue-rotate(${getRandom(15, 180)}deg)`;
+    if (web) {
+      starStyle.filter = `hue-rotate(${getRandom(15, 180)}deg)`;
+    }
 
     starStyle.transform = `scale(${getRandom(
       randomScaleMin,
