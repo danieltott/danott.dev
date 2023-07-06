@@ -49,6 +49,11 @@ export const metadata: Metadata = {
       'application/feed+json': `${baseUrl}/rss/feed.json`,
     },
   },
+  twitter: {
+    card: 'summary_large_image',
+    site: '@danieltott',
+    creator: '@danieltott',
+  },
 };
 
 export default function RootLayout({
