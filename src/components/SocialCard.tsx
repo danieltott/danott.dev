@@ -80,7 +80,7 @@ export default function SocialCard({
           justifyContent: 'space-between',
         }}
       >
-        <div
+        <p
           style={{
             fontFamily: preview ? undefined : 'FreeLunch',
             backgroundImage:
@@ -88,15 +88,18 @@ export default function SocialCard({
             backgroundClip: 'text',
             color: 'rgba(0, 0, 0, 0)',
             fontFeatureSettings: '"calt", "dlig", "liga"',
-            fontSize: '100px',
+            fontSize: `${meta.title}`.length > 50 ? '75px' : '100px',
             letterSpacing: '-1.5px',
             lineHeight: 1,
             paddingRight: 90,
+            lineClamp: '3 "…"',
+            display: 'block',
+            margin: 0,
           }}
           className={preview ? 'font-freeLunch' : undefined}
         >
           {`${meta.title}`}
-        </div>
+        </p>
 
         <p
           style={{
