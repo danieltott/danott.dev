@@ -24,7 +24,7 @@ export default function SocialCard({
         color: '#57534e',
       }}
     >
-      <div
+      {/* <div
         style={{
           position: 'absolute',
           top: 0,
@@ -37,7 +37,7 @@ export default function SocialCard({
         {Array.from({ length: 100 }).map((_, i) => (
           <StarSvg key={i} randomScaleMin={0.2} randomize />
         ))}
-      </div>
+      </div> */}
       <div
         style={{
           position: 'absolute',
