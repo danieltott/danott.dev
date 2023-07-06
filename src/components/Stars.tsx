@@ -3,16 +3,22 @@
 import { Transition } from '@headlessui/react';
 import clsx from 'clsx';
 import { usePathname } from 'next/navigation';
-import { useEffect, useRef, useReducer, CSSProperties } from 'react';
+import { useEffect, useRef, useReducer } from 'react';
 import { Star } from './Star';
+import { Bezier } from 'bezier-js';
 
 // calc((100vw - 76rem) / 2)
 
-function getRandom(min: number, max: number) {
-  return Math.random() * (max - min) + min;
+function roundNumber(number: number, round: number = 2) {
+  return parseFloat(number.toFixed(round));
 }
 
-const STEP_RATIO = 0.013;
+function getRandom(min: number, max: number, round: number = 2) {
+  const num = Math.random() * (max - min) + min;
+  return roundNumber(num, round);
+}
+
+const STEP_RATIO = 0.02;
 
 function StarList({
   steps,
@@ -23,10 +29,32 @@ function StarList({
   height: number;
   flip?: boolean;
 }) {
-  let goingUp = flip;
-  const leftStart = Math.floor(getRandom(0, 90));
-  const leftStep = getRandom(150, 500) / steps;
-  let counter = 0;
+  const xLow = flip ? 14 : 0;
+  const xHigh = flip ? 100 : 86;
+
+  const startX = flip ? getRandom(86, 100) : getRandom(0, 14);
+
+  const lastPoint = { x: getRandom(xLow, xHigh), y: 50 };
+
+  const curve1 = new Bezier(
+    { x: startX, y: 0 },
+    { x: getRandom(0, 50), y: getRandom(10, 40) },
+    { x: getRandom(50, 100), y: getRandom(10, 40) },
+    lastPoint
+  );
+
+  var LUT1 = curve1.getLUT(steps / 2);
+
+  const curve2 = new Bezier(
+    lastPoint,
+    { x: getRandom(0, 50), y: getRandom(60, 90) },
+    { x: getRandom(50, 100), y: getRandom(60, 90) },
+    { x: getRandom(xLow, xHigh), y: 100 }
+  );
+
+  var LUT2 = curve2.getLUT(steps / 2);
+
+  const LUT = [...LUT1, ...LUT2];
 
   return (
     <div
@@ -42,21 +70,8 @@ function StarList({
         'dark:text-stone-600'
       )}
     >
-      {Array.from({ length: steps }, (_, i) => {
-        const left = leftStart + counter * leftStep;
-
-        if (leftStart + (counter + 1) * leftStep > 86) {
-          goingUp = false;
-        }
-
-        if (leftStart + (counter - 1) * leftStep < 0) {
-          goingUp = true;
-        }
-
-        counter = goingUp ? counter + 1 : counter - 1;
-        const top = (i / (steps - 1)) * 100;
-
-        return <Star left={left} top={top} key={i} web />;
+      {LUT.map((point, i) => {
+        return <Star left={point.x} top={point.y} key={i} web />;
       })}
     </div>
   );
