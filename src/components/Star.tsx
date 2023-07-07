@@ -153,8 +153,6 @@ type StarProps = {
 export function StarSvg({
   web,
   randomize,
-  left,
-  top,
   randomScaleMax = 3,
   randomScaleMin = 0.8,
   style = {},
@@ -172,20 +170,6 @@ export function StarSvg({
   const fill = random(fillColors);
 
   const starStyle: CSSProperties = {
-    position: 'absolute',
-    left:
-      typeof left !== 'undefined'
-        ? left
-        : randomize
-        ? `${getRandom(0, 100)}%`
-        : undefined,
-    top:
-      typeof top !== 'undefined'
-        ? top
-        : randomize
-        ? `${getRandom(0, 100)}%`
-        : undefined,
-
     ...style,
   };
 
@@ -216,9 +200,8 @@ export function StarSvg({
 
   return (
     <svg
+      aria-hidden="true"
       viewBox="0 0 24 24"
-      width={32}
-      height={32}
       fill={fill}
       style={starStyle}
       {...props}
@@ -238,27 +221,16 @@ export function Star({ top, left, web }: StarProps) {
   return (
     <div
       style={{
-        display: 'flex',
         top: `${top}%`,
         left: `${left}%`,
-        position: 'absolute',
-        height: 32,
-        width: 32,
-        translate: '-50%',
         rotate: randomRotate(web),
         scale: `${getRandom(0.5, 3)}`,
         ...(web ? { transitionDuration: `${getRandom(20, 1200)}ms` } : {}),
       }}
     >
-      <StarSvg
-        top={0}
-        left={0}
-        className={web ? clsx('scale-75 md:scale-100') : undefined}
-      />
+      <StarSvg className={web ? clsx('scale-75 md:scale-100') : undefined} />
 
       <StarSvg
-        top={0}
-        left={0}
         randomize
         randomScaleMin={0.2}
         randomScaleMax={0.8}
@@ -266,8 +238,6 @@ export function Star({ top, left, web }: StarProps) {
       />
 
       <StarSvg
-        top={0}
-        left={0}
         randomize
         randomScaleMin={0.2}
         randomScaleMax={0.8}

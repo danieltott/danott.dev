@@ -42,4 +42,16 @@
   .text-link {
     @apply link-colors link-underline font-semibold;
   }
+
+  .starlist {
+    @apply absolute top-0 z-10 w-5/12 overflow-y-hidden text-stone-800 dark:text-stone-600;
+  }
+
+  .starlist div {
+    @apply absolute flex h-8 w-8 -translate-x-1/2;
+  }
+
+  .starlist svg {
+    @apply absolute left-0 top-0 h-8 w-8;
+  }
 }
