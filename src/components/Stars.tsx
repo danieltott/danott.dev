@@ -2,8 +2,7 @@
 
 import { Transition } from '@headlessui/react';
 import clsx from 'clsx';
-import { usePathname } from 'next/navigation';
-import { useEffect, useRef, useReducer } from 'react';
+import { useEffect, useRef, useReducer, useState } from 'react';
 import { Star } from './Star';
 import { Bezier } from 'bezier-js';
 
@@ -71,6 +70,7 @@ function StarList({
 type State = {
   paths: string[];
   map: Record<string, React.JSX.Element>;
+  currentPathname?: string;
 };
 
 type Action = {
@@ -82,16 +82,24 @@ type Action = {
 const initialState: State = {
   paths: [],
   map: {},
+  currentPathname: undefined,
 };
 
 function reducer(state: State, action: Action): State {
   if (state.map[action.pathname]) {
+    if (state.currentPathname !== action.pathname) {
+      return {
+        ...state,
+        currentPathname: action.pathname,
+      };
+    }
     return state;
   }
 
   const steps = Math.floor(action.docHeight * STEP_RATIO);
 
   return {
+    currentPathname: action.pathname,
     paths: [...state.paths, action.pathname],
     map: {
       ...state.map,
@@ -105,22 +113,46 @@ function reducer(state: State, action: Action): State {
 export default function Stars({ flip }: { flip?: boolean }) {
   // 0.013
 
-  const pathname = usePathname();
   const prevPathname = useRef('');
 
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
-    if (pathname !== prevPathname.current) {
-      prevPathname.current = pathname;
+    let interval: NodeJS.Timer | null = null;
 
-      const docHeight = window?.document?.body?.offsetHeight;
+    if (window?.frameElement) {
+      interval = setInterval(
+        () => {
+          if (window?.frameElement) {
+            const pathname =
+              window.frameElement.getAttribute('data-pathname') || '';
 
-      if (docHeight) {
-        dispatch({ pathname, docHeight, flip });
+            if (pathname !== prevPathname.current) {
+              prevPathname.current = pathname;
+
+              const docHeight = window?.document?.body?.offsetHeight;
+
+              if (docHeight) {
+                dispatch({ pathname, docHeight, flip });
+              }
+            }
+          }
+        },
+
+        1000
+      );
+    } else {
+      if (interval) {
+        clearInterval(interval);
       }
     }
-  }, [flip, pathname]);
+
+    return () => {
+      if (interval) {
+        clearInterval(interval);
+      }
+    };
+  }, [flip]);
 
   if (state.paths.length) {
     return (
@@ -128,11 +160,11 @@ export default function Stars({ flip }: { flip?: boolean }) {
         {state.paths.map((path) => (
           <Transition
             key={path}
-            show={pathname === path}
-            enter="transition-opacity duration-75"
+            show={state.currentPathname === path}
+            enter="transition-opacity duration-1000"
             enterFrom="opacity-0"
             enterTo="opacity-100"
-            leave="transition-opacity duration-150"
+            leave="transition-opacity duration-1000"
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
