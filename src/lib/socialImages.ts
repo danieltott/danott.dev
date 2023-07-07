@@ -20,7 +20,7 @@ export function getPageMeta(slug: string | undefined) {
       metadata,
     }: {
       metadata: Metadata;
-    } = require(`../app/page.tsx`);
+    } = require(`../app/(site)/page.tsx`);
 
     return metadata;
   }
@@ -29,7 +29,7 @@ export function getPageMeta(slug: string | undefined) {
     metadata,
   }: {
     metadata: Metadata;
-  } = require(`../app/${slug}/page.tsx`);
+  } = require(`../app/(site)/${slug}/page.tsx`);
 
   return metadata;
 }

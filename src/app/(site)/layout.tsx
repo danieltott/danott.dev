@@ -9,7 +9,7 @@ import localFont from 'next/font/local';
 
 // Font files can be colocated inside of `app`
 const freeLunch = localFont({
-  src: './FreeLunch-Regular.otf',
+  src: '../FreeLunch-Regular.otf',
   display: 'swap',
   variable: '--font-free-lunch',
 });

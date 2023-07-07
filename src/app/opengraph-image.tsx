@@ -2,7 +2,7 @@ import { ImageResponse } from 'next/server';
 import { notFound } from 'next/navigation';
 import SocialCard from '@/components/SocialCard';
 import { getOptions } from '@/lib/socialImages';
-import { metadata } from './page';
+import { metadata } from './(site)/page';
 
 export const size = {
   width: 1200,
