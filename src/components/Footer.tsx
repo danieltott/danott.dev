@@ -23,11 +23,14 @@ export function Footer() {
         <div className="border-t border-stone-100 pb-16 pt-10 dark:border-stone-700/40">
           <Container.Inner>
             <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
-              <div className="flex flex-wrap justify-center gap-x-6 gap-y-1 text-sm font-medium text-stone-800 dark:text-stone-200 md:text-base lg:text-lg">
+              <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-1 text-sm font-medium text-stone-800 dark:text-stone-200 md:text-base lg:text-lg">
                 <NavLink href="/about">About</NavLink>
                 <NavLink href="/thoughts">Thoughts</NavLink>
                 <NavLink href="/projects">Projects</NavLink>
                 <NavLink href="/speaking">Speaking</NavLink>
+                <NavLink href="https://github.com/danieltott/dtott.com">
+                  GitHub
+                </NavLink>
               </div>
               <p className="text-sm text-stone-400 dark:text-stone-500 md:text-base lg:text-lg">
                 &copy; {new Date().getFullYear()} Daniel T Ott, LLC. All rights

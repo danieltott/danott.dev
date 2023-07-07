@@ -9,6 +9,7 @@ import clsx from 'clsx';
 import { Container } from '@/components/Container';
 import avatarImage from '@/images/avatar.jpg';
 import type { SvgElementProps, LinkHref } from '@/lib/types';
+import { GitHubIcon } from './SocialIcons';
 
 function CloseIcon(props: SvgElementProps) {
   return (
@@ -133,6 +134,12 @@ function MobileNavigation(props: React.ComponentProps<typeof Popover>) {
                 <MobileNavItem href="/thoughts">Thoughts</MobileNavItem>
                 <MobileNavItem href="/projects">Projects</MobileNavItem>
                 <MobileNavItem href="/speaking">Speaking</MobileNavItem>
+                <MobileNavItem href="https://github.com/danieltott/dtott.com">
+                  <div className="flex items-center gap-2">
+                    <GitHubIcon className="h-6 w-6 fill-current" />
+                    <span>GitHub</span>
+                  </div>
+                </MobileNavItem>
               </ul>
             </nav>
           </Popover.Panel>
@@ -179,6 +186,10 @@ function DesktopNavigation(props: React.ComponentProps<'nav'>) {
         <NavItem href="/thoughts">Thoughts</NavItem>
         <NavItem href="/projects">Projects</NavItem>
         <NavItem href="/speaking">Speaking</NavItem>
+        <NavItem href="https://github.com/danieltott/dtott.com">
+          <GitHubIcon className="h-6 w-6 fill-current" />
+          <span className="sr-only">GitHub</span>
+        </NavItem>
       </ul>
     </nav>
   );
