@@ -10,7 +10,7 @@ function NavLink({
   children: React.ReactNode;
 }) {
   return (
-    <Link href={href} className="link-colors">
+    <Link href={href} className="link-colors link-hover-colors">
       {children}
     </Link>
   );
@@ -32,7 +32,7 @@ export function Footer() {
                   GitHub
                 </NavLink>
               </div>
-              <p className="text-sm text-stone-400 dark:text-stone-500 md:text-base lg:text-lg">
+              <p className="text-sm text-east-bay-600 dark:text-east-bay-400 md:text-base lg:text-lg">
                 &copy; {new Date().getFullYear()} Daniel T Ott, LLC. All rights
                 reserved.
               </p>

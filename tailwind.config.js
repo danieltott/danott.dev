@@ -150,7 +150,7 @@ module.exports = {
             css: {
               '--tw-prose-body': theme('colors.stone.600'),
               '--tw-prose-headings': theme('colors.stone.900'),
-              '--tw-prose-links': theme('colors.primary.500'),
+              '--tw-prose-links': theme('colors.primary.700'),
               '--tw-prose-links-hover': theme('colors.primary.600'),
               '--tw-prose-underline': theme('colors.primary.500 / 0.2'),
               '--tw-prose-underline-hover': theme('colors.primary.500'),
@@ -171,7 +171,7 @@ module.exports = {
               '--tw-prose-invert-body': theme('colors.stone.300'),
               '--tw-prose-invert-headings': theme('colors.stone.200'),
               '--tw-prose-invert-links': theme('colors.primary.400'),
-              '--tw-prose-invert-links-hover': theme('colors.primary.400'),
+              '--tw-prose-invert-links-hover': theme('colors.primary.500'),
               '--tw-prose-invert-underline': theme('colors.primary.400 / 0.3'),
               '--tw-prose-invert-underline-hover': theme('colors.primary.400'),
               '--tw-prose-invert-bold': theme('colors.stone.200'),

@@ -27,7 +27,7 @@ export default function ArticleList({
               <Card className="md:col-span-3">
                 <Card.Title>
                   <Link
-                    className="link-colors link-underline"
+                    className="link-colors link-hover-colors link-underline"
                     href={`/thoughts/${article.slug}`}
                   >
                     {article.title}
@@ -90,7 +90,7 @@ export default function ArticleList({
               className={clsx(
                 'inline-flex items-center border-t-2 px-4 pt-4',
                 page === meta.page
-                  ? 'border-primary-400 text-primary-600 dark:border-primary-400 dark:text-primary-500'
+                  ? 'link-colors  border-primary-400 dark:border-primary-400'
                   : 'border-transparent text-sm font-medium text-stone-500 hover:border-stone-200 hover:text-stone-700 dark:text-stone-400 dark:hover:border-stone-300/40 dark:hover:text-stone-300 md:text-base lg:text-lg'
               )}
             >

@@ -89,7 +89,7 @@ Card.Cta = function CardCta({
   const props = {
     className: clsx(
       'relative z-10 mt-4 flex items-center text-sm md:text-base lg:text-lg',
-      href ? 'text-link' : 'font-medium text-primary-500 dark:text-primary-400'
+      href ? 'text-link' : 'link-colors font-medium'
     ),
 
     children: (
@@ -122,7 +122,7 @@ Card.Eyebrow = function CardEyebrow<T extends React.ElementType = 'p'>({
     <Component
       className={clsx(
         className,
-        'relative z-10 order-first mb-3 flex items-center gap-1 text-xs text-stone-400 dark:text-stone-400 md:text-sm',
+        'relative z-10 order-first mb-3 flex items-center gap-1 text-xs font-medium text-east-bay-600 dark:text-east-bay-300 md:text-sm',
         decorate && 'pl-3.5'
       )}
       {...props}
@@ -132,7 +132,7 @@ Card.Eyebrow = function CardEyebrow<T extends React.ElementType = 'p'>({
           className="absolute inset-y-0 left-0 flex items-center"
           aria-hidden="true"
         >
-          <span className="h-4 w-0.5 rounded-full bg-stone-200 dark:bg-stone-500" />
+          <span className="h-4 w-0.5 rounded-full bg-east-bay-400 dark:bg-east-bay-500" />
         </span>
       )}
       {children}

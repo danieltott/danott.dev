@@ -31,12 +31,16 @@
     @apply absolute left-0 top-0 h-8 w-8  stroke-current stroke-1;
   }
 
+  .link-hover-colors {
+    @apply transition-colors duration-150 ease-in-out hover:text-primary-600 dark:hover:text-primary-300;
+  }
+
   .link-colors {
-    @apply text-primary-600 transition-colors duration-150 ease-in-out hover:text-primary-700 hover:decoration-primary-500 dark:text-primary-400 dark:hover:text-primary-300;
+    @apply text-primary-700   dark:text-primary-400;
   }
 
   .link-underline {
-    @apply underline decoration-primary-500/20 dark:decoration-primary-400/30 dark:hover:decoration-primary-400;
+    @apply underline decoration-primary-500/20 hover:decoration-primary-500 dark:decoration-primary-400/30 dark:hover:decoration-primary-400;
   }
 
   .text-link {

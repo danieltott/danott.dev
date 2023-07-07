@@ -41,7 +41,7 @@ function Article({ article }: { article: ArticleListItem }) {
     <Card as="article">
       <Card.Title>
         <Link
-          className="link-colors link-underline"
+          className="link-colors link-hover-colors link-underline"
           href={`/thoughts/${article.slug}`}
         >
           {article.title}

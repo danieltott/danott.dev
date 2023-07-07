@@ -164,9 +164,7 @@ function NavItem({
         href={href}
         className={clsx(
           'relative block px-3 py-2 text-sm font-medium transition',
-          isActive
-            ? 'text-primary-500 dark:text-primary-400'
-            : 'hover:text-primary-500 dark:hover:text-primary-400'
+          isActive ? 'link-colors' : 'link-hover-colors'
         )}
       >
         {children}
