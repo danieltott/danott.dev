@@ -1,9 +1,7 @@
-import '@/styles/tailwind.css';
 import type { Metadata } from 'next';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Kreon } from 'next/font/google';
-import Stars from '@/components/Stars';
 import Script from 'next/script';
 import localFont from 'next/font/local';
 import StarFrame from '@/components/StarFrame';
@@ -52,61 +50,20 @@ export const metadata: Metadata = {
   },
 };
 
-const modeScript = `
-let darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
-
-updateMode()
-darkModeMediaQuery.addEventListener('change', updateModeWithoutTransitions)
-window.addEventListener('storage', updateModeWithoutTransitions)
-
-function updateMode() {
-  let isSystemDarkMode = darkModeMediaQuery.matches
-  let isDarkMode = window.localStorage.isDarkMode === 'true' || (!('isDarkMode' in window.localStorage) && isSystemDarkMode)
-
-  if (isDarkMode) {
-    document.documentElement.classList.add('dark')
-  } else {
-    document.documentElement.classList.remove('dark')
-  }
-
-  if (isDarkMode === isSystemDarkMode) {
-    delete window.localStorage.isDarkMode
-  }
-}
-
-function disableTransitionsTemporarily() {
-  document.documentElement.classList.add('[&_*]:!transition-none')
-  window.setTimeout(() => {
-    document.documentElement.classList.remove('[&_*]:!transition-none')
-  }, 0)
-}
-
-function updateModeWithoutTransitions() {
-  disableTransitionsTemporarily()
-  updateMode()
-}
-`;
-
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html
-      lang="en"
-      className={`h-full antialiased ${bodyFont.variable} ${freeLunch.variable} font-serif`}
-    >
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: modeScript }} />
+    <>
+      {process.env.NODE_ENV === 'production' && (
+        <Script
+          data-domain="dtott.com"
+          src="https://plausible.io/js/plausible.js"
+        />
+      )}
 
-        {process.env.NODE_ENV === 'production' && (
-          <Script
-            data-domain="dtott.com"
-            src="https://plausible.io/js/plausible.js"
-          />
-        )}
-      </head>
       <body className="relative flex min-h-full flex-col bg-east-bay-50 dark:bg-east-bay-950">
         <StarFrame />
 
@@ -120,12 +77,12 @@ export default function RootLayout({
             <div className="w-full bg-white ring-1 ring-stone-100 dark:bg-stone-900 dark:ring-stone-300/20" />
           </div>
         </div>
-        <div className="relative z-30">
+        <div className="relative z-30 flex flex-1 flex-col">
           <Header />
-          <main>{children}</main>
+          <main className="flex-1">{children}</main>
           <Footer />
         </div>
       </body>
-    </html>
+    </>
   );
 }
