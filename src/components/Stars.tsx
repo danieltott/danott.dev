@@ -58,7 +58,7 @@ function StarList({
   return (
     <div
       style={{ height }}
-      className={clsx('starlist', flip ? 'right-0' : 'left-0')}
+      className={clsx('starlist overflow-hidden', flip ? 'right-0' : 'left-0')}
     >
       {LUT.map((point, i) => {
         return <Star left={point.x} top={point.y} key={i} web />;
