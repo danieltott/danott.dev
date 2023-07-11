@@ -7,7 +7,7 @@ export async function getFeed(type: 'rss' | 'json') {
   let siteUrl =
     process.env.NEXT_PUBLIC_SITE_URL ||
     (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : null) ||
-    'https://dtott.com';
+    'https://danott.dev';
   let author = {
     name: 'Dan Ott',
   };

@@ -332,7 +332,7 @@
   {
     "@id": "950595949",
     "id": "wp_id=17",
-    "message": "<p>[...] Dan took part in a the most recent competition and the writeup he did for it is a great resource for anyone learning how to design websites.Ã‚Â?  Since I&#8217;m pretty new to the tableless design scene I found the reasoning behind the decisions he made to be insightfull. Check out Dan Ott&#8217;s writeup here: <a href=\"http://dtott.com/thoughts/2007/07/17/css-off-2-earlybird/\" rel=\"nofollow noopener\" title=\"http://dtott.com/thoughts/2007/07/17/css-off-2-earlybird/\">http://dtott.com/thoughts/2007/07/17/css-off-2-earlybird/</a> [...]</p>",
+    "message": "<p>[...] Dan took part in a the most recent competition and the writeup he did for it is a great resource for anyone learning how to design websites.Ã‚Â?  Since I&#8217;m pretty new to the tableless design scene I found the reasoning behind the decisions he made to be insightfull. Check out Dan Ott&#8217;s writeup here: <a href=\"http://danott.dev/thoughts/2007/07/17/css-off-2-earlybird/\" rel=\"nofollow noopener\" title=\"http://danott.dev/thoughts/2007/07/17/css-off-2-earlybird/\">http://danott.dev/thoughts/2007/07/17/css-off-2-earlybird/</a> [...]</p>",
     "createdAt": "2007-07-27T18:04:31Z",
     "isDeleted": "false",
     "isSpam": "false",
@@ -1082,7 +1082,7 @@
   {
     "@id": "950595836",
     "id": "wp_id=96",
-    "message": "<p>@Mike - Thanks for writing in.  Fixed that link.</p><p>@Louis - I agree, it&#8217;s a fantastic solution.  Regarding implementing it, I originally used it like you suggest, adding a &#8220;.clearfix&#8221; class to each container.  But I didn&#8217;t like crufting up my HTML, and I usually lean towards not adding class attributes if I can, anyway.  So instead, I started adding the specific elements to one declaration.  I have an example set up <a href=\"http://dtott.com/examples/easyclear/easyclear_example2.html\" rel=\"nofollow noopener\" title=\"Multiple Element Example\">here</a>.</p>",
+    "message": "<p>@Mike - Thanks for writing in.  Fixed that link.</p><p>@Louis - I agree, it&#8217;s a fantastic solution.  Regarding implementing it, I originally used it like you suggest, adding a &#8220;.clearfix&#8221; class to each container.  But I didn&#8217;t like crufting up my HTML, and I usually lean towards not adding class attributes if I can, anyway.  So instead, I started adding the specific elements to one declaration.  I have an example set up <a href=\"http://danott.dev/examples/easyclear/easyclear_example2.html\" rel=\"nofollow noopener\" title=\"Multiple Element Example\">here</a>.</p>",
     "createdAt": "2007-12-11T18:59:10Z",
     "isDeleted": "false",
     "isSpam": "false",
@@ -1127,7 +1127,7 @@
   {
     "@id": "950595825",
     "id": "wp_id=93",
-    "message": "<p>@Mohamed - In decent browsers, you&#8217;ll see that if you don&#8217;t clear your floats, the parent element will not stretch to include all of it&#8217;s children.  I&#8217;ve set up an example of that <a href=\"http://dtott.com/examples/easyclear/easyclear_example3.html\" rel=\"nofollow noopener\" title=\"Non-Clearing Example\">here</a> so that you can see what I&#8217;m talking about.  You can&#8217;t just rely on simply setting heights of elements, because that will break down when people start resizing text, so much of the time, you&#8217;ll need to use some sort of clearing method.</p>",
+    "message": "<p>@Mohamed - In decent browsers, you&#8217;ll see that if you don&#8217;t clear your floats, the parent element will not stretch to include all of it&#8217;s children.  I&#8217;ve set up an example of that <a href=\"http://danott.dev/examples/easyclear/easyclear_example3.html\" rel=\"nofollow noopener\" title=\"Non-Clearing Example\">here</a> so that you can see what I&#8217;m talking about.  You can&#8217;t just rely on simply setting heights of elements, because that will break down when people start resizing text, so much of the time, you&#8217;ll need to use some sort of clearing method.</p>",
     "createdAt": "2007-12-11T19:32:32Z",
     "isDeleted": "false",
     "isSpam": "false",
@@ -2132,7 +2132,7 @@
   {
     "@id": "950595793",
     "id": "wp_id=77",
-    "message": "<p>@Dave / all readers - In the time between your comment here and now, I&#8217;ve seen the light. Read <a href=\"http://dtott.com/thoughts/2009/01/06/clear-your-floats-even-easier/\" rel=\"nofollow noopener\" title=\"http://dtott.com/thoughts/2009/01/06/clear-your-floats-even-easier/\">http://dtott.com/thoughts/2009/01/06/clear-your-floats-even-easier/</a></p><p>@Vince and @Kev - I am not a fan of non-semantic elements floating around in my HTML. It makes the code harder to maintain, and uglier to look at.  <a href=\"http://www.thefutureoftheweb.com/blog/writing-semantic-html\" rel=\"nofollow noopener\" title=\"http://www.thefutureoftheweb.com/blog/writing-semantic-html\">Do</a> some <a href=\"http://www.joedolson.com/articles/2008/04/why-use-semantic-html/\" rel=\"nofollow noopener\" title=\"http://www.joedolson.com/articles/2008/04/why-use-semantic-html/\">reading</a> on the <a href=\"http://www.456bereastreet.com/archive/200711/posh_plain_old_semantic_html/\" rel=\"nofollow noopener\" title=\"http://www.456bereastreet.com/archive/200711/posh_plain_old_semantic_html/\">topic</a> for a more in-depth explanation. Plus, with this new technique, it only takes &lt;strike&gt;one&lt;/strike&gt; two (damn ie6) lines of CSS. It&#8217;s all upside.</p>",
+    "message": "<p>@Dave / all readers - In the time between your comment here and now, I&#8217;ve seen the light. Read <a href=\"http://danott.dev/thoughts/2009/01/06/clear-your-floats-even-easier/\" rel=\"nofollow noopener\" title=\"http://danott.dev/thoughts/2009/01/06/clear-your-floats-even-easier/\">http://danott.dev/thoughts/2009/01/06/clear-your-floats-even-easier/</a></p><p>@Vince and @Kev - I am not a fan of non-semantic elements floating around in my HTML. It makes the code harder to maintain, and uglier to look at.  <a href=\"http://www.thefutureoftheweb.com/blog/writing-semantic-html\" rel=\"nofollow noopener\" title=\"http://www.thefutureoftheweb.com/blog/writing-semantic-html\">Do</a> some <a href=\"http://www.joedolson.com/articles/2008/04/why-use-semantic-html/\" rel=\"nofollow noopener\" title=\"http://www.joedolson.com/articles/2008/04/why-use-semantic-html/\">reading</a> on the <a href=\"http://www.456bereastreet.com/archive/200711/posh_plain_old_semantic_html/\" rel=\"nofollow noopener\" title=\"http://www.456bereastreet.com/archive/200711/posh_plain_old_semantic_html/\">topic</a> for a more in-depth explanation. Plus, with this new technique, it only takes &lt;strike&gt;one&lt;/strike&gt; two (damn ie6) lines of CSS. It&#8217;s all upside.</p>",
     "createdAt": "2009-01-07T09:49:02Z",
     "isDeleted": "false",
     "isSpam": "false",
@@ -2448,7 +2448,7 @@
   {
     "@id": "950595671",
     "id": "wp_id=154",
-    "message": "<p>@Dan,</p><p>In that sort of situation, using <code>overflow:hidden</code> or <code>overflow:auto</code> just won&#8217;t work. I&#8217;ve run into a few of those situations. Basically any time you&#8217;re going to have overflow (on purpose), it&#8217;s not going to work. In these situations, I use the <a href=\"http://dtott.com/thoughts/2007/12/10/clear-your-floats-the-right-way/\" rel=\"nofollow noopener\" title=\"http://dtott.com/thoughts/2007/12/10/clear-your-floats-the-right-way/\">easyclear</a> method for those specific elements. That works like a charm, and there&#8217;s a limited amount of elements that require it (i.e. elements that have overflow).</p>",
+    "message": "<p>@Dan,</p><p>In that sort of situation, using <code>overflow:hidden</code> or <code>overflow:auto</code> just won&#8217;t work. I&#8217;ve run into a few of those situations. Basically any time you&#8217;re going to have overflow (on purpose), it&#8217;s not going to work. In these situations, I use the <a href=\"http://danott.dev/thoughts/2007/12/10/clear-your-floats-the-right-way/\" rel=\"nofollow noopener\" title=\"http://danott.dev/thoughts/2007/12/10/clear-your-floats-the-right-way/\">easyclear</a> method for those specific elements. That works like a charm, and there&#8217;s a limited amount of elements that require it (i.e. elements that have overflow).</p>",
     "createdAt": "2009-05-06T23:38:34Z",
     "isDeleted": "false",
     "isSpam": "false",
@@ -2478,7 +2478,7 @@
   {
     "@id": "950595674",
     "id": "wp_id=156",
-    "message": "<p>Hey @Spencer, thanks for stopping by. I <a href=\"#comment-254\" rel=\"nofollow noopener\" title=\"#comment-254\">addressed that above</a>; in those situations I use <a href=\"http://dtott.com/thoughts/2007/12/10/clear-your-floats-the-right-way/\" rel=\"nofollow noopener\" title=\"http://dtott.com/thoughts/2007/12/10/clear-your-floats-the-right-way/\">easyclear</a>. And while those situations obviously exist, I&#8217;d say they&#8217;re much less common than a normal container that doesn&#8217;t have any overflow, but has some floats. Both are good tools to keep in your stylesheets.</p>",
+    "message": "<p>Hey @Spencer, thanks for stopping by. I <a href=\"#comment-254\" rel=\"nofollow noopener\" title=\"#comment-254\">addressed that above</a>; in those situations I use <a href=\"http://danott.dev/thoughts/2007/12/10/clear-your-floats-the-right-way/\" rel=\"nofollow noopener\" title=\"http://danott.dev/thoughts/2007/12/10/clear-your-floats-the-right-way/\">easyclear</a>. And while those situations obviously exist, I&#8217;d say they&#8217;re much less common than a normal container that doesn&#8217;t have any overflow, but has some floats. Both are good tools to keep in your stylesheets.</p>",
     "createdAt": "2009-06-25T22:06:29Z",
     "isDeleted": "false",
     "isSpam": "false",
@@ -2793,7 +2793,7 @@
   {
     "@id": "950595753",
     "id": "wp_id=1451",
-    "message": "<p>I love the idea of your bookmarklet but I think it&#8217;s broken, the link to <a href=\"http://dtott.com/pixel2em/pixel2em.js\" rel=\"nofollow noopener\" title=\"http://dtott.com/pixel2em/pixel2em.js\">http://dtott.com/pixel2em/pixel2em.js</a> is bad.  I would love to try it out.  Let me know if you get it back up.</p><p>Thanks,<br><br>Tom<br><br><a href=\"http://marklets.com\" rel=\"nofollow noopener\" title=\"marklets.com\">marklets.com</a></p>",
+    "message": "<p>I love the idea of your bookmarklet but I think it&#8217;s broken, the link to <a href=\"http://danott.dev/pixel2em/pixel2em.js\" rel=\"nofollow noopener\" title=\"http://danott.dev/pixel2em/pixel2em.js\">http://danott.dev/pixel2em/pixel2em.js</a> is bad.  I would love to try it out.  Let me know if you get it back up.</p><p>Thanks,<br><br>Tom<br><br><a href=\"http://marklets.com\" rel=\"nofollow noopener\" title=\"marklets.com\">marklets.com</a></p>",
     "createdAt": "2010-08-05T18:12:43Z",
     "isDeleted": "false",
     "isSpam": "false",

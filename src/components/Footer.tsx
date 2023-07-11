@@ -28,7 +28,7 @@ export function Footer() {
                 <NavLink href="/thoughts">Thoughts</NavLink>
                 <NavLink href="/projects">Projects</NavLink>
                 <NavLink href="/speaking">Speaking</NavLink>
-                <NavLink href="https://github.com/danieltott/dtott.com">
+                <NavLink href="https://github.com/danieltott/danott.dev">
                   GitHub
                 </NavLink>
               </div>

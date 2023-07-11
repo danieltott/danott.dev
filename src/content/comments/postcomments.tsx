@@ -648,11 +648,11 @@ const postcomments = {
               tableless design scene I found the reasoning behind the decisions
               he made to be insightfull. Check out Dan Ott&#8217;s writeup here:{' '}
               <a
-                href="http://dtott.com/thoughts/2007/07/17/css-off-2-earlybird/"
+                href="http://danott.dev/thoughts/2007/07/17/css-off-2-earlybird/"
                 rel="nofollow noopener"
-                title="http://dtott.com/thoughts/2007/07/17/css-off-2-earlybird/"
+                title="http://danott.dev/thoughts/2007/07/17/css-off-2-earlybird/"
               >
-                http://dtott.com/thoughts/2007/07/17/css-off-2-earlybird/
+                http://danott.dev/thoughts/2007/07/17/css-off-2-earlybird/
               </a>{' '}
               [...]
             </p>
@@ -2732,7 +2732,7 @@ const postcomments = {
               started adding the specific elements to one declaration. I have an
               example set up{' '}
               <a
-                href="http://dtott.com/examples/easyclear/easyclear_example2.html"
+                href="http://danott.dev/examples/easyclear/easyclear_example2.html"
                 rel="nofollow noopener"
                 title="Multiple Element Example"
               >
@@ -2819,7 +2819,7 @@ const postcomments = {
               to include all of it&#8217;s children. I&#8217;ve set up an
               example of that{' '}
               <a
-                href="http://dtott.com/examples/easyclear/easyclear_example3.html"
+                href="http://danott.dev/examples/easyclear/easyclear_example3.html"
                 rel="nofollow noopener"
                 title="Non-Clearing Example"
               >
@@ -3413,11 +3413,11 @@ const postcomments = {
               @Dave / all readers - In the time between your comment here and
               now, I&#8217;ve seen the light. Read{' '}
               <a
-                href="http://dtott.com/thoughts/2009/01/06/clear-your-floats-even-easier/"
+                href="http://danott.dev/thoughts/2009/01/06/clear-your-floats-even-easier/"
                 rel="nofollow noopener"
-                title="http://dtott.com/thoughts/2009/01/06/clear-your-floats-even-easier/"
+                title="http://danott.dev/thoughts/2009/01/06/clear-your-floats-even-easier/"
               >
-                http://dtott.com/thoughts/2009/01/06/clear-your-floats-even-easier/
+                http://danott.dev/thoughts/2009/01/06/clear-your-floats-even-easier/
               </a>
             </p>
             <p>
@@ -4042,11 +4042,11 @@ const postcomments = {
               I love the idea of your bookmarklet but I think it&#8217;s broken,
               the link to{' '}
               <a
-                href="http://dtott.com/pixel2em/pixel2em.js"
+                href="http://danott.dev/pixel2em/pixel2em.js"
                 rel="nofollow noopener"
-                title="http://dtott.com/pixel2em/pixel2em.js"
+                title="http://danott.dev/pixel2em/pixel2em.js"
               >
-                http://dtott.com/pixel2em/pixel2em.js
+                http://danott.dev/pixel2em/pixel2em.js
               </a>{' '}
               is bad. I would love to try it out. Let me know if you get it back
               up.
@@ -5308,9 +5308,9 @@ const postcomments = {
               going to have overflow (on purpose), it&#8217;s not going to work.
               In these situations, I use the{' '}
               <a
-                href="http://dtott.com/thoughts/2007/12/10/clear-your-floats-the-right-way/"
+                href="http://danott.dev/thoughts/2007/12/10/clear-your-floats-the-right-way/"
                 rel="nofollow noopener"
-                title="http://dtott.com/thoughts/2007/12/10/clear-your-floats-the-right-way/"
+                title="http://danott.dev/thoughts/2007/12/10/clear-your-floats-the-right-way/"
               >
                 easyclear
               </a>{' '}
@@ -5377,9 +5377,9 @@ const postcomments = {
               </a>
               ; in those situations I use{' '}
               <a
-                href="http://dtott.com/thoughts/2007/12/10/clear-your-floats-the-right-way/"
+                href="http://danott.dev/thoughts/2007/12/10/clear-your-floats-the-right-way/"
                 rel="nofollow noopener"
-                title="http://dtott.com/thoughts/2007/12/10/clear-your-floats-the-right-way/"
+                title="http://danott.dev/thoughts/2007/12/10/clear-your-floats-the-right-way/"
               >
                 easyclear
               </a>

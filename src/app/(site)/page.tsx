@@ -218,7 +218,7 @@ export default async function HomePage() {
               icon={GitHubIcon}
             />
             <SocialLink
-              href="https://dtott.com/thoughts/feed.rss"
+              href="https://danott.dev/thoughts/feed.rss"
               aria-label="Subscribe to RSS feed"
               icon={RssIcon}
             />

@@ -15,7 +15,7 @@ function MailIcon(props: SvgElementProps) {
   );
 }
 
-const realEmail = ['dan', '@', 'dtott.com'].join('');
+const realEmail = ['dan', '@', 'danott.dev'].join('');
 
 export default function MailLink() {
   const [interacted, setInteracted] = useState(false);

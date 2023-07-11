@@ -134,7 +134,7 @@ function MobileNavigation(props: React.ComponentProps<typeof Popover>) {
                 <MobileNavItem href="/thoughts">Thoughts</MobileNavItem>
                 <MobileNavItem href="/projects">Projects</MobileNavItem>
                 <MobileNavItem href="/speaking">Speaking</MobileNavItem>
-                <MobileNavItem href="https://github.com/danieltott/dtott.com">
+                <MobileNavItem href="https://github.com/danieltott/danott.dev">
                   <div className="flex items-center gap-2">
                     <GitHubIcon className="h-6 w-6 fill-current" />
                     <span>GitHub</span>
@@ -184,7 +184,7 @@ function DesktopNavigation(props: React.ComponentProps<'nav'>) {
         <NavItem href="/thoughts">Thoughts</NavItem>
         <NavItem href="/projects">Projects</NavItem>
         <NavItem href="/speaking">Speaking</NavItem>
-        <NavItem href="https://github.com/danieltott/dtott.com">
+        <NavItem href="https://github.com/danieltott/danott.dev">
           <GitHubIcon className="h-6 w-6 fill-current" />
           <span className="sr-only">GitHub</span>
         </NavItem>

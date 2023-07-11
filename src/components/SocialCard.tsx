@@ -129,7 +129,7 @@ export default function SocialCard({
           className={preview ? 'font-serif' : undefined}
         >
           <div>Dan Ott</div>
-          <div>dtott.com</div>
+          <div>danott.dev</div>
           {'date' in meta && meta.date && <div>{formatDate(meta.date)}</div>}
         </div>
       </div>

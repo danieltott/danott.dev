@@ -23,7 +23,7 @@ In this screenshot, the image is a normal, rectangular image. Nothing was done t
 
 This technique solves a very specific issue. There are plenty of ways to render rounded corners that involve less markup, simpler CSS, and less time in photoshop, but none of them (that I am aware of) crop the content below it.
 
-You can view the solution at work [here](http://dtott.com/examples/croppingcorners/index.html 'Cropping Corners Example') , and I'll try to take you through how it works.
+You can view the solution at work [here](http://danott.dev/examples/croppingcorners/index.html 'Cropping Corners Example') , and I'll try to take you through how it works.
 
 ### First, The Images
 
@@ -125,7 +125,7 @@ See, that's not too bad, is it? A couple notes here. First, I've separated `.TR`
 
 ### What about <abbr title="Internet Explorer 6">ie6</abbr>?
 
-IE6, as always, was the big headache here. However, by hacking up [Angus Turnbull](http://www.twinhelix.com)'s [IE PNG Fix](http://www.twinhelix.com/css/iepngfix/) with a couple of my own modifications, I managed to get it to work. The problem, aside from <abbr title="Internet Explorer 6">ie6</abbr>'s refusal to run transparent PNGs, was that the border block wouldn't always line up with the edge of the container. I assume it's some sort of rounding error, but I'm not positive about that. Anyway, the PNG Fix now fixes the transparency, and checks to make sure the borders are where they should be. The only problem here is that this solution doesn't work in <abbr title="Internet Explorer 6">ie6</abbr> when you use a fluid width. Or, more correctly, it will correct itself when the page loads, but there is a possibility of the borders moving a pixel out of place if user starts manually changing the width of the window. Check out [the example page](http://dtott.com/examples/croppingcorners/index.html 'Cropping Corners Example') in <abbr title="Internet Explorer 6">ie6</abbr> to see what i mean. Here is the code to include this fix:
+IE6, as always, was the big headache here. However, by hacking up [Angus Turnbull](http://www.twinhelix.com)'s [IE PNG Fix](http://www.twinhelix.com/css/iepngfix/) with a couple of my own modifications, I managed to get it to work. The problem, aside from <abbr title="Internet Explorer 6">ie6</abbr>'s refusal to run transparent PNGs, was that the border block wouldn't always line up with the edge of the container. I assume it's some sort of rounding error, but I'm not positive about that. Anyway, the PNG Fix now fixes the transparency, and checks to make sure the borders are where they should be. The only problem here is that this solution doesn't work in <abbr title="Internet Explorer 6">ie6</abbr> when you use a fluid width. Or, more correctly, it will correct itself when the page loads, but there is a possibility of the borders moving a pixel out of place if user starts manually changing the width of the window. Check out [the example page](http://danott.dev/examples/croppingcorners/index.html 'Cropping Corners Example') in <abbr title="Internet Explorer 6">ie6</abbr> to see what i mean. Here is the code to include this fix:
 
 ```html
 <!--[if lte IE 6]>

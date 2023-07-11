@@ -1,4 +1,4 @@
-export const summary = `<p>Aside from browser bugs, float clearing can be one of the most frustrating aspects of CSS development. It takes a little bit of patience and thought to set up your floats and clears in a way that facilitates both your design and the flexibility required in a modern website. </p><h3><strong>UPDATE</strong></h3><p>Read <a href="http&#58;//dtott.com/thoughts/2009/01/06/clear-your-floats-even-easier/">http&#58;//dtott.com/thoughts/2009/01/06/clear-your-floats-even-easier/ </a>for an even easier way of dealing with floating elements. </p>`;
+export const summary = `<p>Aside from browser bugs, float clearing can be one of the most frustrating aspects of CSS development. It takes a little bit of patience and thought to set up your floats and clears in a way that facilitates both your design and the flexibility required in a modern website. </p><h3><strong>UPDATE</strong></h3><p>Read <a href="http&#58;//danott.dev/thoughts/2009/01/06/clear-your-floats-even-easier/">http&#58;//danott.dev/thoughts/2009/01/06/clear-your-floats-even-easier/ </a>for an even easier way of dealing with floating elements. </p>`;
 
 export const tags = [
   'front end',
@@ -17,7 +17,7 @@ export const meta = {
 
 ### **UPDATE**
 
-Read [http://dtott.com/thoughts/2009/01/06/clear-your-floats-even-easier/](http://dtott.com/thoughts/2009/01/06/clear-your-floats-even-easier/) for an even easier way of dealing with floating elements.
+Read [http://danott.dev/thoughts/2009/01/06/clear-your-floats-even-easier/](http://danott.dev/thoughts/2009/01/06/clear-your-floats-even-easier/) for an even easier way of dealing with floating elements.
 
 Then come back and read this.
 
@@ -43,7 +43,7 @@ It turns out that this is _completely_ incorrect. The [actual definition](http:/
 
 > The ':before' and ':after' pseudo-elements can be used to insert generated content before or **_after an element's content_** .
 
-The difference between the two definitions is considerable. Content inserted using the `:after` pseudo-element is inserted not after the element, but instead _within_ the element and _after_ the content. See an example [here](http://dtott.com/examples/easyclear/after_example1.html ':after example') .
+The difference between the two definitions is considerable. Content inserted using the `:after` pseudo-element is inserted not after the element, but instead _within_ the element and _after_ the content. See an example [here](http://danott.dev/examples/easyclear/after_example1.html ':after example') .
 
 You can use `:after` to insert just about any content you'd like, and give it most CSS attributes, including `display` and `clear`. This is how EasyClear works its magic.
 
@@ -59,7 +59,7 @@ Using EasyClear is simple. The only trick is to apply it to the correct element.
   />
 </p>
 
-In this example, you want to apply the EasyClear to `#container`, since that is the containing element. It will insert a block-level element with the `clear` attribute set to `both`, thus clearing the floats inside the element without crufting up your HTML. You can see an example at work [here](http://dtott.com/examples/easyclear/easyclear_example.html 'EasyClear example') , and here's the EasyClear CSS itself:
+In this example, you want to apply the EasyClear to `#container`, since that is the containing element. It will insert a block-level element with the `clear` attribute set to `both`, thus clearing the floats inside the element without crufting up your HTML. You can see an example at work [here](http://danott.dev/examples/easyclear/easyclear_example.html 'EasyClear example') , and here's the EasyClear CSS itself:
 
 ```css
 /* EasyClearing http://www.positioniseverything.net/easyclearing.html */
@@ -86,7 +86,7 @@ In this example, you want to apply the EasyClear to `#container`, since that is 
 /* End hide from IE-mac */
 ```
 
-As you can see, it's pretty simple to employ, and the results are perfect. The best way that I've found to implement this on larger projects is to keep the EasyClear in one place, at the bottom of your main stylesheet, and simply add elements that you need to clear to the declaration itself, as illustrated [here](http://dtott.com/examples/easyclear/easyclear_example2.html 'EasyClear multiple-element example') .
+As you can see, it's pretty simple to employ, and the results are perfect. The best way that I've found to implement this on larger projects is to keep the EasyClear in one place, at the bottom of your main stylesheet, and simply add elements that you need to clear to the declaration itself, as illustrated [here](http://danott.dev/examples/easyclear/easyclear_example2.html 'EasyClear multiple-element example') .
 
 ### Clears For All
 
