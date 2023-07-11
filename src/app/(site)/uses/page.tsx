@@ -96,6 +96,22 @@ export default function Uses() {
                 Bezier JS is used to generate nice curves for the Star Patterns.
               </p>
             </Tool>
+            <Tool
+              title={
+                <>
+                  <span className="font-freeLunch font-normal not-italic">
+                    Free Lunch
+                  </span>{' '}
+                  by SimpleBits
+                </>
+              }
+              href="https://simplebits.shop/"
+            >
+              <p>
+                The title font is a special pre-relase version of a font called
+                Free Lunch by Dan Cederholm of SimpleBits.
+              </p>
+            </Tool>
             <Tool title="Prettier" href="https://prettier.io/">
               Don&rsquo;t leave home without it!
             </Tool>
