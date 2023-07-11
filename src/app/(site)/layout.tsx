@@ -59,7 +59,7 @@ export default function RootLayout({
     <>
       {process.env.NODE_ENV === 'production' && (
         <Script
-          data-domain="dtott.com"
+          data-domain="danott.dev"
           src="https://plausible.io/js/plausible.js"
         />
       )}
