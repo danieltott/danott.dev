@@ -59,7 +59,6 @@ export default function StarCanvas() {
 
           const curve = getCurve(steps);
 
-
           ctx.lineWidth = 1;
           ctx.strokeStyle = '#292524';
           ctx.lineCap = 'round';
@@ -89,12 +88,11 @@ export default function StarCanvas() {
             ctx.scale(leftScale, leftScale);
 
             ctx.fillStyle = random(fillColors);
-            // ctx.rotate(getRandom(0, 360));
-
-            console.log(ctx.getTransform());
 
             ctx.fill(star);
             ctx.stroke(star);
+
+            // draw right star
 
             const rightShift = getRandom(64, 34) + leftShift;
 
@@ -104,9 +102,6 @@ export default function StarCanvas() {
             ctx.scale(rightScale, rightScale);
 
             ctx.fillStyle = random(fillColors);
-            // ctx.rotate(getRandom(0, 360));
-
-            console.log(ctx.getTransform());
 
             ctx.fill(star);
             ctx.stroke(star);
