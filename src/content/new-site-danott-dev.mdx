@@ -1,0 +1,60 @@
+import Image from 'next/image';
+import monster1 from '@/images/monster1.jpg';
+import monster2 from '@/images/monster2.jpg';
+import openGraphImage from '@/images/opengraph-image.png';
+
+export const summary = `<p>It's been <a href="/thoughts/new-site-design-2013-07-15">10 years since I've redesigned my site</a>, so I thought it was about time for a new one.</p>
+<p>I'm also saying goodbye to <a href="https://dtott.com">dtott.com</a>, and hello to <a href="https://danott.dev">danott.dev</a>!</p>`;
+
+export const tags = [];
+
+export const meta = {
+  title: 'A New site and a new home - danott.dev',
+  description: `It's been 10 years since I've redesigned my site.`,
+  date: '2023-07-11 00:00:00',
+  dateUpdated: '2023-07-11 00:00:00',
+};
+
+export const Images = () => (
+  <div className="grid grid-cols-2 gap-4">
+    <Image
+      src={monster1}
+      alt="Photo of a page from The Monster at the End of This Book"
+    />
+    <Image
+      src={monster2}
+      alt="Photo of a page from The Monster at the End of This Book"
+    />
+  </div>
+);
+
+It's been [10 years since I've redesigned my site](/thoughts/new-site-design-2013-07-15), so I thought it was about time for a new one.
+
+I'm also saying goodbye to [dtott.com](https://dtott.com), and hello to [danott.dev](https://danott.dev)!
+
+## danott.dev
+
+I've had the dtott.com domain for a really long time and it's served me well. But, I stopped referring to myself as "Daniel T Ott" in most scenarios a while ago, so it was always sort of hard to explain the "t" in "dtott."
+
+danott.dev is a lot easier to remember and to say out loud, and I'm also a big fan of the .dev TLD, so I'm happy to have a domain with that extension.
+
+## New Design
+
+I've been working on this new design for a while now, and I'm really happy with how it turned out.
+
+### Next.js, Typescript, Tailwind CSS, and MDX
+
+- I based the design and initial structure off of [Tailwind UI Spotlight template](https://tailwindui.com/templates/spotlight), but obviously made some major changes to it.
+
+  For one thing, Spotlight is built using Next.js's Page Router, but I very much wanted to use the App Router ([naturally](/thoughts/nextjs-app-router-talk)). Spotlight is also written in Javascript, and I've been very much in to Typescript lately, so I rewrote the whole thing in Typescript.
+
+- The content is stored in MDX, and imported in to Next.js pages via React Server Components. I was able to pretty easily import my old content to the new platform, so that was good.
+
+### Design Elements
+
+- The design of the site is inspired by one of my all-time favorite children's books, [The Monster at the End of the Book](https://en.wikipedia.org/wiki/The_Monster_at_the_End_of_This_Book:_Starring_Lovable,_Furry_Old_Grover), written by Jon Stone and illustrated by Michael Smollin.
+  <Images />
+- The title font is a special pre-relase version of a font called <span className="font-freeLunch font-normal not-italic">Free Lunch</span> by [Dan Cederholm of SimpleBits](https://simplebits.shop/).
+- The stars are generated using [SVGs with random styles applied to them](https://github.com/danieltott/danott.dev/blob/main/src/components/Star.tsx), and then [positioned on the page](https://github.com/danieltott/danott.dev/blob/main/src/components/Stars.tsx) via [Bezier JS](https://pomax.github.io/bezierjs/).
+- Social Images are generated using [Next.js's <code>ImageResponse</code>](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image#generate-images-using-code-js-ts-tsx)
+  <Image src={openGraphImage} alt="dtott.dev social image" />
