@@ -1,6 +1,6 @@
 import ArticleList, { getArticles, PER_PAGE } from '@/components/ArticleList';
 import { getAllArticles } from '@/lib/getAllArticles';
-import { Metadata } from 'next';
+import { type Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: `Thoughts on Javascript, React, CSS, and more`,

@@ -1,5 +1,5 @@
 import ArticleList, { getArticles } from '@/components/ArticleList';
-import { Metadata } from 'next';
+import { type Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: `Thoughts on Javascript, React, CSS, and more`,

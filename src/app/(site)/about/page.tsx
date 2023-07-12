@@ -4,7 +4,7 @@ import { GitHubIcon, TwitterIcon } from '@/components/SocialIcons';
 import portraitImage from '@/images/portrait.jpg';
 import SocialLink from './SocialLink';
 import MailLink from './MailLink';
-import { Metadata } from 'next';
+import { type Metadata } from 'next';
 import { Prose } from '@/components/Prose';
 
 export const metadata: Metadata = {

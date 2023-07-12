@@ -2,7 +2,7 @@ import type { ImageResponseOptions } from 'next/server';
 import type { ArticleMeta } from '@/lib/types';
 import { readFile } from 'fs/promises';
 import { join } from 'path';
-import { Metadata } from 'next';
+import { type Metadata } from 'next';
 
 export function getThoughtsMeta(slug: string) {
   const {

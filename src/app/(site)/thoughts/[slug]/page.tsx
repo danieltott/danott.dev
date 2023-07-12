@@ -1,7 +1,7 @@
 import type { ArticleMeta } from '@/lib/types';
 import { Prose } from '@/components/Prose';
 import { formatDate } from '@/lib/formatDate';
-import { Metadata } from 'next';
+import { type Metadata } from 'next';
 // import { Metadata, ResolvingMetadata } from 'next'
 import { getAllArticles } from '@/lib/getAllArticles';
 import Codepen from '@/components/Codepen';

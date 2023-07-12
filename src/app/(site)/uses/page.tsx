@@ -2,7 +2,7 @@ import { Card } from '@/components/Card';
 import { Section } from '@/components/Section';
 import { SimpleLayout } from '@/components/SimpleLayout';
 import { LinkHref } from '@/lib/types';
-import { Metadata } from 'next';
+import { type Metadata } from 'next';
 import Link from 'next/link';
 
 function ToolsSection({

@@ -8,7 +8,7 @@ import logoMalleys from '@/app/(site)/projects/logos/malleys.png';
 import { formatDate } from '@/lib/formatDate';
 import { getAllArticles } from '@/lib/getAllArticles';
 import type { SvgElementProps, LinkHref, ArticleListItem } from '@/lib/types';
-import { Metadata } from 'next';
+import { type Metadata } from 'next';
 import avatarImage from '@/images/avatar.jpg';
 import { RssIcon } from '@heroicons/react/20/solid';
 import { Prose } from '@/components/Prose';
