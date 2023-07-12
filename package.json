@@ -11,7 +11,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier --ignore-unknown --write --list-different ."
+    "format": "prettier --ignore-path=.prettierignore --ignore-unknown --write --list-different ."
   },
   "dependencies": {
     "@headlessui/react": "^1.7.15",
@@ -46,8 +46,8 @@
     "typescript": "^5.1.6"
   },
   "devDependencies": {
-    "prettier": "^2.8.8",
-    "prettier-plugin-tailwindcss": "^0.3.0",
+    "prettier": "^3.0.0",
+    "prettier-plugin-tailwindcss": "^0.4.0",
     "ts-node": "^10.9.1"
   }
 }
