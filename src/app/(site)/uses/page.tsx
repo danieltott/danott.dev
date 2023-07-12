@@ -88,7 +88,10 @@ export default function Uses() {
               </p>
               <p>
                 This site was based off of the
-                https://tailwindui.com/templates/spotlight
+                <Link href="https://tailwindui.com/templates/spotlight">
+                  Tailwind UI Spotlight template
+                </Link>
+                .
               </p>
             </Tool>
             <Tool title="Bezier JS" href="https://pomax.github.io/bezierjs/">
