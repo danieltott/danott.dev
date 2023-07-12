@@ -1,6 +1,7 @@
 import '@/styles/tailwind.css';
 import { Kreon } from 'next/font/google';
 import localFont from 'next/font/local';
+import type { Metadata } from 'next';
 
 // Font files can be colocated inside of `app`
 const freeLunch = localFont({
@@ -14,6 +15,35 @@ const bodyFont = Kreon({
   display: 'swap',
   variable: '--font-body',
 });
+
+const baseUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : null) ||
+  'https://danott.dev';
+
+export const metadata: Metadata = {
+  metadataBase: new URL(baseUrl),
+
+  title: {
+    template: '%s ~ Dan Ott',
+    default: 'Full-Stack Design and Development ~ Dan Ott',
+  },
+  manifest: '/site.webmanifest',
+
+  description: `Dan Ott's portfolio, information, and thoughts on HTML, CSS, Javascript, and the web development industry in general.`,
+  alternates: {
+    canonical: 'https://danott.dev',
+    types: {
+      'application/rss+xml': `${baseUrl}/rss/feed.xml`,
+      'application/feed+json': `${baseUrl}/rss/feed.json`,
+    },
+  },
+  twitter: {
+    card: 'summary_large_image',
+    site: '@danieltott',
+    creator: '@danieltott',
+  },
+};
 
 const modeScript = `
 let darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
