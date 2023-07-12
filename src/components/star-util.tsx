@@ -1,4 +1,4 @@
-export function random<T>(list: T[]):T {
+export function random<T>(list: T[]): T {
   return list[Math.floor(Math.random() * list.length)];
 }
 
@@ -137,3 +137,9 @@ export function randomRotate(rotate3d?: boolean) {
     : `${getRandom(0, 360)}deg`;
 }
 
+export function randomScale(
+  randomScaleMin: number = 0.8,
+  randomScaleMax: number = 4
+) {
+  return getRandom(randomScaleMin, randomScaleMax);
+}
