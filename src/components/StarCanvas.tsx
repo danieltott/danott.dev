@@ -85,7 +85,10 @@ function getCurve(
   return [...LUT1, ...LUT2];
 }
 
+
+
 function draw(ctx: CanvasRenderingContext2D, width: number, height: number) {
+
   console.log('drawing');
   let star = new Path2D(
     'M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z'
@@ -189,6 +192,8 @@ function draw(ctx: CanvasRenderingContext2D, width: number, height: number) {
 
   // const baseX = (point.x / 100) * ((width * 5) / 12);
   // const baseY = (point.y / 100) * height;
+
+
 }
 
 export default function StarCanvas() {
@@ -196,6 +201,10 @@ export default function StarCanvas() {
   const animationFrame = useRef<number | null>(null);
   const isAnimating = useRef(false);
   const size = useRef<{ width: number; height: number }>({
+    width: 0,
+    height: 0,
+  });
+  const oldSize = useRef<{ width: number; height: number }>({
     width: 0,
     height: 0,
   });
@@ -223,7 +232,7 @@ export default function StarCanvas() {
   //   }
   // }, [size]);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     console.log('useLayoutEffect');
     function redraw(width: number, height: number) {
       if(animationFrame.current) {
@@ -241,14 +250,12 @@ export default function StarCanvas() {
       }
     }
 
-    const height = window?.document?.body?.offsetHeight;
-    const width = window?.document?.body?.offsetWidth;
+
     // redraw(width, height);
 
     const resize = () => {
       console.log('resizing');
-      const height = window?.document?.body?.offsetHeight;
-      const width = window?.document?.body?.offsetWidth;
+      const {width,height} = size.current;
 
       const canvasEl = canvasRef.current;
       const context = canvasEl?.getContext('2d');
@@ -267,18 +274,38 @@ export default function StarCanvas() {
 
         // const background = context.getImageData(x, y, width, height) (a simple RGBA bitmap of type Uint8ClampedArray), then after wiping the canvas with clearRect() or whatever, restore the background image simply by passing that variable back in the opposite direction: context.putImageData(x, y, background).
       }
-      size.current = { width, height };
+
     };
 
     resize();
-    let timeoutId: number;
-    window.addEventListener('resize', () => {
-      window.clearTimeout(timeoutId);
-      timeoutId = window.setTimeout(resize, 100);
-    });
+    let timeout: number;
+    let interval: number;
+    interval = window.setInterval(() => {
+      const height = window?.document?.body?.offsetHeight;
+      const width = window?.document?.body?.offsetWidth;
+
+      if(height && width ) {
+
+        if(size.current.width !== width || size.current.height !== height) {
+          window.clearTimeout(timeout);
+          size.current = {width, height};
+
+
+
+          timeout = window.setTimeout(() => {
+            if(size.current.width !== oldSize.current.width || size.current.height !== oldSize.current.height) {
+              oldSize.current = size.current;
+              resize();
+            }
+
+          },400);
+        }
+      }
+    },100);
 
     return () => {
-      window.removeEventListener('resize', resize);
+      window.clearTimeout(timeout);
+      window.clearInterval(interval);
       if (animationFrame.current) {
         window.cancelAnimationFrame(animationFrame.current);
       }
