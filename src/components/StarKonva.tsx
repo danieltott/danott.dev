@@ -40,7 +40,7 @@ function generateShapes(width: number, height: number): Config[] {
   ): [StarConfig, StarConfig, StarConfig, GroupConfig] => {
     const id = `${idPrefix}-${i}`;
 
-    const scaleX = randomScale(0.5, 1.5);
+    const scaleX = randomScale(0.3, 1.5);
     const scaleY = getRandom(0.6, 1.4) * scaleX;
 
     const lScaleX = randomScale(0.3, 0.8);
