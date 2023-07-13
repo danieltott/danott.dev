@@ -6,7 +6,17 @@ import { Bezier, type Point } from 'bezier-js';
 
 const STEP_RATIO = 0.02;
 
-function generateShapes() {
+type StarConfig = {
+  id: string;
+  x: number;
+  y: number;
+  rotation: number;
+  scaleX: number;
+  scaleY: number;
+  fill: string;
+}
+
+function generateShapes():[StarConfig,StarConfig,StarConfig][] {
 const steps = Math.floor(window.outerHeight * STEP_RATIO)
 const curve = getCurve(steps, window.outerWidth, window.outerHeight, false)
 console.log({steps, l:curve.length})
@@ -21,7 +31,9 @@ console.log({steps, l:curve.length})
     const rScaleX = randomScale(.3,.8)
     const rScaleY = getRandom(0.7, 1.3) * rScaleX
 
-    return {
+    return [
+    {
+
     id: i.toString(),
     x: point.x,
     y: point.y,
@@ -29,7 +41,8 @@ console.log({steps, l:curve.length})
     scaleX,
     scaleY,
     fill: random(fillColors),
-    l: {
+    },
+    { id: `${i}l`,
       fill: random(fillColors),
       x: point.x + getRandom(-60, -30),
       y: point.y + getRandom(-60, 60),
@@ -37,7 +50,8 @@ console.log({steps, l:curve.length})
       scaleY: lScaleY,
       rotation: Math.random() * 360,
     },
-    r: {
+    {
+      id: `${i}r`,
       fill: random(fillColors),
       x: point.x + getRandom(30, 60),
       y: point.y + getRandom(-60, 60),
@@ -45,8 +59,9 @@ console.log({steps, l:curve.length})
       scaleY: rScaleY,
       rotation: Math.random() * 360,
     }
+  ]
 
-  }});
+  });
 }
 
 function getCurve(
@@ -142,7 +157,32 @@ const defaults = {
   lineJoin:'round',
 } as const
 
+function AnimStar({
+  id,
+    x,
+    y,
+    rotation,
+    scaleX,
+    scaleY,
+    fill,
+}:StarConfig) {
+  return <Star
+  {...defaults}
+  id={id}
+  x={x}
+  y={y}
+  fill={fill}
 
+
+
+  rotation={rotation}
+
+  scaleX={scaleX}
+  scaleY={scaleY}
+
+
+/>
+}
 
 export default function StarCanvas() {
   const [stars, setStars] = useState(INITIAL_STATE);
@@ -187,57 +227,12 @@ export default function StarCanvas() {
   return (
     <Stage width={window.outerWidth} height={window.outerHeight}>
       <Layer>
-        {stars.map((star) => {
+        {stars.map(([base,left,right]) => {
 
-          return (<Fragment key={star.id}>
-          <Star
-            {...defaults}
-            id={star.id}
-            x={star.x}
-            y={star.y}
-            fill={star.fill}
-
-
-
-            rotation={star.rotation}
-
-            scaleX={star.scaleX}
-            scaleY={star.scaleY}
-
-
-          />
-          <Star
-            {...defaults}
-            id={`${star.id}l`}
-            x={star.l.x}
-            y={star.l.y}
-            fill={star.l.fill}
-
-
-
-            rotation={star.l.rotation}
-
-            scaleX={star.l.scaleX}
-            scaleY={star.l.scaleY}
-
-
-          />
-          <Star
-            {...defaults}
-            id={`${star.id}r`}
-            x={star.r.x}
-            y={star.r.y}
-            fill={star.r.fill}
-
-
-
-            rotation={star.r.rotation}
-
-            scaleX={star.r.scaleX}
-            scaleY={star.r.scaleY}
-
-
-          />
+          return (<Fragment key={base.id}>
+          <AnimStar {...base} />
+          <AnimStar {...left} />
+          <AnimStar {...right} />
           </Fragment>
 
         )})}
