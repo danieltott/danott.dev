@@ -19,31 +19,46 @@ function getCurve(steps: number, width:number,height:number, flip: boolean = fal
   // const xLow = flip ? 14 : 0;
   // const xHigh = flip ? 100 : 86;
 
-  const xBoxStart = flip ? (width * 7/12) : 0;
-  const xBoxEnd = flip ? width : (width * 5/12);
+  const boxWidth = width * 5/12;
+  const boxPadding = boxWidth * .14;
 
-  const xLow = xBoxStart + xBoxStart * .14;
-  const xHigh = flip ? width : xBoxEnd - xBoxEnd * .86;
+  const xBoxStart = flip ? (width - boxWidth) : 0;
+  const xBoxEnd = flip ? width : boxWidth;
 
-  const startX = flip ? getRandom(xBoxEnd - xBoxEnd * .14, xBoxEnd) : getRandom(0, xBoxStart + xBoxStart * .14);
+  const xLow = flip ? xBoxStart + boxPadding : 0;
+  const xHigh = flip ? width : xBoxEnd - boxPadding;
 
-  const lastPoint = { x: getRandom(xLow, xHigh), y: height / 2 };
+  console.log({xBoxStart, xBoxEnd, xLow, xHigh})
+
+  const startX = getRandom(xBoxStart + boxPadding, xBoxEnd - boxPadding);
+
+  const midpoint = { x: getRandom(xLow, xHigh), y: height / 2 };
 
   const curve1 = new Bezier(
     { x: startX, y: 0 },
     { x: getRandom(xBoxStart, xBoxEnd / 2), y: getRandom(height * .1, height * .4) },
     { x: getRandom(xBoxEnd / 2, xBoxEnd), y: getRandom(height * .10, height * .40) },
-    lastPoint
+    midpoint
   );
+
+  console.log({ x: startX, y: 0 },
+    { x: getRandom(xBoxStart, xBoxEnd / 2), y: getRandom(height * .1, height * .4) },
+    { x: getRandom(xBoxEnd / 2, xBoxEnd), y: getRandom(height * .10, height * .40) },
+    midpoint)
 
   var LUT1 = curve1.getLUT(steps / 2);
 
   const curve2 = new Bezier(
-    lastPoint,
+    midpoint,
     { x: getRandom(xBoxStart, xBoxEnd / 2), y: getRandom(height * .60, height * .90) },
     { x: getRandom(xBoxEnd / 2, xBoxEnd), y: getRandom(height * .60, height * .90) },
     { x: getRandom(xLow, xHigh), y: height }
   );
+
+  console.log(midpoint,
+    { x: getRandom(xBoxStart, xBoxEnd / 2), y: getRandom(height * .60, height * .90) },
+    { x: getRandom(xBoxEnd / 2, xBoxEnd), y: getRandom(height * .60, height * .90) },
+    { x: getRandom(xLow, xHigh), y: height })
 
   var LUT2 = curve2.getLUT(steps / 2);
 
