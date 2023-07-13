@@ -112,18 +112,21 @@ function getCurve(
   const xBoxStart = flip ? width - boxWidth : 0;
   const xBoxEnd = flip ? width : boxWidth;
 
-  const xLow = flip ? xBoxStart + boxPadding : 0;
-  const xHigh = flip ? width : xBoxEnd - boxPadding;
+  let xLow:number;
+  let xHigh:number;
 
   // console.log({xBoxStart, xBoxEnd, xLow, xHigh})
-  let startX: number;
+
   if (width > 1408) {
-    startX = flip
-      ? getRandom(width / 2 + 704, width)
-      : getRandom(0, width / 2 - 704);
+    xLow = flip ? width / 2 + 704 : 0;
+    xHigh = flip ? width : width / 2 - 704;
+
   } else {
-    startX = flip ? getRandom(width - 64, width) : getRandom(0, 64);
+    xLow = flip ? width - 64 : 0;
+    xHigh = flip ? width : 64;
   }
+
+  const startX = getRandom(xLow, xHigh);
 
   console.log({
     boxWidth,
