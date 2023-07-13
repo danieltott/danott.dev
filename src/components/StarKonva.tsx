@@ -7,8 +7,9 @@ import { Bezier, type Point } from 'bezier-js';
 const STEP_RATIO = 0.02;
 
 function generateShapes() {
-
-  const curve = getCurve(Math.floor(window.outerHeight * STEP_RATIO), window.outerWidth, window.outerHeight, false)
+const steps = Math.floor(window.outerHeight * STEP_RATIO)
+const curve = getCurve(steps, window.outerWidth, window.outerHeight, false)
+console.log({steps, l:curve.length})
 
   return curve.map((point:Point, i) => {
     const scaleX = randomScale()
