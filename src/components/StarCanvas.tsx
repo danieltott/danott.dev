@@ -105,6 +105,8 @@ export default function StarCanvas() {
             ctx.fill(star);
             ctx.stroke(star);
 
+            ctx.save();
+
             // draw left star
 
             const leftShift = getRandom(64, 34);
@@ -122,8 +124,10 @@ export default function StarCanvas() {
             ctx.fill(star);
             ctx.stroke(star);
 
-            ctx.rotate(0 - leftRotate);
-            ctx.scale(1/leftScaleX, 1/leftScaleY);
+            ctx.restore();
+
+            // ctx.rotate(0 - leftRotate);
+            // ctx.scale(1/leftScaleX, 1/leftScaleY);
 
             // draw right star
 
