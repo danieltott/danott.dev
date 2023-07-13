@@ -1,8 +1,9 @@
 'use client';
-import {Fragment, useEffect, useRef, useState} from 'react';
-import { Stage, Layer, Star, Text } from 'react-konva';
+import { Fragment, useEffect, useRef, useState } from 'react';
+import { Stage, Layer, Star, Group } from 'react-konva';
 import { fillColors, random, getRandom, randomScale } from './star-util';
 import { Bezier, type Point } from 'bezier-js';
+import Konva from 'konva';
 
 const STEP_RATIO = 0.02;
 
@@ -10,58 +11,86 @@ type StarConfig = {
   id: string;
   x: number;
   y: number;
+  rotation?: number;
+  scaleX?: number;
+  scaleY?: number;
+  fill: string;
+};
+
+type GroupConfig = {
+  id: string;
+  x: number;
+  y: number;
   rotation: number;
   scaleX: number;
   scaleY: number;
-  fill: string;
-}
+};
 
-function generateShapes():[StarConfig,StarConfig,StarConfig][] {
-const steps = Math.floor(window.outerHeight * STEP_RATIO)
-const curve = getCurve(steps, window.outerWidth, window.outerHeight, false)
-console.log({steps, l:curve.length})
+type Config = [StarConfig, StarConfig, StarConfig, GroupConfig];
 
-  return curve.map((point:Point, i) => {
-    const scaleX = randomScale(.5,1.5)
-    const scaleY = getRandom(0.7, 1.3) * scaleX
+function generateShapes(width: number, height: number): Config[] {
+  const steps = Math.floor(height * STEP_RATIO);
 
-    const lScaleX = randomScale(.3,.8)
-    const lScaleY = getRandom(0.7, 1.3) * lScaleX
+  const mapFn = (
+    idPrefix: string,
+    i: number,
+    point: Point
+  ): [StarConfig, StarConfig, StarConfig, GroupConfig] => {
+    const id = `${idPrefix}-${i}`;
 
-    const rScaleX = randomScale(.3,.8)
-    const rScaleY = getRandom(0.7, 1.3) * rScaleX
+    const scaleX = randomScale(0.5, 1.5);
+    const scaleY = getRandom(0.6, 1.4) * scaleX;
+
+    const lScaleX = randomScale(0.3, 0.8);
+    const lScaleY = getRandom(0.7, 1.3) * lScaleX;
+
+    const rScaleX = randomScale(0.3, 0.8);
+    const rScaleY = getRandom(0.7, 1.3) * rScaleX;
 
     return [
-    {
+      {
+        id: `${id}-b`,
+        x: 0,
+        y: 0,
+        rotation: Math.random() * 360,
+        fill: random(fillColors),
+      },
+      {
+        id: `${id}-l`,
+        fill: random(fillColors),
+        x: getRandom(-60, -30),
+        y: getRandom(-60, 60),
+        scaleX: lScaleX,
+        scaleY: lScaleY,
+        rotation: Math.random() * 360,
+      },
+      {
+        id: `${id}-r`,
+        fill: random(fillColors),
+        x: getRandom(30, 60),
+        y: getRandom(-60, 60),
+        scaleX: rScaleX,
+        scaleY: rScaleY,
+        rotation: Math.random() * 360,
+      },
+      {
+        id: `${id}-l`,
+        x: point.x,
+        y: point.y,
+        scaleX,
+        scaleY,
+        rotation: Math.random() * 360,
+      },
+    ];
+  };
 
-    id: i.toString(),
-    x: point.x,
-    y: point.y,
-    rotation: Math.random() * 360,
-    scaleX,
-    scaleY,
-    fill: random(fillColors),
-    },
-    { id: `${i}l`,
-      fill: random(fillColors),
-      x: point.x + getRandom(-60, -30),
-      y: point.y + getRandom(-60, 60),
-      scaleX: lScaleX,
-      scaleY: lScaleY,
-      rotation: Math.random() * 360,
-    },
-    {
-      id: `${i}r`,
-      fill: random(fillColors),
-      x: point.x + getRandom(30, 60),
-      y: point.y + getRandom(-60, 60),
-      scaleX: rScaleX,
-      scaleY: rScaleY,
-      rotation: Math.random() * 360,
-    }
-  ]
+  const curve1 = getCurve(steps, width, height, false);
+  const curve2 = getCurve(steps, width, height, true);
 
-  });
+  return [
+    ...curve1.map((point, i) => mapFn('LEFT', i, point)),
+    ...curve2.map((point, i) => mapFn('RIGHT', i, point)),
+  ];
 }
 
 function getCurve(
@@ -94,149 +123,234 @@ function getCurve(
     xLow,
     xHigh,
     startX,
-  })
-
-  const midpoint = { x: getRandom(xLow, xHigh), y: height / 2 };
+  });
 
   const curve1 = new Bezier(
     { x: startX, y: 0 },
     {
-      x: xBoxStart - width * .4,
-      y: getRandom(height * 0.2, height * 0.4),
+      x: xBoxStart - width * 0.4,
+      y: getRandom(height * 0.2, height * 0.8),
     },
     {
-      x: xBoxEnd + width * .4,
-      y: getRandom(height * 0.6, height * 0.8),
+      x: xBoxEnd + width * 0.4,
+      y: getRandom(height * 0.2, height * 0.8),
     },
     { x: getRandom(xLow, xHigh), y: height }
   );
 
   return curve1.getLUT(steps);
-
-  // console.log({ x: startX, y: 0 },
-  //   { x: getRandom(xBoxStart, xBoxEnd / 2), y: getRandom(height * .1, height * .4) },
-  //   { x: getRandom(xBoxEnd / 2, xBoxEnd), y: getRandom(height * .10, height * .40) },
-  //   midpoint)
-
-  // var LUT1 = curve1.getLUT(steps / 2);
-
-  // const curve2 = new Bezier(
-  //   midpoint,
-  //   {
-  //     x: getRandom(xBoxStart, xBoxEnd / 2),
-  //     y: getRandom(height * 0.6, height * 0.9),
-  //   },
-  //   {
-  //     x: getRandom(xBoxEnd / 2, xBoxEnd),
-  //     y: getRandom(height * 0.6, height * 0.9),
-  //   },
-  //   { x: getRandom(xLow, xHigh), y: height }
-  // );
-
-  // // console.log(midpoint,
-  // //   { x: getRandom(xBoxStart, xBoxEnd / 2), y: getRandom(height * .60, height * .90) },
-  // //   { x: getRandom(xBoxEnd / 2, xBoxEnd), y: getRandom(height * .60, height * .90) },
-  // //   { x: getRandom(xLow, xHigh), y: height })
-
-  // var LUT2 = curve2.getLUT(steps / 2);
-
-  // return [...LUT1, ...LUT2];
 }
 
-const INITIAL_STATE = generateShapes();
+const INITIAL_STATE = generateShapes(
+  window.document.body.offsetWidth,
+  window.document.body.offsetHeight
+);
+
+console.log({ INITIAL_STATE_L: INITIAL_STATE.length });
 
 const defaults = {
-  numPoints:5,
-  innerRadius:12,
-  outerRadius:24,
+  numPoints: 5,
+  innerRadius: 12,
+  outerRadius: 24,
+
+  stroke: '#292524',
+  strokeWidth: 2,
+  lineCap: 'round',
+  lineJoin: 'round',
+} as const;
+
+function ChildStar({ config }: { config: StarConfig }) {
+  const [savedConfig, setSavedConfig] = useState<StarConfig>(config);
+  return (
+    <Star
+      listening={false}
+      numPoints={5}
+      innerRadius={12}
+      outerRadius={24}
+      strokeWidth={2}
+      stroke="#292524"
+      lineCap="round"
+      lineJoin="round"
+      {...savedConfig}
+    />
+  );
+}
 
 
-  stroke:"#292524",
-  strokeWidth:2,
-  lineCap:'round',
-  lineJoin:'round',
-} as const
 
-function AnimStar({
-  id,
-    x,
-    y,
-    rotation,
-    scaleX,
-    scaleY,
-    fill,
-}:StarConfig) {
-  return <Star
-  {...defaults}
-  id={id}
-  x={x}
-  y={y}
-  fill={fill}
+function AnimGroup({ config }: { config: Config }) {
+  const [base, left, right, {id, ...group}] = config;
 
+  const groupRef = useRef<Konva.Group|null>(null);
 
+  const oldConfig = useRef<Omit<GroupConfig, 'id'>>({
+    x:0,
+    y:0,
+    rotation:0,
+    scaleX:1,
+    scaleY:1
+  });
 
-  rotation={rotation}
+  useEffect(() => {
+    const node = groupRef.current
+    if(node && (
+      oldConfig.current.x !== group.x ||
+      oldConfig.current.y !== group.y ||
+      oldConfig.current.rotation !== group.rotation ||
+      oldConfig.current.scaleX !== group.scaleX ||
+      oldConfig.current.scaleY !== group.scaleY
 
-  scaleX={scaleX}
-  scaleY={scaleY}
+    )) {
+      node.to({
+        duration: 1,
+        easing: Konva.Easings.EaseInOut,
+        onFinish: () => {
+          oldConfig.current = {
+            ...group
+          }
+        },
+        ...group
+      })}
+  }, [group]);
 
+  return (
+    <Group listening={false}
+    id='id' ref={(node) => {
+      groupRef.current = node;
+    }}>
+      <ChildStar config={base} />
+      <ChildStar config={left} />
+      <ChildStar config={right} />
+    </Group>
+  );
+}
 
-/>
+function AnimStar({ id, ...props }: StarConfig) {
+  const starRef = useRef<Konva.Star | null>(null);
+
+  const oldConfig = useRef<Omit<StarConfig, 'id'>>({
+    ...props,
+  });
+
+  useEffect(() => {
+    const node = starRef.current;
+    if (
+      node &&
+      (oldConfig.current.x !== props.x ||
+        oldConfig.current.y !== props.y ||
+        oldConfig.current.rotation !== props.rotation ||
+        oldConfig.current.scaleX !== props.scaleX ||
+        oldConfig.current.scaleY !== props.scaleY ||
+        oldConfig.current.fill !== props.fill)
+    ) {
+      node.to({
+        duration: 1,
+        easing: Konva.Easings.EaseInOut,
+        onFinish: () => {
+          oldConfig.current = {
+            ...props,
+          };
+        },
+        ...props,
+      });
+    }
+  }, [props]);
+
+  useEffect(() => {
+    const node = starRef.current;
+    let timeout: number;
+    if (node) {
+      timeout = window.setTimeout(() => {
+        node.to({
+          duration: 0.5,
+          easing: Konva.Easings.EaseInOut,
+          opacity: 1,
+        });
+      }, 10);
+    }
+
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, []);
+
+  return (
+    <Star
+      {...defaults}
+      listening={false}
+      numPoints={5}
+      innerRadius={12}
+      outerRadius={24}
+      strokeWidth={2}
+      stroke="#292524"
+      lineCap="round"
+      lineJoin="round"
+      ref={(node) => {
+        starRef.current = node;
+      }}
+      id={id}
+      {...oldConfig.current}
+      opacity={0}
+    />
+  );
 }
 
 export default function StarCanvas() {
-  const [stars, setStars] = useState(INITIAL_STATE);
+  const [stars, setStars] = useState<Config[]>([]);
+  const [windowSize, setWindowSize] = useState({
+    width: window.document.body.offsetWidth,
+    height: window.document.body.offsetHeight,
+  });
   const size = useRef<{ width: number; height: number }>({
-    width: 0,
-    height: 0,
+    width: window.document.body.offsetWidth,
+    height: window.document.body.offsetHeight,
   });
   const oldSize = useRef<{ width: number; height: number }>({
-    width: 0,
-    height: 0,
+    width: window.document.body.offsetWidth,
+    height: window.document.body.offsetHeight,
   });
 
-
   useEffect(() => {
+    setStars(generateShapes(size.current.width, size.current.height));
+
     let timeout: number;
     let interval: number;
     interval = window.setInterval(() => {
-      const height = window?.document?.body?.offsetHeight;
-      const width = window?.document?.body?.offsetWidth;
+      const height = window.document.body.offsetHeight;
+      const width = window.document.body.offsetWidth;
 
-      if(height && width ) {
-
-        if(size.current.width !== width || size.current.height !== height) {
+      if (height && width) {
+        if (size.current.width !== width || size.current.height !== height) {
           window.clearTimeout(timeout);
-          size.current = {width, height};
-
-
+          size.current = { width, height };
 
           timeout = window.setTimeout(() => {
-            if(size.current.width !== oldSize.current.width || size.current.height !== oldSize.current.height) {
+            if (
+              size.current.width !== oldSize.current.width ||
+              size.current.height !== oldSize.current.height
+            ) {
               oldSize.current = size.current;
-              setStars(generateShapes());
+              setStars(generateShapes(size.current.width, size.current.height));
+              setWindowSize(size.current);
             }
-
-          },400);
+          }, 100);
         }
       }
-    },100);
-  },[])
+    }, 50);
 
+    return () => {
+      clearInterval(interval);
+      clearTimeout(timeout);
+    };
+  }, []);
 
   return (
-    <Stage width={window.outerWidth} height={window.outerHeight}>
+    <Stage width={windowSize.width} height={windowSize.height}>
       <Layer>
-        {stars.map(([base,left,right]) => {
-
-          return (<Fragment key={base.id}>
-          <AnimStar {...base} />
-          <AnimStar {...left} />
-          <AnimStar {...right} />
-          </Fragment>
-
-        )})}
+        {stars.map((config) => {
+          return <AnimGroup config={config} key={config[3].id} />;
+        })}
       </Layer>
     </Stage>
   );
-};
+}
