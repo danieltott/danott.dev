@@ -1,5 +1,5 @@
 'use client';
-import { Fragment, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Stage, Layer, Star, Group } from 'react-konva';
 import { fillColors, random, getRandom, randomScale } from './star-util';
 import { Bezier, type Point } from 'bezier-js';
@@ -24,6 +24,8 @@ type GroupConfig = {
   rotation: number;
   scaleX: number;
   scaleY: number;
+  offsetX: number;
+  offsetY: number;
 };
 
 type Config = [StarConfig, StarConfig, StarConfig, GroupConfig];
@@ -80,6 +82,8 @@ function generateShapes(width: number, height: number): Config[] {
         scaleX,
         scaleY,
         rotation: Math.random() * 360,
+        offsetX: getRandom(-10, 10),
+        offsetY: getRandom(-10, 10),
       },
     ];
   };
@@ -112,8 +116,14 @@ function getCurve(
   const xHigh = flip ? width : xBoxEnd - boxPadding;
 
   // console.log({xBoxStart, xBoxEnd, xLow, xHigh})
-
-  const startX = getRandom(xBoxStart + boxPadding, xBoxEnd - boxPadding);
+  let startX: number;
+  if (width > 1408) {
+    startX = flip
+      ? getRandom(width / 2 + 704, width)
+      : getRandom(0, width / 2 - 704);
+  } else {
+    startX = flip ? getRandom(width - 64, width) : getRandom(0, 64);
+  }
 
   console.log({
     boxWidth,
@@ -128,11 +138,11 @@ function getCurve(
   const curve1 = new Bezier(
     { x: startX, y: 0 },
     {
-      x: xBoxStart - width * 0.4,
+      x: xBoxStart - boxWidth * 0.4,
       y: getRandom(height * 0.2, height * 0.8),
     },
     {
-      x: xBoxEnd + width * 0.4,
+      x: xBoxEnd + boxWidth * 0.4,
       y: getRandom(height * 0.2, height * 0.8),
     },
     { x: getRandom(xLow, xHigh), y: height }
@@ -141,26 +151,8 @@ function getCurve(
   return curve1.getLUT(steps);
 }
 
-const INITIAL_STATE = generateShapes(
-  window.document.body.offsetWidth,
-  window.document.body.offsetHeight
-);
-
-console.log({ INITIAL_STATE_L: INITIAL_STATE.length });
-
-const defaults = {
-  numPoints: 5,
-  innerRadius: 12,
-  outerRadius: 24,
-
-  stroke: '#292524',
-  strokeWidth: 2,
-  lineCap: 'round',
-  lineJoin: 'round',
-} as const;
-
 function ChildStar({ config }: { config: StarConfig }) {
-  const [savedConfig, setSavedConfig] = useState<StarConfig>(config);
+  const [savedConfig] = useState<StarConfig>(config);
   return (
     <Star
       listening={false}
@@ -176,122 +168,56 @@ function ChildStar({ config }: { config: StarConfig }) {
   );
 }
 
-
-
 function AnimGroup({ config }: { config: Config }) {
-  const [base, left, right, {id, ...group}] = config;
+  const [base, left, right, { id, ...group }] = config;
 
-  const groupRef = useRef<Konva.Group|null>(null);
+  const groupRef = useRef<Konva.Group | null>(null);
 
   const oldConfig = useRef<Omit<GroupConfig, 'id'>>({
-    x:0,
-    y:0,
-    rotation:0,
-    scaleX:1,
-    scaleY:1
+    x: 0,
+    y: 0,
+    rotation: 0,
+    scaleX: 1,
+    scaleY: 1,
+    offsetX: 0,
+    offsetY: 0,
   });
 
   useEffect(() => {
-    const node = groupRef.current
-    if(node && (
-      oldConfig.current.x !== group.x ||
-      oldConfig.current.y !== group.y ||
-      oldConfig.current.rotation !== group.rotation ||
-      oldConfig.current.scaleX !== group.scaleX ||
-      oldConfig.current.scaleY !== group.scaleY
-
-    )) {
-      node.to({
-        duration: 1,
-        easing: Konva.Easings.EaseInOut,
-        onFinish: () => {
-          oldConfig.current = {
-            ...group
-          }
-        },
-        ...group
-      })}
-  }, [group]);
-
-  return (
-    <Group listening={false}
-    id='id' ref={(node) => {
-      groupRef.current = node;
-    }}>
-      <ChildStar config={base} />
-      <ChildStar config={left} />
-      <ChildStar config={right} />
-    </Group>
-  );
-}
-
-function AnimStar({ id, ...props }: StarConfig) {
-  const starRef = useRef<Konva.Star | null>(null);
-
-  const oldConfig = useRef<Omit<StarConfig, 'id'>>({
-    ...props,
-  });
-
-  useEffect(() => {
-    const node = starRef.current;
+    const node = groupRef.current;
     if (
       node &&
-      (oldConfig.current.x !== props.x ||
-        oldConfig.current.y !== props.y ||
-        oldConfig.current.rotation !== props.rotation ||
-        oldConfig.current.scaleX !== props.scaleX ||
-        oldConfig.current.scaleY !== props.scaleY ||
-        oldConfig.current.fill !== props.fill)
+      (oldConfig.current.x !== group.x ||
+        oldConfig.current.y !== group.y ||
+        oldConfig.current.rotation !== group.rotation ||
+        oldConfig.current.scaleX !== group.scaleX ||
+        oldConfig.current.scaleY !== group.scaleY)
     ) {
       node.to({
         duration: 1,
         easing: Konva.Easings.EaseInOut,
         onFinish: () => {
           oldConfig.current = {
-            ...props,
+            ...group,
           };
         },
-        ...props,
+        ...group,
       });
     }
-  }, [props]);
-
-  useEffect(() => {
-    const node = starRef.current;
-    let timeout: number;
-    if (node) {
-      timeout = window.setTimeout(() => {
-        node.to({
-          duration: 0.5,
-          easing: Konva.Easings.EaseInOut,
-          opacity: 1,
-        });
-      }, 10);
-    }
-
-    return () => {
-      clearTimeout(timeout);
-    };
-  }, []);
+  }, [group]);
 
   return (
-    <Star
-      {...defaults}
+    <Group
       listening={false}
-      numPoints={5}
-      innerRadius={12}
-      outerRadius={24}
-      strokeWidth={2}
-      stroke="#292524"
-      lineCap="round"
-      lineJoin="round"
+      id="id"
       ref={(node) => {
-        starRef.current = node;
+        groupRef.current = node;
       }}
-      id={id}
-      {...oldConfig.current}
-      opacity={0}
-    />
+    >
+      <ChildStar config={base} />
+      <ChildStar config={left} />
+      <ChildStar config={right} />
+    </Group>
   );
 }
 
