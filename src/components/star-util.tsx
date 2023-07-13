@@ -139,7 +139,7 @@ export function randomRotate(rotate3d?: boolean) {
 
 export function randomScale(
   randomScaleMin: number = 0.8,
-  randomScaleMax: number = 2
+  randomScaleMax: number = 4
 ) {
   return getRandom(randomScaleMin, randomScaleMax);
 }

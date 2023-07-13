@@ -1,5 +1,5 @@
 'use client';
-import {useState} from 'react';
+import {Fragment, useEffect, useRef, useState} from 'react';
 import { Stage, Layer, Star, Text } from 'react-konva';
 import { fillColors, random, getRandom, randomScale } from './star-util';
 import { Bezier, type Point } from 'bezier-js';
@@ -12,17 +12,39 @@ const curve = getCurve(steps, window.outerWidth, window.outerHeight, false)
 console.log({steps, l:curve.length})
 
   return curve.map((point:Point, i) => {
-    const scaleX = randomScale()
+    const scaleX = randomScale(.5,1.5)
     const scaleY = getRandom(0.7, 1.3) * scaleX
+
+    const lScaleX = randomScale(.3,.8)
+    const lScaleY = getRandom(0.7, 1.3) * lScaleX
+
+    const rScaleX = randomScale(.3,.8)
+    const rScaleY = getRandom(0.7, 1.3) * rScaleX
 
     return {
     id: i.toString(),
     x: point.x,
     y: point.y,
-    rotation: Math.random() * 180,
+    rotation: Math.random() * 360,
     scaleX,
     scaleY,
     fill: random(fillColors),
+    l: {
+      fill: random(fillColors),
+      x: point.x + getRandom(-60, -30),
+      y: point.y + getRandom(-60, 60),
+      scaleX: lScaleX,
+      scaleY: lScaleY,
+      rotation: Math.random() * 360,
+    },
+    r: {
+      fill: random(fillColors),
+      x: point.x + getRandom(30, 60),
+      y: point.y + getRandom(-60, 60),
+      scaleX: rScaleX,
+      scaleY: rScaleY,
+      rotation: Math.random() * 360,
+    }
 
   }});
 }
@@ -108,9 +130,58 @@ function getCurve(
 
 const INITIAL_STATE = generateShapes();
 
+const defaults = {
+  numPoints:5,
+  innerRadius:12,
+  outerRadius:24,
+
+
+  stroke:"#292524",
+  strokeWidth:2,
+  lineCap:'round',
+  lineJoin:'round',
+} as const
+
+
+
 export default function StarCanvas() {
   const [stars, setStars] = useState(INITIAL_STATE);
+  const size = useRef<{ width: number; height: number }>({
+    width: 0,
+    height: 0,
+  });
+  const oldSize = useRef<{ width: number; height: number }>({
+    width: 0,
+    height: 0,
+  });
 
+
+  useEffect(() => {
+    let timeout: number;
+    let interval: number;
+    interval = window.setInterval(() => {
+      const height = window?.document?.body?.offsetHeight;
+      const width = window?.document?.body?.offsetWidth;
+
+      if(height && width ) {
+
+        if(size.current.width !== width || size.current.height !== height) {
+          window.clearTimeout(timeout);
+          size.current = {width, height};
+
+
+
+          timeout = window.setTimeout(() => {
+            if(size.current.width !== oldSize.current.width || size.current.height !== oldSize.current.height) {
+              oldSize.current = size.current;
+              setStars(generateShapes());
+            }
+
+          },400);
+        }
+      }
+    },100);
+  },[])
 
 
   return (
@@ -118,21 +189,14 @@ export default function StarCanvas() {
       <Layer>
         {stars.map((star) => {
 
-          return (
+          return (<Fragment key={star.id}>
           <Star
-            key={star.id}
+            {...defaults}
             id={star.id}
             x={star.x}
             y={star.y}
-            numPoints={5}
-            innerRadius={12}
-            outerRadius={24}
             fill={star.fill}
 
-            stroke="#292524"
-            strokeWidth={2}
-            lineCap='round'
-            lineJoin='round'
 
 
             rotation={star.rotation}
@@ -142,6 +206,40 @@ export default function StarCanvas() {
 
 
           />
+          <Star
+            {...defaults}
+            id={`${star.id}l`}
+            x={star.l.x}
+            y={star.l.y}
+            fill={star.l.fill}
+
+
+
+            rotation={star.l.rotation}
+
+            scaleX={star.l.scaleX}
+            scaleY={star.l.scaleY}
+
+
+          />
+          <Star
+            {...defaults}
+            id={`${star.id}r`}
+            x={star.r.x}
+            y={star.r.y}
+            fill={star.r.fill}
+
+
+
+            rotation={star.r.rotation}
+
+            scaleX={star.r.scaleX}
+            scaleY={star.r.scaleY}
+
+
+          />
+          </Fragment>
+
         )})}
       </Layer>
     </Stage>
