@@ -124,7 +124,9 @@ export const fillColors = [
   '#642301',
 ];
 
-// calc((100vw - 76rem) / 2)
+export function getRandomColor() {
+  return random(fillColors);
+}
 
 export function getRandom(min: number, max: number, round: number = 2) {
   const num = Math.random() * (max - min) + min;

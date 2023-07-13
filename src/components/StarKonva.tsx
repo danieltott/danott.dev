@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
 import { Stage, Layer, Star, Group } from 'react-konva';
-import { fillColors, random, getRandom, randomScale } from './star-util';
+import { getRandomColor, getRandom, randomScale } from './star-util';
 import { Bezier, type Point } from 'bezier-js';
 import Konva from 'konva';
 
@@ -55,11 +55,11 @@ function generateShapes(width: number, height: number): Config[] {
         x: 0,
         y: 0,
         rotation: Math.random() * 360,
-        fill: random(fillColors),
+        fill: getRandomColor(),
       },
       {
         id: `${id}-l`,
-        fill: random(fillColors),
+        fill: getRandomColor(),
         x: getRandom(-60, -30),
         y: getRandom(-60, 60),
         scaleX: lScaleX,
@@ -68,7 +68,7 @@ function generateShapes(width: number, height: number): Config[] {
       },
       {
         id: `${id}-r`,
-        fill: random(fillColors),
+        fill: getRandomColor(),
         x: getRandom(30, 60),
         y: getRandom(-60, 60),
         scaleX: rScaleX,

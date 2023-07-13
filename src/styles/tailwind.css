@@ -27,10 +27,6 @@
     lg:text-6xl;
   }
 
-  .star {
-    @apply absolute left-0 top-0 h-8 w-8  stroke-current stroke-1;
-  }
-
   .link-hover-colors {
     @apply transition-colors duration-150 ease-in-out hover:text-primary-600 dark:hover:text-primary-300;
   }
@@ -45,17 +41,5 @@
 
   .text-link {
     @apply link-colors link-underline font-semibold;
-  }
-
-  .starlist {
-    @apply absolute top-0 z-10 w-5/12 overflow-y-hidden text-stone-800 dark:text-stone-600;
-  }
-
-  .starlist div {
-    @apply absolute flex h-8 w-8 -translate-x-1/2;
-  }
-
-  .starlist svg {
-    @apply absolute left-0 top-0 h-8 w-8;
   }
 }
