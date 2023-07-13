@@ -103,24 +103,12 @@ function getCurve(
   height: number,
   flip: boolean = false
 ) {
-  // const xLow = flip ? 14 : 0;
-  // const xHigh = flip ? 100 : 86;
-
-  // const boxWidth = (width * 5) / 12;
-  // const boxPadding = boxWidth * 0.14;
-
-  // const xBoxStart = flip ? width - boxWidth : 0;
-  // const xBoxEnd = flip ? width : boxWidth;
-
-  let xLow:number;
-  let xHigh:number;
-
-  // console.log({xBoxStart, xBoxEnd, xLow, xHigh})
+  let xLow: number;
+  let xHigh: number;
 
   if (width > 1408) {
     xLow = flip ? width - (width - 1120) / 2 : 0;
     xHigh = flip ? width : (width - 1120) / 2;
-
   } else {
     xLow = flip ? width - 64 : 0;
     xHigh = flip ? width : 64;
@@ -129,7 +117,7 @@ function getCurve(
   const xWidth = xHigh - xLow;
 
   const xStart = getRandom(xLow, xHigh);
-  const percentage = xWidth * .4
+  const percentage = xWidth * 0.4;
 
   console.log({
     xLow,
@@ -137,27 +125,17 @@ function getCurve(
     xWidth,
     xStart,
     percentage,
-  })
-
-  // console.log({
-  //   boxWidth,
-  //   boxPadding,
-  //   xBoxStart,
-  //   xBoxEnd,
-  //   xLow,
-  //   xHigh,
-  //   xStart,
-  // });
+  });
 
   const curve1 = new Bezier(
     { x: xStart, y: 0 },
     {
       x: xLow - xWidth,
-      y: getRandom(0, height/2),
+      y: getRandom(0, height / 2),
     },
     {
       x: xHigh + xWidth,
-      y: getRandom(height/2,height),
+      y: getRandom(height / 2, height),
     },
     { x: getRandom(xLow, xHigh), y: height }
   );
