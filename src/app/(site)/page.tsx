@@ -159,7 +159,7 @@ function Resume() {
         {resume.map((role, roleIndex) => (
           <li key={roleIndex} className="flex gap-4">
             <div className="relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full shadow-md shadow-stone-800/5 ring-1 ring-stone-900/5 dark:border dark:border-stone-700/50 dark:bg-stone-800 dark:ring-0">
-              <Image src={role.logo} alt="" className="h-7 w-7 rounded-full" />
+              <Image src={role.logo} alt="" sizes="28px" className="h-7 w-7 rounded-full" />
             </div>
             <dl className="flex flex-auto flex-wrap gap-x-2">
               <dt className="sr-only">Company</dt>
