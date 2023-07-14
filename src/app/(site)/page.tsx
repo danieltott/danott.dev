@@ -5,6 +5,9 @@ import { Container } from '@/components/Container';
 import { GitHubIcon, TwitterIcon } from '@/components/SocialIcons';
 import logoVC from '@/app/(site)/projects/logos/virtual-coffee.png';
 import logoMalleys from '@/app/(site)/projects/logos/malleys.png';
+import logoCentry from '@/app/(site)/projects/logos/century.png';
+import logoSunPost from '@/app/(site)/projects/logos/sun-post.png';
+import logoOwu from '@/app/(site)/projects/logos/owu.png';
 import { formatDate } from '@/lib/formatDate';
 import { getAllArticles } from '@/lib/getAllArticles';
 import type { SvgElementProps, ArticleListItem } from '@/lib/types';
@@ -117,11 +120,32 @@ function Resume() {
       },
     },
     {
+      company: `Ohio Wesleyan`,
+      title: 'Ineffective College Student',
+      logo: logoOwu,
+      start: '2001',
+      end: '2005',
+    },
+    {
+      company: `Century Cycles`,
+      title: 'Bike Mechanic',
+      logo: logoCentry,
+      start: '1999',
+      end: '2001',
+    },
+    {
       company: `Malley's Chocolates`,
       title: 'Ice Cream Parlor Piano Player',
       logo: logoMalleys,
-      start: '1997',
-      end: '1998',
+      start: '1998',
+      end: '1999',
+    },
+    {
+      company: `Lakewood Sun Post`,
+      title: 'Ineffective Paper Boy',
+      logo: logoSunPost,
+      start: '1995',
+      end: '1997',
     },
   ];
 
@@ -186,7 +210,7 @@ function Resume() {
 export const metadata: Metadata = {
   title: `Dan Ott — Full-Stack Design and Development`,
   description:
-    'I’m Dan, an independent developer and designer based in Cleveland, Ohio. I’ve been working with clients since 2005 to plan, design, and implement their ideas. I also am an org maintainer at VirtualCoffee.io.',
+    'I’m Dan, an independent developer and designer based in Cleveland, Ohio. I’ve been working with clients since 2005 to plan, design, and implement their ideas. I also am an org maintainer and podcast cohost at VirtualCoffee.io.',
 };
 
 export default async function HomePage() {
@@ -202,7 +226,7 @@ export default async function HomePage() {
               I&rsquo;m Dan, an independent developer and designer based in
               Cleveland, Ohio. I&rsquo;ve been working with clients since 2005
               to plan, design, and implement their ideas. I also am an org
-              maintainer at{' '}
+              maintainer and podcast cohost at{' '}
               <a href="https://virtualcoffee.io">Virtual Coffee</a>.
             </p>
           </Prose>
