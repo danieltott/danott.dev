@@ -15,6 +15,8 @@ type StarConfig = {
   scaleX?: number;
   scaleY?: number;
   fill: string;
+  offsetX?: number;
+  offsetY?: number;
 };
 
 type GroupConfig = {
@@ -56,12 +58,15 @@ function generateShapes(width: number, height: number): Config[] {
         y: 0,
         rotation: Math.random() * 360,
         fill: getRandomColor(),
+        offsetX: getRandom(-60,60),
       },
       {
         id: `${id}-l`,
         fill: getRandomColor(),
-        x: getRandom(-60, -30),
-        y: getRandom(-60, 60),
+        x: 0,
+        y: 0,
+        offsetX: getRandom(-120,120),
+        offsetY: getRandom(-120,120),
         scaleX: lScaleX,
         scaleY: lScaleY,
         rotation: Math.random() * 360,
@@ -69,8 +74,10 @@ function generateShapes(width: number, height: number): Config[] {
       {
         id: `${id}-r`,
         fill: getRandomColor(),
-        x: getRandom(30, 60),
-        y: getRandom(-60, 60),
+        x: 0,
+        y: 0,
+        offsetX: getRandom(-60,60),
+        offsetY: getRandom(-60,60),
         scaleX: rScaleX,
         scaleY: rScaleY,
         rotation: Math.random() * 360,
@@ -263,12 +270,14 @@ export default function StarCanvas() {
   }, []);
 
   return (
-    <Stage width={windowSize.width} height={windowSize.height}>
+    <div aria-hidden="true">
+    <Stage width={windowSize.width} height={windowSize.height} listening={false} role="none">
       <Layer>
         {stars.map((config) => {
           return <AnimGroup config={config} key={config[3].id} />;
         })}
       </Layer>
     </Stage>
+    </div>
   );
 }
