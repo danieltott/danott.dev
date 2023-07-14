@@ -77,6 +77,7 @@ export default function Projects() {
                   src={project.logo}
                   alt=""
                   className="h-8 w-8 rounded-full"
+                  sizes="32px"
                 />
               </div>
               <h2 className="mt-6 text-base font-semibold text-stone-800 dark:text-stone-100">
