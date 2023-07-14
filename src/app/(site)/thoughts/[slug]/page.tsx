@@ -58,7 +58,7 @@ export default async function Page({ params }: Props) {
               <h1 className="font-title mt-6 ">{meta.title}</h1>
               <time
                 dateTime={meta.date}
-                className="order-first flex items-center text-base text-stone-400 dark:text-stone-500 lg:text-lg"
+                className="order-first flex items-center text-base text-stone-400 dark:text-stone-400 lg:text-lg"
               >
                 <span className="h-4 w-0.5 rounded-full bg-stone-200 dark:bg-stone-500" />
                 <span className="ml-3">{formatDate(meta.date)}</span>
