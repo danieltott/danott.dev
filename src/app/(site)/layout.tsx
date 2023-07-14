@@ -17,7 +17,7 @@ export default function RootLayout({
         />
       )}
 
-      <body className="relative flex min-h-full flex-col bg-east-bay-50 dark:bg-east-bay-950">
+      <body className="overflow:hidden relative flex min-h-full flex-col bg-east-bay-50 dark:bg-east-bay-950">
         <div className="absolute inset-0 z-10 h-full w-full">
           <StarCanvas />
         </div>
