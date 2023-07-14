@@ -1,5 +1,6 @@
 import { Container } from '@/components/Container';
-import SimplePage, { Props } from './SimplePage';
+import type { Props } from './SimplePage';
+import SimplePage from './SimplePage';
 
 export function SimpleLayout(props: Props) {
   return (

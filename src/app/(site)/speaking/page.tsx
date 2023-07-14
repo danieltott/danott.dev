@@ -2,7 +2,7 @@ import { type Metadata } from 'next';
 import { Card } from '@/components/Card';
 import { Section } from '@/components/Section';
 import { SimpleLayout } from '@/components/SimpleLayout';
-import { LinkHref } from '@/lib/types';
+import type { LinkHref } from '@/lib/types';
 
 function SpeakingSection({
   children,

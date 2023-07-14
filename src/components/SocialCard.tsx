@@ -1,5 +1,5 @@
 import { formatDate } from '@/lib/formatDate';
-import { ArticleMeta } from '@/lib/types';
+import type { ArticleMeta } from '@/lib/types';
 import { type Metadata } from 'next';
 import { fillColors, random, randomRotate, getRandom } from './star-util';
 

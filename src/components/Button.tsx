@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { LinkHref, LinkProps } from '@/lib/types';
+import type { LinkHref, LinkProps } from '@/lib/types';
 import Link from 'next/link';
 
 const variantStyles = {
