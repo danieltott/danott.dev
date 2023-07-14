@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
-import StarFrame from '@/components/StarFrame';
+import StarCanvas from '@/components/StarCanvas';
 import { Container } from '@/components/Container';
 
 // FreeLunch-Regular.otf
@@ -11,7 +11,9 @@ export default function NotFound() {
   return (
     <>
       <body className="relative flex min-h-full flex-col bg-east-bay-50 dark:bg-east-bay-950">
-        <StarFrame />
+        <div className="absolute inset-0 z-10 h-full w-full">
+          <StarCanvas />
+        </div>
 
         <div className="fixed inset-0 z-0 flex justify-center sm:px-8">
           <div className="flex w-full max-w-7xl lg:px-8">

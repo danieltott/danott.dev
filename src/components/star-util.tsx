@@ -1,4 +1,4 @@
-export function random<T>(list: T[]):T {
+export function random<T>(list: T[]): T {
   return list[Math.floor(Math.random() * list.length)];
 }
 
@@ -124,7 +124,9 @@ export const fillColors = [
   '#642301',
 ];
 
-// calc((100vw - 76rem) / 2)
+export function getRandomColor() {
+  return random(fillColors);
+}
 
 export function getRandom(min: number, max: number, round: number = 2) {
   const num = Math.random() * (max - min) + min;
@@ -137,3 +139,9 @@ export function randomRotate(rotate3d?: boolean) {
     : `${getRandom(0, 360)}deg`;
 }
 
+export function randomScale(
+  randomScaleMin: number = 0.8,
+  randomScaleMax: number = 4
+) {
+  return getRandom(randomScaleMin, randomScaleMax);
+}

@@ -62,6 +62,9 @@ dependencies:
   feed:
     specifier: ^4.2.2
     version: 4.2.2
+  konva:
+    specifier: ^9.2.0
+    version: 9.2.0
   next:
     specifier: ^13.4.10-canary.4
     version: 13.4.10-canary.4(@babel/core@7.22.8)(react-dom@18.2.0)(react@18.2.0)
@@ -80,6 +83,9 @@ dependencies:
   react-dom:
     specifier: ^18.2.0
     version: 18.2.0(react@18.2.0)
+  react-konva:
+    specifier: ^18.2.10
+    version: 18.2.10(konva@9.2.0)(react-dom@18.2.0)(react@18.2.0)
   remark-gfm:
     specifier: ^3.0.1
     version: 3.0.1
@@ -2415,6 +2421,12 @@ packages:
 
   /@types/react-dom@18.2.6:
     resolution: {integrity: sha512-2et4PDvg6PVCyS7fuTc4gPoksV58bW0RwSxWKcPRcHZf0PRUGq03TKcD/rUHe3azfV6/5/biUBJw+HhCQjaP0A==}
+    dependencies:
+      '@types/react': 18.2.14
+    dev: false
+
+  /@types/react-reconciler@0.28.2:
+    resolution: {integrity: sha512-8tu6lHzEgYPlfDf/J6GOQdIc+gs+S2yAqlby3zTsB3SP2svlqTYe5fwZNtZyfactP74ShooP2vvi1BOp9ZemWw==}
     dependencies:
       '@types/react': 18.2.14
     dev: false
@@ -5533,6 +5545,15 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: false
 
+  /its-fine@1.1.1(react@18.2.0):
+    resolution: {integrity: sha512-v1Ia1xl20KbuSGlwoaGsW0oxsw8Be+TrXweidxD9oT/1lAh6O3K3/GIM95Tt6WCiv6W+h2M7RB1TwdoAjQyyKw==}
+    peerDependencies:
+      react: '>=18.0'
+    dependencies:
+      '@types/react-reconciler': 0.28.2
+      react: 18.2.0
+    dev: false
+
   /jest-environment-node@29.6.1:
     resolution: {integrity: sha512-ZNIfAiE+foBog24W+2caIldl4Irh8Lx1PUhg/GZ0odM1d/h2qORAsejiFc7zb+SEmYPn1yDZzEDSU5PmDkmVLQ==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
@@ -5779,6 +5800,10 @@ packages:
   /kleur@4.1.5:
     resolution: {integrity: sha512-o+NO+8WrRiQEE4/7nwRJhN1HWpVmJm511pBHUxPLtp0BUISzlBplORYSmTclCnJvQq2tKu/sgl3xVpkc7ZWuQQ==}
     engines: {node: '>=6'}
+    dev: false
+
+  /konva@9.2.0:
+    resolution: {integrity: sha512-+woI76Sk+VFVl9z7zPkuTnN2zFpEYg27YWz8BCdQXpt5IS3pdnSPAPQVPPMidcbDi9/G5b/IOIp35/KqMGiYPA==}
     dev: false
 
   /language-subtag-registry@0.3.22:
@@ -7913,6 +7938,22 @@ packages:
     resolution: {integrity: sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==}
     dev: false
 
+  /react-konva@18.2.10(konva@9.2.0)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-ohcX1BJINL43m4ynjZ24MxFI1syjBdrXhqVxYVDw2rKgr3yuS0x/6m1Y2Z4sl4T/gKhfreBx8KHisd0XC6OT1g==}
+    peerDependencies:
+      konva: ^8.0.1 || ^7.2.5 || ^9.0.0
+      react: '>=18.0.0'
+      react-dom: '>=18.0.0'
+    dependencies:
+      '@types/react-reconciler': 0.28.2
+      its-fine: 1.1.1(react@18.2.0)
+      konva: 9.2.0
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      react-reconciler: 0.29.0(react@18.2.0)
+      scheduler: 0.23.0
+    dev: false
+
   /react-native@0.72.3(@babel/core@7.22.8)(@babel/preset-env@7.22.7)(react@18.2.0):
     resolution: {integrity: sha512-QqISi+JVmCssNP2FlQ4MWhlc4O/I00MRE1/GClvyZ8h/6kdsyk/sOirkYdZqX3+DrJfI3q+OnyMnsyaXIQ/5tQ==}
     engines: {node: '>=16'}
@@ -7964,6 +8005,17 @@ packages:
       - encoding
       - supports-color
       - utf-8-validate
+    dev: false
+
+  /react-reconciler@0.29.0(react@18.2.0):
+    resolution: {integrity: sha512-wa0fGj7Zht1EYMRhKWwoo1H9GApxYLBuhoAuXN0TlltESAjDssB+Apf0T/DngVqaMyPypDmabL37vw/2aRM98Q==}
+    engines: {node: '>=0.10.0'}
+    peerDependencies:
+      react: ^18.2.0
+    dependencies:
+      loose-envify: 1.4.0
+      react: 18.2.0
+      scheduler: 0.23.0
     dev: false
 
   /react-refresh@0.4.3:
