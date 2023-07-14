@@ -1,9 +1,11 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
-import { Stage, Layer, Star, Group } from 'react-konva';
+import { Stage, Layer, Star, Group } from 'react-konva/lib/ReactKonvaCore';
 import { getRandomColor, getRandom, randomScale } from './star-util';
 import { Bezier, type Point } from 'bezier-js';
-import Konva from 'konva';
+import 'konva/lib/shapes/Star';
+import type { Group as KGroup } from 'konva/lib/Group';
+import { Easings } from 'konva/lib/Tween';
 
 const STEP_RATIO = 0.02;
 
@@ -161,7 +163,7 @@ function ChildStar({ config }: { config: StarConfig }) {
 function AnimGroup({ config }: { config: Config }) {
   const [base, left, right, { id, ...group }] = config;
 
-  const groupRef = useRef<Konva.Group | null>(null);
+  const groupRef = useRef<KGroup | null>(null);
 
   const oldConfig = useRef<Omit<GroupConfig, 'id'>>();
 
@@ -184,7 +186,7 @@ function AnimGroup({ config }: { config: Config }) {
         ) {
           node.to({
             duration: 1,
-            easing: Konva.Easings.EaseInOut,
+            easing: Easings.EaseInOut,
             onFinish: () => {
               oldConfig.current = {
                 ...group,

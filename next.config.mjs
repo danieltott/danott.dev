@@ -1,6 +1,7 @@
 import nextMDX from '@next/mdx';
 import remarkGfm from 'remark-gfm';
 import rehypePrism from '@mapbox/rehype-prism';
+import analyzer from '@next/bundle-analyzer';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -84,4 +85,8 @@ const withMDX = nextMDX({
   },
 });
 
-export default withMDX(nextConfig);
+const withBundleAnalyzer = analyzer({
+  enabled: process.env.BUNDLE_ANALYZE === 'true',
+});
+
+export default withBundleAnalyzer(withMDX(nextConfig));
