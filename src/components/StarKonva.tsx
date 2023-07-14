@@ -124,15 +124,6 @@ function getCurve(
   const xWidth = xHigh - xLow;
 
   const xStart = getRandom(xLow, xHigh);
-  const percentage = xWidth * 0.4;
-
-  console.log({
-    xLow,
-    xHigh,
-    xWidth,
-    xStart,
-    percentage,
-  });
 
   const curve1 = new Bezier(
     { x: xStart, y: 0 },
