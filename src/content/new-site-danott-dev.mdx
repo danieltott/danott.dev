@@ -11,8 +11,8 @@ export const tags = [];
 export const meta = {
   title: 'A New site and a new home - danott.dev',
   description: `It's been 10 years since I've redesigned my site.`,
-  date: '2023-07-11 00:00:00',
-  dateUpdated: '2023-07-11 00:00:00',
+  date: '2023-07-14 00:00:00',
+  dateUpdated: '2023-07-14 00:00:00',
 };
 
 export const Images = () => (
@@ -20,10 +20,12 @@ export const Images = () => (
     <Image
       src={monster1}
       alt="Photo of a page from The Monster at the End of This Book"
+      style={{margin:0}}
     />
     <Image
       src={monster2}
       alt="Photo of a page from The Monster at the End of This Book"
+      style={{margin:0}}
     />
   </div>
 );
@@ -53,8 +55,12 @@ I've been working on this new design for a while now, and I'm really happy with 
 ### Design Elements
 
 - The design of the site is inspired by one of my all-time favorite children's books, [The Monster at the End of the Book](https://en.wikipedia.org/wiki/The_Monster_at_the_End_of_This_Book:_Starring_Lovable,_Furry_Old_Grover), written by Jon Stone and illustrated by Michael Smollin.
+
   <Images />
+
 - The title font is a special pre-relase version of a font called <span className="font-freeLunch font-normal not-italic">Free Lunch</span> by [Dan Cederholm of SimpleBits](https://simplebits.shop/).
-- The stars are generated using [`konva-react` with random styles applied to them](https://github.com/danieltott/danott.dev/blob/main/src/components/StarKonva.tsx), positioned via [Bezier JS](https://pomax.github.io/bezierjs/).
+
+- The stars are generated using [`konva-react` with random styles applied to them](https://github.com/danieltott/danott.dev/blob/main/src/components/StarKonva.tsx), positioned via [Bezier JS](https://pomax.github.io/bezierjs/). I went through several iterations of this - starting with outputting a ton of SVGs, then using `<canvas>` by hand, then finally using `konva-react` to generate the canvas elements. I'm pretty happy with how it turned out.
+
 - Social Images are generated using [Next.js's <code>ImageResponse</code>](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image#generate-images-using-code-js-ts-tsx)
   <Image src={openGraphImage} alt="dtott.dev social image" />
