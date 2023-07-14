@@ -208,7 +208,7 @@ function AnimGroup({ config }: { config: Config }) {
   return (
     <Group
       listening={false}
-      id="id"
+      id={id}
       ref={(node) => {
         groupRef.current = node;
       }}
@@ -239,8 +239,8 @@ export default function StarCanvas() {
     setStars(generateShapes(size.current.width, size.current.height));
 
     let timeout: number;
-    let interval: number;
-    interval = window.setInterval(() => {
+
+    const interval = window.setInterval(() => {
       const height = window.document.body.offsetHeight;
       const width = window.document.body.offsetWidth;
 

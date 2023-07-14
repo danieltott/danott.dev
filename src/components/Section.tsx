@@ -7,7 +7,7 @@ export function Section({
   title: React.ReactNode;
   children: React.ReactNode;
 }) {
-  let id = useId();
+  const id = useId();
 
   return (
     <section

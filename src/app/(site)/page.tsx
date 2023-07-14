@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 import Link from 'next/link';
 import { Card } from '@/components/Card';
 import { Container } from '@/components/Container';
@@ -7,7 +7,7 @@ import logoVC from '@/app/(site)/projects/logos/virtual-coffee.png';
 import logoMalleys from '@/app/(site)/projects/logos/malleys.png';
 import { formatDate } from '@/lib/formatDate';
 import { getAllArticles } from '@/lib/getAllArticles';
-import type { SvgElementProps, LinkHref, ArticleListItem } from '@/lib/types';
+import type { SvgElementProps, ArticleListItem } from '@/lib/types';
 import { type Metadata } from 'next';
 import avatarImage from '@/images/avatar.jpg';
 import { RssIcon } from '@heroicons/react/20/solid';
@@ -79,10 +79,10 @@ function SocialLink({
 }
 
 function Resume() {
-  let resume: {
+  const resume: {
     company: string;
     title: string;
-    logo: any;
+    logo: StaticImageData;
     start:
       | string
       | {

@@ -25,10 +25,10 @@ type Props = {
   params: { slug: string };
 };
 
-export async function generateMetadata({
+export function generateMetadata({
   params,
 }: Props): // parent: ResolvingMetadata
-Promise<Metadata> {
+Metadata {
   const {
     meta,
   }: {

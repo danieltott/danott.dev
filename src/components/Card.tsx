@@ -3,7 +3,6 @@ import clsx from 'clsx';
 import type {
   SvgElementProps,
   LinkHref,
-  ArticleListItem,
   LinkProps,
 } from '@/lib/types';
 import { Prose } from './Prose';

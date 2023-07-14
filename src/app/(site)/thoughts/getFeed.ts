@@ -3,16 +3,16 @@ import { Feed } from 'feed';
 import { getAllArticles } from '@/lib/getAllArticles';
 
 export async function getFeed(type: 'rss' | 'json') {
-  let articles = await getAllArticles();
-  let siteUrl =
+  const articles = await getAllArticles();
+  const siteUrl =
     process.env.NEXT_PUBLIC_SITE_URL ||
     (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : null) ||
     'https://danott.dev';
-  let author = {
+  const author = {
     name: 'Dan Ott',
   };
 
-  let feed = new Feed({
+  const feed = new Feed({
     title: author.name,
     description:
       'All of my long-form thoughts on front-end, full-stack, design, development, and more, collected in chronological order since 2007.',
@@ -28,9 +28,9 @@ export async function getFeed(type: 'rss' | 'json') {
     },
   });
 
-  for (let article of articles) {
-    let url = `${siteUrl}/thoughts/${article.slug}`;
-    let html = article.summary;
+  for (const article of articles) {
+    const url = `${siteUrl}/thoughts/${article.slug}`;
+    const html = article.summary;
 
     feed.addItem({
       title: article.title,

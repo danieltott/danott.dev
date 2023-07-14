@@ -5,7 +5,7 @@ import type { ArticleMeta, ArticleListItem } from '@/lib/types';
 async function importArticle(
   articleFilename: string
 ): Promise<ArticleListItem> {
-  let {
+  const {
     meta,
     summary,
     tags,
@@ -23,11 +23,11 @@ async function importArticle(
 export async function getAllArticles(
   limit?: number
 ): Promise<ArticleListItem[]> {
-  let articleFilenames = await glob(['*.mdx', '*/index.mdx'], {
+  const articleFilenames = await glob(['*.mdx', '*/index.mdx'], {
     cwd: path.join(process.cwd(), 'src/content'),
   });
 
-  let articles = await Promise.all(articleFilenames.map(importArticle));
+  const articles = await Promise.all(articleFilenames.map(importArticle));
 
   return articles
     .sort((a, z) => new Date(z.date).getTime() - new Date(a.date).getTime())
