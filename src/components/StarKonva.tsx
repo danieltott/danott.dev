@@ -172,36 +172,37 @@ function AnimGroup({ config }: { config: Config }) {
 
   const groupRef = useRef<Konva.Group | null>(null);
 
-  const oldConfig = useRef<Omit<GroupConfig, 'id'>>({
-    x: 0,
-    y: 0,
-    rotation: 0,
-    scaleX: 1,
-    scaleY: 1,
-    offsetX: 0,
-    offsetY: 0,
-  });
+  const oldConfig = useRef<Omit<GroupConfig, 'id'>>();
 
   useEffect(() => {
     const node = groupRef.current;
-    if (
-      node &&
-      (oldConfig.current.x !== group.x ||
-        oldConfig.current.y !== group.y ||
-        oldConfig.current.rotation !== group.rotation ||
-        oldConfig.current.scaleX !== group.scaleX ||
-        oldConfig.current.scaleY !== group.scaleY)
-    ) {
-      node.to({
-        duration: 1,
-        easing: Konva.Easings.EaseInOut,
-        onFinish: () => {
-          oldConfig.current = {
+    if (node) {
+      if (!oldConfig.current) {
+        node.setAttrs({ ...group, opacity: 1 });
+
+        oldConfig.current = {
+          ...group,
+        };
+      } else {
+        if (
+          oldConfig.current.x !== group.x ||
+          oldConfig.current.y !== group.y ||
+          oldConfig.current.rotation !== group.rotation ||
+          oldConfig.current.scaleX !== group.scaleX ||
+          oldConfig.current.scaleY !== group.scaleY
+        ) {
+          node.to({
+            duration: 1,
+            easing: Konva.Easings.EaseInOut,
+            onFinish: () => {
+              oldConfig.current = {
+                ...group,
+              };
+            },
             ...group,
-          };
-        },
-        ...group,
-      });
+          });
+        }
+      }
     }
   }, [group]);
 
@@ -212,6 +213,7 @@ function AnimGroup({ config }: { config: Config }) {
       ref={(node) => {
         groupRef.current = node;
       }}
+      opacity={0}
     >
       <ChildStar config={base} />
       <ChildStar config={left} />
