@@ -100,9 +100,7 @@ export default function Uses() {
               </p>
             </Tool>
             <Tool title="Konva" href="https://konvajs.org/docs/react/">
-              <p>
-                Generate and animate the stars via canvas.
-              </p>
+              <p>Generate and animate the stars via canvas.</p>
             </Tool>
             <Tool
               title={
