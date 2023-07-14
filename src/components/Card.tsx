@@ -1,10 +1,6 @@
 import Link from 'next/link';
 import clsx from 'clsx';
-import type {
-  SvgElementProps,
-  LinkHref,
-  LinkProps,
-} from '@/lib/types';
+import type { SvgElementProps, LinkHref, LinkProps } from '@/lib/types';
 import { Prose } from './Prose';
 
 function ChevronRightIcon(props: SvgElementProps) {
