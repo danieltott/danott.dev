@@ -46,9 +46,9 @@ I've been working on this new design for a while now, and I'm really happy with 
 
 - I based the design and initial structure off of [Tailwind UI Spotlight template](https://tailwindui.com/templates/spotlight), but obviously made some major changes to it.
 
-  For one thing, Spotlight is built using Next.js's Page Router, but I very much wanted to use the App Router ([naturally](/thoughts/nextjs-app-router-talk)). Spotlight is also written in Javascript, and I've been very much in to Typescript lately, so I rewrote the whole thing in Typescript.
+  For one thing, Spotlight is built using Next.js's Page Router, but I very much wanted to use the App Router ([naturally](/thoughts/nextjs-app-router-talk)). Spotlight is also written in Javascript, and I'm much more comfortable in Typescript these days, so I rewrote the whole thing in Typescript.
 
-- The content is stored in MDX, and imported in to Next.js pages via React Server Components. I was able to pretty easily import my old content to the new platform, so that was good.
+- The [content is stored in MDX](https://github.com/danieltott/danott.dev/tree/main/src/content), and [imported in to Next.js pages](https://github.com/danieltott/danott.dev/blob/a625721a2b70911ab5e7d60f0e291ba74a52eb12/src/app/(site)/thoughts/%5Bslug%5D/page.tsx#L46-L52) via React Server Components. I was able to pretty easily import my old content to the new platform, so that was good.
 
 ### Design Elements
 
