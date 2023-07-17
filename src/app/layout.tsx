@@ -2,6 +2,7 @@ import '@/styles/tailwind.css';
 import { Kreon } from 'next/font/google';
 import localFont from 'next/font/local';
 import type { Metadata } from 'next';
+import getUrl from '@/lib/getUrl'
 
 // Font files can be colocated inside of `app`
 const freeLunch = localFont({
@@ -16,10 +17,7 @@ const bodyFont = Kreon({
   variable: '--font-body',
 });
 
-const baseUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ||
-  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : null) ||
-  'https://danott.dev';
+const baseUrl = getUrl();
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),

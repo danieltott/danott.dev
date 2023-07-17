@@ -1,13 +1,10 @@
 import { Feed } from 'feed';
-
+import getUrl from '@/lib/getUrl';
 import { getAllArticles } from '@/lib/getAllArticles';
 
 export async function getFeed(type: 'rss' | 'json') {
   const articles = await getAllArticles();
-  const siteUrl =
-    process.env.NEXT_PUBLIC_SITE_URL ||
-    (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : null) ||
-    'https://danott.dev';
+  const siteUrl = getUrl();
   const author = {
     name: 'Dan Ott',
   };
