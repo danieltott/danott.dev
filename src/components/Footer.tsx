@@ -35,7 +35,7 @@ export function Footer() {
                   <span className="sr-only">GitHub</span>
                 </NavLink>
               </div>
-              <p className="text-sm text-east-bay-600 dark:text-east-bay-400 md:text-base lg:text-lg">
+              <p className="text-sm text-east-bay-700 dark:text-east-bay-400 md:text-base lg:text-lg">
                 &copy; {new Date().getFullYear()} Daniel T Ott, LLC. All rights
                 reserved.
               </p>
