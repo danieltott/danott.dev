@@ -9,7 +9,7 @@ import { Easings } from 'konva/lib/Tween';
 
 console.log('StarKonva.tsx: loaded');
 
-const STEP_RATIO = 0.02;
+const STEP_RATIO = 0.03;
 
 type StarConfig = {
   id: string;
@@ -35,6 +35,9 @@ type GroupConfig = {
 };
 
 type Config = [StarConfig, StarConfig, StarConfig, GroupConfig];
+
+// const WIDTH_CUTOFF = 1024;
+const WIDTH_CUTOFF = 9999;
 
 function generateShapes(width: number, height: number): Config[] {
   const steps = Math.floor(height * STEP_RATIO);
@@ -100,6 +103,11 @@ function generateShapes(width: number, height: number): Config[] {
   };
 
   const curve1 = getCurve(steps, width, height, false);
+
+  if(width < WIDTH_CUTOFF) {
+    return curve1.map((point, i) => mapFn('LEFT', i, point))
+  }
+
   const curve2 = getCurve(steps, width, height, true);
 
   return [
@@ -116,30 +124,45 @@ function getCurve(
 ) {
   let xLow: number;
   let xHigh: number;
+  let xStart: number;
+  let xStop: number;
+  let xPointA: number;
+  let xPointB: number;
 
-  if (width > 1408) {
-    xLow = flip ? width - (width - 1120) / 2 : 0;
-    xHigh = flip ? width : (width - 1120) / 2;
-  } else {
-    xLow = flip ? width - 64 : 0;
-    xHigh = flip ? width : 64;
+  if(width < WIDTH_CUTOFF) {
+    xLow = 0;
+    xHigh = width;
+    xStart = 0;
+    xStop = width
+    xPointA = width * 2.5;
+    xPointB = 0 - width * 1.5;
   }
-
-  const xWidth = xHigh - xLow;
-
-  const xStart = getRandom(xLow, xHigh);
+  else {
+    if (width > 1408) {
+      xLow = flip ? width - (width - 1120) / 2 : 0;
+      xHigh = flip ? width : (width - 1120) / 2;
+    } else {
+      xLow = flip ? width - 64 : 0;
+      xHigh = flip ? width : 64;
+    }
+    xStart = getRandom(xLow, xHigh)
+    xStop = getRandom(xLow, xHigh)
+    const xWidth = xHigh - xLow;
+    xPointA = xLow - xWidth;
+    xPointB = xHigh + xWidth
+}
 
   const curve1 = new Bezier(
     { x: xStart, y: 0 },
     {
-      x: xLow - xWidth,
+      x: xPointA,
       y: getRandom(0, height / 2),
     },
     {
-      x: xHigh + xWidth,
+      x: xPointB,
       y: getRandom(height / 2, height),
     },
-    { x: getRandom(xLow, xHigh), y: height }
+    { x: xStop, y: height }
   );
 
   return curve1.getLUT(steps);
