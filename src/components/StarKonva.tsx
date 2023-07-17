@@ -7,6 +7,8 @@ import 'konva/lib/shapes/Star';
 import type { Group as KGroup } from 'konva/lib/Group';
 import { Easings } from 'konva/lib/Tween';
 
+console.log('StarKonva.tsx: loaded');
+
 const STEP_RATIO = 0.02;
 
 type StarConfig = {
