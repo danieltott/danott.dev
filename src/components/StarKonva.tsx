@@ -147,6 +147,7 @@ function ChildStar({ config }: { config: StarConfig }) {
   const [savedConfig] = useState<StarConfig>(config);
   return (
     <Star
+    perfectDrawEnabled={false}
       listening={false}
       numPoints={5}
       innerRadius={12}
