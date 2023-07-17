@@ -2,7 +2,7 @@ import '@/styles/tailwind.css';
 import { Kreon } from 'next/font/google';
 import localFont from 'next/font/local';
 import type { Metadata } from 'next';
-import getUrl from '@/lib/getUrl'
+import getUrl from '@/lib/getUrl';
 
 // Font files can be colocated inside of `app`
 const freeLunch = localFont({

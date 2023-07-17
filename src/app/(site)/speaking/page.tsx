@@ -194,7 +194,7 @@ export default async function Speaking() {
     <>
       <SimpleLayout
         title="Video &amp; Audio Appearances"
-       intro="I always have a great time appearing on podcasts and giving talks, whether live or online. Here are some of my favorites."
+        intro="I always have a great time appearing on podcasts and giving talks, whether live or online. Here are some of my favorites."
       >
         <div className="space-y-20">
           <SpeakingSection title="Talks">
