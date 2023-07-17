@@ -148,6 +148,8 @@ function ChildStar({ config }: { config: StarConfig }) {
   return (
     <Star
     perfectDrawEnabled={false}
+    shadowForStrokeEnabled={false}
+    hitStrokeWidth={0}
       listening={false}
       numPoints={5}
       innerRadius={12}
