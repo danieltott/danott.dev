@@ -272,7 +272,7 @@ export default function StarCanvas() {
         listening={false}
         role="none"
       >
-        <Layer>
+        <Layer listening={false}>
           {stars.map((config) => {
             return <AnimGroup config={config} key={config[3].id} />;
           })}
