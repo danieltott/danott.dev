@@ -8,7 +8,7 @@
     @apply font-black italic tracking-tight text-stone-800 dark:text-stone-100;
   }
   .font-title {
-    font-feature-settings: 'dlig', 'liga', 'calt';
+    font-feature-settings: none;
     @apply bg-gradient-to-r
     from-east-bay-500
     via-green-metal-500

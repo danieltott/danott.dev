@@ -8,6 +8,7 @@ import Codepen from '@/components/Codepen';
 import { type MDXProps } from 'mdx/types';
 import Comments from '@/components/Comments';
 import { notFound } from 'next/navigation';
+import Title from '@/components/Title';
 
 const components = { Codepen };
 
@@ -50,15 +51,16 @@ export default async function Page({ params }: Props) {
       default: React.ComponentType<MDXProps>;
       meta: ArticleMeta;
     } = require(`../../../../content/${params.slug}.mdx`);
+
     return (
       <div className="xl:relative">
         <div className="mx-auto max-w-2xl 2xl:max-w-3xl">
           <article>
             <header className="flex flex-col">
-              <h1 className="font-title mt-6 ">{meta.title}</h1>
+              <h1 className="font-title mt-6 "><Title title={meta.title} /></h1>
               <time
                 dateTime={meta.date}
-                className="order-first flex items-center text-base text-stone-400 dark:text-stone-400 lg:text-lg"
+                className="order-first flex items-center text-base text-east-bay-700 dark:text-stone-400 lg:text-lg"
               >
                 <span className="h-4 w-0.5 rounded-full bg-stone-200 dark:bg-stone-500" />
                 <span className="ml-3">{formatDate(meta.date)}</span>
