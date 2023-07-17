@@ -146,7 +146,7 @@ function getCurve(
 }
 
 function ChildStar({ config }: { config: StarConfig }) {
-  const [savedConfig] = useState<StarConfig>(config);
+  const savedConfig = useRef(config);
   return (
     <Star
     perfectDrawEnabled={false}
@@ -160,7 +160,7 @@ function ChildStar({ config }: { config: StarConfig }) {
       stroke="#292524"
       lineCap="round"
       lineJoin="round"
-      {...savedConfig}
+      {...savedConfig.current}
     />
   );
 }
@@ -250,6 +250,7 @@ export default function StarCanvas() {
           size.current = { width, height };
 
           timeout = window.setTimeout(() => {
+            console.log('resizing!')
             if (
               size.current.width !== oldSize.current.width ||
               size.current.height !== oldSize.current.height
@@ -258,10 +259,10 @@ export default function StarCanvas() {
               setStars(generateShapes(size.current.width, size.current.height));
               setWindowSize(size.current);
             }
-          }, 100);
+          }, 300);
         }
       }
-    }, 50);
+    }, 200);
 
     return () => {
       clearInterval(interval);
