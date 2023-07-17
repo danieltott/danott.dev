@@ -10,7 +10,7 @@ if(process.env.VERCEL) {
     return DEFAULT;
   }
 
-  return process.env.VERCEL_URL ? process.env.VERCEL_URL : DEFAULT;
+  return process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : DEFAULT;
 
 }
 return DEFAULT;
