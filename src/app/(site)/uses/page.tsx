@@ -209,7 +209,7 @@ export default function Uses() {
               </p>
             </Tool>
           </ToolsSection>
-          <ToolsSection title="Streaming/Podcasting/Online Events">
+          <ToolsSection title="Streaming / Podcasting / Online Events">
             <Tool
               title="Elgato Facecam"
               href="https://www.elgato.com/us/en/p/facecam"
