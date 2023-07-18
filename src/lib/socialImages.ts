@@ -35,7 +35,7 @@ export function getPageMeta(slug: string | undefined) {
 }
 
 const freeLunchPr = readFile(
-  join(process.cwd(), 'src', 'app', 'FreeLunch-Regular.otf')
+  join(process.cwd(), 'src', 'app', 'FreeLunch-Rough.woff2')
 );
 const kreonPr = readFile(join(process.cwd(), 'src', 'app', 'Kreon-Medium.ttf'));
 

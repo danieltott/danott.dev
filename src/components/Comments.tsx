@@ -21,9 +21,9 @@ export default function Comments({ slug }: { slug: string }) {
 
   return (
     <>
-      <h2 className="mb-4 mt-16 text-2xl font-bold tracking-tight text-primary-900">
+      <h2 className="mb-4 mt-16 text-2xl font-bold tracking-tight text-primary-900 dark:text-primary-200">
         Comments{' '}
-        <small className="text-sm text-stone-400 dark:text-stone-600">
+        <small className="text-sm text-stone-500 dark:text-stone-400">
           (archived for posterity)
         </small>
       </h2>
@@ -36,24 +36,24 @@ export default function Comments({ slug }: { slug: string }) {
                 'absolute left-0 top-0 flex w-6 justify-center'
               )}
             >
-              <div className="w-px bg-gray-200" />
+              <div className="w-px bg-stone-200" />
             </div>
             {
               <>
                 <div className="relative flex h-6 w-6 flex-none items-center justify-center bg-white">
-                  <div className="h-1.5 w-1.5 rounded-full bg-gray-100 ring-1 ring-gray-300" />
+                  <div className="h-1.5 w-1.5 rounded-full bg-stone-100 ring-1 ring-stone-300" />
                 </div>
-                <div className="flex-auto rounded-md p-3 ring-1 ring-inset ring-gray-200">
+                <div className="flex-auto rounded-md p-3 ring-1 ring-inset ring-stone-200">
                   <div className="flex justify-between gap-x-4">
-                    <div className="py-0.5 text-xs leading-5 text-gray-500 lg:text-sm">
-                      <span className="font-medium text-gray-900">
+                    <div className="py-0.5 text-xs leading-5 text-stone-500 dark:text-stone-300 lg:text-sm">
+                      <span className="font-semibold text-primary-900 dark:text-primary-200">
                         {threadItem.author.name}
                       </span>{' '}
                       commented
                     </div>
                     <time
                       dateTime={threadItem.createdAt}
-                      className="flex-none py-0.5 text-xs leading-5 text-gray-500 lg:text-sm"
+                      className="flex-none py-0.5 text-xs leading-5 text-stone-500 dark:text-stone-400 lg:text-sm"
                     >
                       {formatDate(threadItem.createdAt)}
                     </time>

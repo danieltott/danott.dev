@@ -8,7 +8,6 @@ import Codepen from '@/components/Codepen';
 import { type MDXProps } from 'mdx/types';
 import Comments from '@/components/Comments';
 import { notFound } from 'next/navigation';
-import Title from '@/components/Title';
 
 const components = { Codepen };
 
@@ -58,7 +57,7 @@ export default async function Page({ params }: Props) {
           <article>
             <header className="flex flex-col">
               <h1 className="font-title mt-6 ">
-                <Title title={meta.title} />
+                {meta.title}
               </h1>
               <time
                 dateTime={meta.date}
@@ -68,7 +67,7 @@ export default async function Page({ params }: Props) {
                 <span className="ml-3">{formatDate(meta.date)}</span>
               </time>
             </header>
-            <Prose className="mt-8">
+            <Prose className="mt-8 text-above-stars">
               <MdxPage components={components} />
             </Prose>
             <Comments slug={params.slug} />

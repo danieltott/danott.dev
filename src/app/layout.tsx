@@ -6,10 +6,11 @@ import getUrl from '@/lib/getUrl';
 
 // Font files can be colocated inside of `app`
 const freeLunch = localFont({
-  src: './FreeLunch-Regular.otf',
+  src: './FreeLunch-Rough.woff2',
   display: 'swap',
   variable: '--font-free-lunch',
 });
+
 
 const bodyFont = Kreon({
   subsets: ['latin'],
