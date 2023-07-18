@@ -11,7 +11,6 @@ const freeLunch = localFont({
   variable: '--font-free-lunch',
 });
 
-
 const bodyFont = Kreon({
   subsets: ['latin'],
   display: 'swap',

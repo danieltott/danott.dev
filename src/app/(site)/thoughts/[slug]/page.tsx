@@ -56,9 +56,7 @@ export default async function Page({ params }: Props) {
         <div className="mx-auto max-w-2xl 2xl:max-w-3xl">
           <article>
             <header className="flex flex-col">
-              <h1 className="font-title mt-6 ">
-                {meta.title}
-              </h1>
+              <h1 className="font-title mt-6 ">{meta.title}</h1>
               <time
                 dateTime={meta.date}
                 className="order-first flex items-center text-base text-east-bay-700 dark:text-stone-400 lg:text-lg"
@@ -67,7 +65,7 @@ export default async function Page({ params }: Props) {
                 <span className="ml-3">{formatDate(meta.date)}</span>
               </time>
             </header>
-            <Prose className="mt-8 text-above-stars">
+            <Prose className="text-above-stars mt-8">
               <MdxPage components={components} />
             </Prose>
             <Comments slug={params.slug} />
