@@ -8,8 +8,8 @@ export default function Page() {
   return (
     <body className="relative min-h-full overflow-hidden bg-transparent">
       <div className="absolute inset-0 z-10 h-full w-full">
-          <StarCanvas />
-        </div>
+        <StarCanvas />
+      </div>
     </body>
   );
 }
