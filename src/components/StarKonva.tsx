@@ -102,18 +102,10 @@ function generateShapes(width: number, height: number): Config[] {
 
   const curve1 = getCurve(steps, width, height);
 
-
-    return curve1.map((point, i) => mapFn('LEFT', i, point));
-
-
-
+  return curve1.map((point, i) => mapFn('LEFT', i, point));
 }
 
-function getCurve(
-  steps: number,
-  width: number,
-  height: number,
-) {
+function getCurve(steps: number, width: number, height: number) {
   let xLow: number;
   let xHigh: number;
   let xStart: number;
@@ -131,17 +123,12 @@ function getCurve(
     xPointA = width * 2.5;
     xPointB = 0 - width * 1.5;
   } else {
-
     xLow = 0;
     xHigh = width;
-    xStart = getRandom(xLow, (xHigh - WIDTH_CUTOFF)/2);
-    xStop = getRandom(xHigh - (xHigh - WIDTH_CUTOFF)/2, xHigh);
+    xStart = getRandom(xLow, (xHigh - WIDTH_CUTOFF) / 2);
+    xStop = getRandom(xHigh - (xHigh - WIDTH_CUTOFF) / 2, xHigh);
     xPointA = xHigh * 2.5;
     xPointB = 0 - xHigh * 1.5;
-
-
-
-
 
     // if (width > 1408) {
     //   xLow = flip ? width - (width - 1120) / 2 : 0;
@@ -160,7 +147,7 @@ function getCurve(
   const curve1 = new Bezier(
     { x: startAtLeft ? xStart : xStop, y: 0 },
     {
-      x: startAtLeft ? xPointA  : xPointB,
+      x: startAtLeft ? xPointA : xPointB,
       y: getRandom(0, height / 2),
     },
     {
@@ -177,6 +164,8 @@ function ChildStar({ config }: { config: StarConfig }) {
   const savedConfig = useRef(config);
   return (
     <Star
+      shadowEnabled={false}
+      dashEnabled={false}
       perfectDrawEnabled={false}
       shadowForStrokeEnabled={false}
       hitStrokeWidth={0}
@@ -196,15 +185,8 @@ function ChildStar({ config }: { config: StarConfig }) {
 function AnimGroup({ config }: { config: Config }) {
   const [base, left, right, group] = config;
 
-
-
   return (
-    <Group
-      listening={false}
-
-
-      {...group}
-    >
+    <Group listening={false} {...group}>
       <ChildStar config={base} />
       <ChildStar config={left} />
       <ChildStar config={right} />
@@ -228,7 +210,6 @@ export default function StarCanvas() {
   });
 
   useEffect(() => {
-
     setStars(generateShapes(size.current.width, size.current.height));
 
     let timeout: number;
