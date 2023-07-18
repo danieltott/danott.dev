@@ -5,7 +5,6 @@ import { getRandomColor, getRandom, randomScale } from './star-util';
 import { Bezier, type Point } from 'bezier-js';
 import 'konva/lib/shapes/Star';
 import type { Group as KGroup } from 'konva/lib/Group';
-import { Easings } from 'konva/lib/Tween';
 
 console.log('StarKonva.tsx: loaded');
 
@@ -104,8 +103,8 @@ function generateShapes(width: number, height: number): Config[] {
 
   const curve1 = getCurve(steps, width, height, false);
 
-  if(width < WIDTH_CUTOFF) {
-    return curve1.map((point, i) => mapFn('LEFT', i, point))
+  if (width < WIDTH_CUTOFF) {
+    return curve1.map((point, i) => mapFn('LEFT', i, point));
   }
 
   const curve2 = getCurve(steps, width, height, true);
@@ -129,15 +128,14 @@ function getCurve(
   let xPointA: number;
   let xPointB: number;
 
-  if(width < WIDTH_CUTOFF) {
+  if (width < WIDTH_CUTOFF) {
     xLow = 0;
     xHigh = width;
     xStart = 0;
-    xStop = width
+    xStop = width;
     xPointA = width * 2.5;
     xPointB = 0 - width * 1.5;
-  }
-  else {
+  } else {
     if (width > 1408) {
       xLow = flip ? width - (width - 1120) / 2 : 0;
       xHigh = flip ? width : (width - 1120) / 2;
@@ -145,12 +143,12 @@ function getCurve(
       xLow = flip ? width - 64 : 0;
       xHigh = flip ? width : 64;
     }
-    xStart = getRandom(xLow, xHigh)
-    xStop = getRandom(xLow, xHigh)
+    xStart = getRandom(xLow, xHigh);
+    xStop = getRandom(xLow, xHigh);
     const xWidth = xHigh - xLow;
     xPointA = xLow - xWidth;
-    xPointB = xHigh + xWidth
-}
+    xPointB = xHigh + xWidth;
+  }
 
   const curve1 = new Bezier(
     { x: xStart, y: 0 },
@@ -172,9 +170,9 @@ function ChildStar({ config }: { config: StarConfig }) {
   const savedConfig = useRef(config);
   return (
     <Star
-    perfectDrawEnabled={false}
-    shadowForStrokeEnabled={false}
-    hitStrokeWidth={0}
+      perfectDrawEnabled={false}
+      shadowForStrokeEnabled={false}
+      hitStrokeWidth={0}
       listening={false}
       numPoints={5}
       innerRadius={12}
@@ -214,7 +212,12 @@ function AnimGroup({ config }: { config: Config }) {
         ) {
           node.to({
             duration: 1,
-            easing: Easings.EaseInOut,
+            easing: function (t: number, b: number, c: number, d: number) {
+              if ((t /= d / 2) < 1) {
+                return (c / 2) * t * t + b;
+              }
+              return (-c / 2) * (--t * (t - 2) - 1) + b;
+            },
             onFinish: () => {
               oldConfig.current = {
                 ...group,
@@ -273,7 +276,7 @@ export default function StarCanvas() {
           size.current = { width, height };
 
           timeout = window.setTimeout(() => {
-            console.log('resizing!')
+            console.log('resizing!');
             if (
               size.current.width !== oldSize.current.width ||
               size.current.height !== oldSize.current.height
