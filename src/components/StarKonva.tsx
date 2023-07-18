@@ -4,7 +4,6 @@ import { Stage, Layer, Star, Group } from 'react-konva/lib/ReactKonvaCore';
 import { getRandomColor, getRandom, randomScale } from './star-util';
 import { Bezier, type Point } from 'bezier-js';
 import 'konva/lib/shapes/Star';
-import type { Group as KGroup } from 'konva/lib/Group';
 
 console.log('StarKonva.tsx: loaded');
 
@@ -35,8 +34,8 @@ type GroupConfig = {
 
 type Config = [StarConfig, StarConfig, StarConfig, GroupConfig];
 
-// const WIDTH_CUTOFF = 1024;
-const WIDTH_CUTOFF = 9999;
+const WIDTH_CUTOFF = 1024;
+// const WIDTH_CUTOFF = 9999;
 
 function generateShapes(width: number, height: number): Config[] {
   const steps = Math.floor(height * STEP_RATIO);
@@ -101,25 +100,19 @@ function generateShapes(width: number, height: number): Config[] {
     ];
   };
 
-  const curve1 = getCurve(steps, width, height, false);
+  const curve1 = getCurve(steps, width, height);
 
-  if (width < WIDTH_CUTOFF) {
+
     return curve1.map((point, i) => mapFn('LEFT', i, point));
-  }
 
-  const curve2 = getCurve(steps, width, height, true);
 
-  return [
-    ...curve1.map((point, i) => mapFn('LEFT', i, point)),
-    ...curve2.map((point, i) => mapFn('RIGHT', i, point)),
-  ];
+
 }
 
 function getCurve(
   steps: number,
   width: number,
   height: number,
-  flip: boolean = false
 ) {
   let xLow: number;
   let xHigh: number;
@@ -127,6 +120,8 @@ function getCurve(
   let xStop: number;
   let xPointA: number;
   let xPointB: number;
+
+  const startAtLeft = Math.random() > 0.5;
 
   if (width < WIDTH_CUTOFF) {
     xLow = 0;
@@ -136,31 +131,43 @@ function getCurve(
     xPointA = width * 2.5;
     xPointB = 0 - width * 1.5;
   } else {
-    if (width > 1408) {
-      xLow = flip ? width - (width - 1120) / 2 : 0;
-      xHigh = flip ? width : (width - 1120) / 2;
-    } else {
-      xLow = flip ? width - 64 : 0;
-      xHigh = flip ? width : 64;
-    }
-    xStart = getRandom(xLow, xHigh);
-    xStop = getRandom(xLow, xHigh);
-    const xWidth = xHigh - xLow;
-    xPointA = xLow - xWidth;
-    xPointB = xHigh + xWidth;
+
+    xLow = 0;
+    xHigh = width;
+    xStart = getRandom(xLow, (xHigh - WIDTH_CUTOFF)/2);
+    xStop = getRandom(xHigh - (xHigh - WIDTH_CUTOFF)/2, xHigh);
+    xPointA = xHigh * 2.5;
+    xPointB = 0 - xHigh * 1.5;
+
+
+
+
+
+    // if (width > 1408) {
+    //   xLow = flip ? width - (width - 1120) / 2 : 0;
+    //   xHigh = flip ? width : (width - 1120) / 2;
+    // } else {
+    //   xLow = flip ? width - 64 : 0;
+    //   xHigh = flip ? width : 64;
+    // }
+    // xStart = getRandom(xLow, xHigh);
+    // xStop = getRandom(xLow, xHigh);
+    // const xWidth = xHigh - xLow;
+    // xPointA = xLow - xWidth;
+    // xPointB = xHigh + xWidth;
   }
 
   const curve1 = new Bezier(
-    { x: xStart, y: 0 },
+    { x: startAtLeft ? xStart : xStop, y: 0 },
     {
-      x: xPointA,
+      x: startAtLeft ? xPointA  : xPointB,
       y: getRandom(0, height / 2),
     },
     {
-      x: xPointB,
+      x: startAtLeft ? xPointB : xPointA,
       y: getRandom(height / 2, height),
     },
-    { x: xStop, y: height }
+    { x: startAtLeft ? xStop : xStart, y: height }
   );
 
   return curve1.getLUT(steps);
@@ -187,57 +194,16 @@ function ChildStar({ config }: { config: StarConfig }) {
 }
 
 function AnimGroup({ config }: { config: Config }) {
-  const [base, left, right, { id, ...group }] = config;
+  const [base, left, right, group] = config;
 
-  const groupRef = useRef<KGroup | null>(null);
 
-  const oldConfig = useRef<Omit<GroupConfig, 'id'>>();
-
-  useEffect(() => {
-    const node = groupRef.current;
-    if (node) {
-      if (!oldConfig.current) {
-        node.setAttrs({ ...group, opacity: 1 });
-
-        oldConfig.current = {
-          ...group,
-        };
-      } else {
-        if (
-          oldConfig.current.x !== group.x ||
-          oldConfig.current.y !== group.y ||
-          oldConfig.current.rotation !== group.rotation ||
-          oldConfig.current.scaleX !== group.scaleX ||
-          oldConfig.current.scaleY !== group.scaleY
-        ) {
-          node.to({
-            duration: 1,
-            easing: function (t: number, b: number, c: number, d: number) {
-              if ((t /= d / 2) < 1) {
-                return (c / 2) * t * t + b;
-              }
-              return (-c / 2) * (--t * (t - 2) - 1) + b;
-            },
-            onFinish: () => {
-              oldConfig.current = {
-                ...group,
-              };
-            },
-            ...group,
-          });
-        }
-      }
-    }
-  }, [group]);
 
   return (
     <Group
       listening={false}
-      id={id}
-      ref={(node) => {
-        groupRef.current = node;
-      }}
-      opacity={0}
+
+
+      {...group}
     >
       <ChildStar config={base} />
       <ChildStar config={left} />
@@ -262,6 +228,7 @@ export default function StarCanvas() {
   });
 
   useEffect(() => {
+
     setStars(generateShapes(size.current.width, size.current.height));
 
     let timeout: number;
