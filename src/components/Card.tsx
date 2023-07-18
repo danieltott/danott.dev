@@ -30,7 +30,7 @@ export function Card<T extends React.ElementType = 'div'>({
 
   return (
     <Component
-      className={clsx(className, 'group relative flex flex-col items-start')}
+      className={clsx(className, 'text-above-stars group relative flex flex-col items-start')}
     >
       {children}
     </Component>

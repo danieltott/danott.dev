@@ -11,7 +11,6 @@ export function Prose({
 }) {
   return (
     <div className={clsx('relative', className)}>
-      <div className="absolute inset-0 z-0 bg-white/50 dark:bg-stone-900/50" />
       <div
         className={clsx(
           'prose relative z-10 dark:prose-invert ',

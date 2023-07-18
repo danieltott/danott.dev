@@ -5,7 +5,6 @@ import { Footer } from '@/components/Footer';
 import StarFrame from '@/components/StarFrame';
 import { Container } from '@/components/Container';
 
-// FreeLunch-Regular.otf
 
 export default function NotFound() {
   return (
