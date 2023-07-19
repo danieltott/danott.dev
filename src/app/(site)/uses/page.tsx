@@ -87,7 +87,7 @@ export default function Uses() {
                 top-notch, as well.
               </p>
               <p>
-                This site was based off of the
+                This site was based off of the{' '}
                 <Link href="https://tailwindui.com/templates/spotlight">
                   Tailwind UI Spotlight template
                 </Link>
@@ -105,7 +105,7 @@ export default function Uses() {
             <Tool
               title={
                 <>
-                  <span className="font-freeLunch font-normal not-italic">
+                  <span className="font-free-lunch font-normal not-italic">
                     Free Lunch
                   </span>{' '}
                   by SimpleBits
