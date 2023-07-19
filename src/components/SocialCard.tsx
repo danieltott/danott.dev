@@ -123,12 +123,6 @@ export default function SocialCard({
         <Star l={60} t={630} />
         <Star l={60} t={630} />
         <Star l={60} t={630} />
-        <Star l={60} t={630} />
-        <Star l={60} t={630} />
-        <Star l={60} t={630} />
-        <Star l={60} t={630} />
-        <Star l={60} t={630} />
-        <Star l={60} t={630} />
       </div>
       <div
         style={{
@@ -140,11 +134,6 @@ export default function SocialCard({
           height: 630,
         }}
       >
-        <Star l={60} t={630} />
-        <Star l={60} t={630} />
-        <Star l={60} t={630} />
-        <Star l={60} t={630} />
-        <Star l={60} t={630} />
         <Star l={60} t={630} />
         <Star l={60} t={630} />
         <Star l={60} t={630} />
