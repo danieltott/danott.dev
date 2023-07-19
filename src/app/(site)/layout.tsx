@@ -2,6 +2,7 @@ import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import Script from 'next/script';
 import StarFrame from '@/components/StarFrame';
+import { Suspense } from 'react';
 
 export default function RootLayout({
   children,
@@ -18,7 +19,9 @@ export default function RootLayout({
       )}
 
       <body className="overflow:hidden relative flex min-h-full flex-col bg-east-bay-50 dark:bg-east-bay-950">
-        <StarFrame />
+        <Suspense fallback={null}>
+          <StarFrame />
+        </Suspense>
 
         <div className="fixed inset-0 z-0 flex justify-center sm:px-8">
           <div className="flex w-full max-w-7xl lg:px-8">
