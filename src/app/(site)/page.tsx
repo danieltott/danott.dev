@@ -251,6 +251,7 @@ export default async function HomePage() {
               href="https://danott.dev/thoughts/feed.rss"
               aria-label="Subscribe to RSS feed"
               icon={RssIcon}
+              prefetch={false}
             />
           </div>
         </div>
