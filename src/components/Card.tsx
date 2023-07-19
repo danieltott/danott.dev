@@ -1,20 +1,9 @@
 import Link from 'next/link';
 import clsx from 'clsx';
-import type { SvgElementProps, LinkHref, LinkProps } from '@/lib/types';
+import type { LinkHref, LinkProps } from '@/lib/types';
 import { Prose } from './Prose';
-
-function ChevronRightIcon(props: SvgElementProps) {
-  return (
-    <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" {...props}>
-      <path
-        d="M6.75 5.75 9.25 8l-2.5 2.25"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
+import Star from './Star';
+import { ArrowSmallRightIcon } from '@heroicons/react/20/solid';
 
 interface AsProps<T extends React.ElementType> {
   as?: T;
@@ -93,7 +82,7 @@ Card.Cta = function CardCta({
     children: (
       <>
         {children}
-        <ChevronRightIcon className="ml-1 h-4 w-4 stroke-current" />
+        <ArrowSmallRightIcon className="ml-1 h-4 w-4 stroke-current" />
       </>
     ),
   };
@@ -120,19 +109,11 @@ Card.Eyebrow = function CardEyebrow<T extends React.ElementType = 'p'>({
     <Component
       className={clsx(
         className,
-        'relative z-10 order-first mb-3 flex items-center gap-1 text-xs font-medium text-east-bay-700 dark:text-east-bay-300 md:text-sm',
-        decorate && 'pl-3.5'
+        'relative z-10 order-first mb-3 flex items-center gap-1 text-xs font-medium text-east-bay-700 dark:text-east-bay-300 md:text-sm'
       )}
       {...props}
     >
-      {decorate && (
-        <span
-          className="absolute inset-y-0 left-0 flex items-center"
-          aria-hidden="true"
-        >
-          <span className="h-4 w-0.5 rounded-full bg-east-bay-400 dark:bg-east-bay-500" />
-        </span>
-      )}
+      {decorate && <Star randomFill />}
       {children}
     </Component>
   );

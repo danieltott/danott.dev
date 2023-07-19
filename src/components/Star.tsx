@@ -1,14 +1,53 @@
 import type { SvgElementProps } from '@/lib/types';
 import clsx from 'clsx';
+import { random } from './star-util';
+
+export const fillColors = [
+  'fill-pink-salmon-300',
+  'fill-pink-salmon-400',
+  'fill-pink-salmon-500',
+  'fill-pink-salmon-600',
+
+  'fill-green-metal-300',
+  'fill-green-metal-400',
+  'fill-green-metal-500',
+  'fill-green-metal-600',
+
+  'fill-energy-yellow-300',
+  'fill-energy-yellow-400',
+  'fill-energy-yellow-500',
+  'fill-energy-yellow-600',
+
+  'fill-east-bay-300',
+  'fill-east-bay-400',
+  'fill-east-bay-500',
+  'fill-east-bay-600',
+
+  'fill-brick-red-300',
+  'fill-brick-red-400',
+  'fill-brick-red-500',
+  'fill-brick-red-600',
+
+  'fill-coral-300',
+  'fill-coral-400',
+  'fill-coral-500',
+  'fill-coral-600',
+];
 
 export default function Star({
   randomRotate = true,
+  randomFill = false,
   className,
   ...props
 }: SvgElementProps & {
   randomRotate?: boolean;
+  randomFill?: boolean;
 }) {
   const rotation = randomRotate ? Math.floor(Math.random() * 360) : 0;
+  let fill = '';
+  if (randomFill) {
+    fill = random(fillColors);
+  }
 
   return (
     <svg
@@ -16,7 +55,12 @@ export default function Star({
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
       strokeWidth={1.5}
-      className={clsx('w-6 h-6 stroke-stone-800', className)}
+      className={clsx(
+        fill,
+        'w-6 h-6 stroke-stone-800 dark:stroke-stone-200',
+        className
+      )}
+      aria-hidden="true"
       {...props}
     >
       <path

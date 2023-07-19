@@ -58,7 +58,8 @@ export default function ArticleList({
               <Card.Eyebrow
                 as="time"
                 dateTime={article.date}
-                className="mt-1 hidden md:block"
+                className="mt-1 hidden md:flex"
+                decorate
               >
                 {formatDate(article.date)}
               </Card.Eyebrow>
