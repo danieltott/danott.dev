@@ -28,7 +28,7 @@ export default function RootLayout({
             <div className="w-full bg-white ring-1 ring-stone-100 dark:bg-stone-900 dark:ring-stone-300/20" />
           </div>
         </div>
-        <div className="fixed inset-0 z-20 flex justify-center opacity-90 sm:px-8">
+        <div className="fixed inset-0 z-20 flex justify-center opacity-70 sm:px-8">
           <div className="flex w-full max-w-7xl lg:px-8">
             <div className="w-full bg-white ring-1 ring-stone-100 dark:bg-stone-900 dark:ring-stone-300/20" />
           </div>

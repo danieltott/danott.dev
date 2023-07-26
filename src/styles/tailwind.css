@@ -47,11 +47,11 @@
   }
 
   .text-above-stars {
-    backdrop-filter: blur(2px);
-    text-shadow: 0 0 2px #fff;
+    backdrop-filter: blur(3px);
+    text-shadow: 0 0 3px #fff;
   }
 
   .dark .text-above-stars {
-    text-shadow: 0 0 2px rgb(28 25 23);
+    text-shadow: 0 0 3px rgb(28 25 23);
   }
 }

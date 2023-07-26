@@ -151,7 +151,7 @@ function Resume() {
   ];
 
   return (
-    <div className="rounded-2xl border border-stone-100 bg-white/50 p-6 dark:border-stone-700/40 dark:bg-stone-900/50">
+    <div className="text-above-stars rounded-2xl border border-stone-100 bg-white/50 p-6 dark:border-stone-700/40 dark:bg-stone-900/50">
       <h2 className="flex text-sm font-semibold text-stone-900 dark:text-stone-100 md:text-base lg:text-xl">
         <BriefcaseIcon className="h-6 w-6 flex-none" />
         <span className="ml-3">Work</span>
