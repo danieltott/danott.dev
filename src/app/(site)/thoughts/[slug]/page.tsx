@@ -60,7 +60,7 @@ export default async function Page({ params }: Props) {
               <h1 className="font-title mt-6 ">{meta.title}</h1>
               <time
                 dateTime={meta.date}
-                className="order-first flex gap-3 items-center text-base text-east-bay-700 dark:text-stone-400 lg:text-lg"
+                className="md:order-first flex gap-3 items-center text-base text-east-bay-700 dark:text-stone-400 lg:text-lg"
               >
                 <Star randomFill />
                 <span>{formatDate(meta.date)}</span>
