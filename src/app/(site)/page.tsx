@@ -77,7 +77,7 @@ function SocialLink({
 }) {
   return (
     <Link className="group -m-1 p-1" {...props}>
-      <Icon className="h-6 w-6 fill-stone-500 transition group-hover:fill-stone-600 dark:fill-stone-400 dark:group-hover:fill-stone-300" />
+      <Icon className="h-6 w-6 fill-east-bay-700 transition group-hover:fill-east-bay-600 dark:fill-east-bay-400 dark:group-hover:fill-east-bay-300 drop-shadow-[0_0_3px_#fff] dark:drop-shadow-[0_0_3px_rgb(28_25_23)]" />
     </Link>
   );
 }
