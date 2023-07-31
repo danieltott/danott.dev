@@ -88,7 +88,7 @@ function MobileNavItem({
   );
 }
 
-function MobileNavigation(props: React.ComponentProps<typeof Popover>) {
+function MobileNavigation({isHomePage, ...props}: React.ComponentProps<typeof Popover> & { isHomePage: boolean  }) {
   return (
     <Popover {...props}>
       <Popover.Button className="group flex items-center rounded-full bg-white/90 px-4 py-2 text-sm font-medium text-stone-800 shadow-lg shadow-stone-800/5 ring-1 ring-stone-900/5 backdrop-blur dark:bg-east-bay-950/90 dark:text-stone-200 dark:ring-white/10 dark:hover:ring-white/20 md:text-base lg:text-lg">
@@ -130,6 +130,7 @@ function MobileNavigation(props: React.ComponentProps<typeof Popover>) {
             </div>
             <nav className="mt-6">
               <ul className="-my-2 divide-y divide-stone-100 text-base text-stone-800 dark:divide-stone-100/5 dark:text-stone-300 md:text-lg lg:text-xl">
+                {!isHomePage && <MobileNavItem href="/">Home</MobileNavItem>}
                 <MobileNavItem href="/about">About</MobileNavItem>
                 <MobileNavItem href="/thoughts">Thoughts</MobileNavItem>
                 <MobileNavItem href="/projects">Projects</MobileNavItem>
@@ -177,10 +178,11 @@ function NavItem({
   );
 }
 
-function DesktopNavigation(props: React.ComponentProps<'nav'>) {
+function DesktopNavigation({isHomePage, ...props}: React.ComponentProps<'nav'>& { isHomePage: boolean  }) {
   return (
     <nav {...props}>
       <ul className="flex rounded-full bg-white/90 px-3 text-sm font-medium text-stone-800 shadow-lg shadow-east-bay-800/5 ring-1 ring-east-bay-900/5 backdrop-blur dark:bg-east-bay-950/90 dark:text-stone-200 dark:ring-white/10 md:text-base lg:text-lg">
+        {!isHomePage && <NavItem href="/">Home</NavItem>}
         <NavItem href="/about">About</NavItem>
         <NavItem href="/thoughts">Thoughts</NavItem>
         <NavItem href="/projects">Projects</NavItem>
@@ -359,46 +361,6 @@ export function Header() {
           marginBottom: 'var(--header-mb)',
         }}
       >
-        {/* {isHomePage && (
-          <>
-            <div
-              ref={avatarRef}
-              className="order-last mt-[calc(theme(spacing.16)-theme(spacing.3))]"
-            />
-            <Container
-              className="top-0 order-last -mb-3 pt-3"
-              style={
-                {
-                  position: 'var(--header-position)',
-                } as unknown as React.CSSProperties
-              }
-            >
-              <div
-                className="top-[var(--avatar-top,theme(spacing.3))] w-full"
-                style={
-                  {
-                    position: 'var(--header-inner-position)',
-                  } as unknown as React.CSSProperties
-                }
-              >
-                <div className="relative">
-                  <AvatarContainer
-                    className="absolute left-0 top-3 origin-left transition-opacity"
-                    style={{
-                      opacity: 'var(--avatar-border-opacity, 0)',
-                      transform: 'var(--avatar-border-transform)',
-                    }}
-                  />
-                  <Avatar
-                    large
-                    className="block h-16 w-16 origin-left"
-                    style={{ transform: 'var(--avatar-image-transform)' }}
-                  />
-                </div>
-              </div>
-            </Container>
-          </>
-        )} */}
         <div
           ref={headerRef}
           className="top-0 z-10 h-16 pt-6"
@@ -418,15 +380,13 @@ export function Header() {
           >
             <div className="relative flex gap-4">
               <div className="flex flex-1">
-                {/* {!isHomePage && ( */}
                   <AvatarContainer>
                     <Avatar />
                   </AvatarContainer>
-                {/* )} */}
               </div>
               <div className="flex flex-1 justify-end md:justify-center">
-                <MobileNavigation className="pointer-events-auto text-sm md:hidden" />
-                <DesktopNavigation className="pointer-events-auto hidden md:block" />
+                <MobileNavigation isHomePage={isHomePage} className="pointer-events-auto text-sm md:hidden" />
+                <DesktopNavigation isHomePage={isHomePage} className="pointer-events-auto hidden md:block" />
               </div>
               <div className="flex justify-end md:flex-1">
                 <div className="pointer-events-auto">
@@ -437,7 +397,6 @@ export function Header() {
           </Container>
         </div>
       </header>
-      {/* {isHomePage && <div style={{ height: 'var(--content-offset)' }} />} */}
     </>
   );
 }
