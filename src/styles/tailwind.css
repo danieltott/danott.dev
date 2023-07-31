@@ -30,37 +30,37 @@
     lg:text-6xl;
   }
 
-:root {
-  --textshadowsize: 2px;
-      --textshadowcolor: rgb(255 255 255 / .6);
-}
+  :root {
+    --textshadowsize: 2px;
+    --textshadowcolor: rgb(255 255 255 / 0.6);
+  }
 
-.dark {
-  --textshadowcolor: rgb(28 25 23 / .6);
-}
+  .dark {
+    --textshadowcolor: rgb(28 25 23 / 0.6);
+  }
 
-.text-shadow-outline {
-  text-shadow: calc(0px - var(--textshadowsize)) calc(0px - var(--textshadowsize)) 0 var(--textshadowcolor),
-  var(--textshadowsize) calc(0px - var(--textshadowsize)) 0 var(--textshadowcolor),
-  calc(0px - var(--textshadowsize)) var(--textshadowsize) 0 var(--textshadowcolor),
-   var(--textshadowsize) var(--textshadowsize) 0 var(--textshadowcolor);
-}
+  .text-shadow-outline {
+    text-shadow:
+      calc(0px - var(--textshadowsize)) calc(0px - var(--textshadowsize)) 0
+        var(--textshadowcolor),
+      var(--textshadowsize) calc(0px - var(--textshadowsize)) 0
+        var(--textshadowcolor),
+      calc(0px - var(--textshadowsize)) var(--textshadowsize) 0
+        var(--textshadowcolor),
+      var(--textshadowsize) var(--textshadowsize) 0 var(--textshadowcolor);
+  }
 
-.page-title {
-  @apply relative;
-}
+  .page-title {
+    @apply relative;
+  }
   .page-title h1 {
     @apply font-title relative z-10;
-
   }
   .page-title-backdrop {
     --textshadowsize: 3px;
 
-     @apply text-shadow-outline font-title absolute inset-0 z-0;
+    @apply text-shadow-outline font-title absolute inset-0 z-0;
   }
-
-
-
 
   .link-hover-colors {
     @apply transition-colors duration-150 ease-in-out hover:text-primary-600 dark:hover:text-primary-300;
@@ -89,6 +89,4 @@
     background: rgba(28 25 23 / 0.5);
     box-shadow: 0 0 10px 10px rgba(28 25 23 / 0.5);
   }
-
-
 }

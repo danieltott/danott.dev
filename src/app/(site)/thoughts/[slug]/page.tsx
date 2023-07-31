@@ -58,11 +58,11 @@ export default async function Page({ params }: Props) {
         <div className="mx-auto max-w-2xl 2xl:max-w-3xl">
           <article>
             <header className="flex flex-col">
-              <Title className="mt-6" >{meta.title}</Title>
+              <Title className="mt-6">{meta.title}</Title>
 
               <time
                 dateTime={meta.date}
-                className="md:order-first flex gap-3 items-center text-base text-east-bay-700 dark:text-stone-400 lg:text-lg"
+                className="flex items-center gap-3 text-base text-east-bay-700 dark:text-stone-400 md:order-first lg:text-lg"
               >
                 <Star randomFill />
                 <span>{formatDate(meta.date)}</span>

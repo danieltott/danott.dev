@@ -11,7 +11,7 @@ export default function SimplePage({ title, intro, children }: Props) {
   return (
     <>
       <header className="max-w-2xl">
-      <Title>{title}</Title>
+        <Title>{title}</Title>
         <Prose className="text-above-stars mt-6 prose-p:leading-snug">
           {typeof intro === 'string' ? <p>{intro}</p> : intro}
         </Prose>

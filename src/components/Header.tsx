@@ -88,7 +88,10 @@ function MobileNavItem({
   );
 }
 
-function MobileNavigation({isHomePage, ...props}: React.ComponentProps<typeof Popover> & { isHomePage: boolean  }) {
+function MobileNavigation({
+  isHomePage,
+  ...props
+}: React.ComponentProps<typeof Popover> & { isHomePage: boolean }) {
   return (
     <Popover {...props}>
       <Popover.Button className="group flex items-center rounded-full bg-white/90 px-4 py-2 text-sm font-medium text-stone-800 shadow-lg shadow-stone-800/5 ring-1 ring-stone-900/5 backdrop-blur dark:bg-east-bay-950/90 dark:text-stone-200 dark:ring-white/10 dark:hover:ring-white/20 md:text-base lg:text-lg">
@@ -178,7 +181,10 @@ function NavItem({
   );
 }
 
-function DesktopNavigation({isHomePage, ...props}: React.ComponentProps<'nav'>& { isHomePage: boolean  }) {
+function DesktopNavigation({
+  isHomePage,
+  ...props
+}: React.ComponentProps<'nav'> & { isHomePage: boolean }) {
   return (
     <nav {...props}>
       <ul className="flex rounded-full bg-white/90 px-3 text-sm font-medium text-stone-800 shadow-lg shadow-east-bay-800/5 ring-1 ring-east-bay-900/5 backdrop-blur dark:bg-east-bay-950/90 dark:text-stone-200 dark:ring-white/10 md:text-base lg:text-lg">
@@ -380,13 +386,19 @@ export function Header() {
           >
             <div className="relative flex gap-4">
               <div className="flex flex-1">
-                  <AvatarContainer>
-                    <Avatar />
-                  </AvatarContainer>
+                <AvatarContainer>
+                  <Avatar />
+                </AvatarContainer>
               </div>
               <div className="flex flex-1 justify-end md:justify-center">
-                <MobileNavigation isHomePage={isHomePage} className="pointer-events-auto text-sm md:hidden" />
-                <DesktopNavigation isHomePage={isHomePage} className="pointer-events-auto hidden md:block" />
+                <MobileNavigation
+                  isHomePage={isHomePage}
+                  className="pointer-events-auto text-sm md:hidden"
+                />
+                <DesktopNavigation
+                  isHomePage={isHomePage}
+                  className="pointer-events-auto hidden md:block"
+                />
               </div>
               <div className="flex justify-end md:flex-1">
                 <div className="pointer-events-auto">

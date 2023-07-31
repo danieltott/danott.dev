@@ -78,7 +78,7 @@ function SocialLink({
 }) {
   return (
     <Link className="group -m-1 p-1" {...props}>
-      <Icon className="h-6 w-6 fill-east-bay-700 transition group-hover:fill-east-bay-600 dark:fill-east-bay-400 dark:group-hover:fill-east-bay-300 drop-shadow-[0_0_3px_#fff] dark:drop-shadow-[0_0_3px_rgb(28_25_23)]" />
+      <Icon className="h-6 w-6 fill-east-bay-700 drop-shadow-[0_0_3px_#fff] transition group-hover:fill-east-bay-600 dark:fill-east-bay-400 dark:drop-shadow-[0_0_3px_rgb(28_25_23)] dark:group-hover:fill-east-bay-300" />
     </Link>
   );
 }
@@ -229,7 +229,7 @@ export default async function HomePage() {
         <div className="max-w-2xl">
           <Title>Full-Stack Design and Development</Title>
           <Prose className="mt-6">
-            <p className='text-above-stars'>
+            <p className="text-above-stars">
               I&rsquo;m Dan, an independent developer and designer based in
               Cleveland, Ohio. I&rsquo;ve been working with clients since 2005
               to plan, design, and implement their ideas. I also am an org

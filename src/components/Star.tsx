@@ -57,7 +57,7 @@ export default function Star({
       strokeWidth={1.5}
       className={clsx(
         fill,
-        'w-6 h-6 stroke-stone-800 dark:stroke-stone-200',
+        'h-6 w-6 stroke-stone-800 dark:stroke-stone-200',
         className
       )}
       aria-hidden="true"

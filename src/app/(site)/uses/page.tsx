@@ -125,7 +125,7 @@ export default function Uses() {
               Don&rsquo;t leave home without it!
             </Tool>
 
-            <li className="flex items-center gap-2 group">
+            <li className="group flex items-center gap-2">
               <Star className="fill-green-metal-300 group-hover:animate-bounce" />
               {/* <svg
                 xmlns="http://www.w3.org/2000/svg"

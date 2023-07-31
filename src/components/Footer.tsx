@@ -11,7 +11,10 @@ function NavLink({
   children: React.ReactNode;
 }) {
   return (
-    <Link href={href} className="link-colors link-hover-colors text-above-stars">
+    <Link
+      href={href}
+      className="link-colors link-hover-colors text-above-stars"
+    >
       {children}
     </Link>
   );
@@ -36,8 +39,10 @@ export function Footer() {
                 </NavLink>
               </div>
               <p className="text-sm text-east-bay-700 dark:text-east-bay-400 md:text-base lg:text-lg">
-                <span className="text-above-stars">&copy; {new Date().getFullYear()} Daniel T Ott, LLC. All rights
-                reserved.</span>
+                <span className="text-above-stars">
+                  &copy; {new Date().getFullYear()} Daniel T Ott, LLC. All
+                  rights reserved.
+                </span>
               </p>
             </div>
           </Container.Inner>

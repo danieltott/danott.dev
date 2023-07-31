@@ -30,18 +30,16 @@ export default function About() {
             </div>
           </div>
           <div className="lg:order-first lg:row-span-2">
-            <Title>
-              I&rsquo;m Dan Ott. I do computer stuff.
-              </Title>
+            <Title>I&rsquo;m Dan Ott. I do computer stuff.</Title>
             <Prose className="mt-6">
-              <p className='text-above-stars'>
+              <p className="text-above-stars">
                 I&rsquo;m Dan, an independent developer and designer based in
                 Cleveland, Ohio. I&rsquo;ve been working with clients since 2005
                 to plan, design, and implement their ideas. I also am an org
                 maintainer at{' '}
                 <a href="https://virtualcoffee.io">Virtual Coffee</a>.
               </p>
-              <p className='text-above-stars'>
+              <p className="text-above-stars">
                 I&rsquo;ve been an independent developer for over fifteen years,
                 specializing in front-end architecture and development. I have
                 experience building sites using standards-compliant HTML and
