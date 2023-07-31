@@ -12,6 +12,7 @@
     @apply font-freeLunch;
   }
   .font-title {
+    backdrop-filter: blur(3px);
     @apply font-free-lunch
     /*
     */
@@ -49,9 +50,13 @@
   .text-above-stars {
     backdrop-filter: blur(3px);
     text-shadow: 0 0 3px #fff;
+    background: rgba(255 255 255 / 0.5);
+    box-shadow: 0 0 10px 10px rgba(255 255 255 / 0.5);
   }
 
   .dark .text-above-stars {
     text-shadow: 0 0 3px rgb(28 25 23);
+    background: rgba(28 25 23 / 0.5);
+    box-shadow: 0 0 10px 10px rgba(28 25 23 / 0.5);
   }
 }
