@@ -68,7 +68,7 @@ export default async function Page({ params }: Props) {
                 <span>{formatDate(meta.date)}</span>
               </time>
             </header>
-            <Prose className="text-above-stars mt-8">
+            <Prose className="mt-8">
               <MdxPage components={components} />
             </Prose>
             <Comments slug={params.slug} />

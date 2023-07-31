@@ -30,6 +30,22 @@
     lg:text-6xl;
   }
 
+:root {
+  --textshadowsize: 2px;
+      --textshadowcolor: rgb(255 255 255 / .6);
+}
+
+.dark {
+  --textshadowcolor: rgb(28 25 23 / .6);
+}
+
+.text-shadow-outline {
+  text-shadow: calc(0px - var(--textshadowsize)) calc(0px - var(--textshadowsize)) 0 var(--textshadowcolor),
+  var(--textshadowsize) calc(0px - var(--textshadowsize)) 0 var(--textshadowcolor),
+  calc(0px - var(--textshadowsize)) var(--textshadowsize) 0 var(--textshadowcolor),
+   var(--textshadowsize) var(--textshadowsize) 0 var(--textshadowcolor);
+}
+
 .page-title {
   @apply relative;
 }
@@ -38,19 +54,12 @@
 
   }
   .page-title-backdrop {
-    --shadowsize: 2px;
-    --shadowcolor: rgb(255 255 255 / .6);
-    text-shadow: calc(0px - var(--shadowsize)) calc(0px - var(--shadowsize)) 0 var(--shadowcolor),
-    var(--shadowsize) calc(0px - var(--shadowsize)) 0 var(--shadowcolor),
-    calc(0px - var(--shadowsize)) var(--shadowsize) 0 var(--shadowcolor),
-     var(--shadowsize) var(--shadowsize) 0 var(--shadowcolor);
 
-     @apply font-title absolute inset-0 z-0;
+
+     @apply text-shadow-outline font-title absolute inset-0 z-0;
   }
 
-  .dark .page-title-backdrop {
-    --shadowcolor: rgb(28 25 23 / .6);
-  }
+
 
 
   .link-hover-colors {
@@ -70,15 +79,16 @@
   }
 
   .text-above-stars {
-    backdrop-filter: blur(3px);
-    text-shadow: 0 0 3px #fff;
+    backdrop-filter: blur(1px);
     background: rgba(255 255 255 / 0.5);
     box-shadow: 0 0 10px 10px rgba(255 255 255 / 0.5);
+    @apply text-shadow-outline;
   }
 
   .dark .text-above-stars {
-    text-shadow: 0 0 3px rgb(28 25 23);
     background: rgba(28 25 23 / 0.5);
     box-shadow: 0 0 10px 10px rgba(28 25 23 / 0.5);
   }
+
+
 }

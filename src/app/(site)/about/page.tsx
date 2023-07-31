@@ -32,15 +32,15 @@ export default function About() {
             <h1 className="font-title">
               I&rsquo;m Dan Ott. I do computer stuff.
             </h1>
-            <Prose className="text-above-stars mt-6">
-              <p>
+            <Prose className="mt-6">
+              <p className='text-above-stars'>
                 I&rsquo;m Dan, an independent developer and designer based in
                 Cleveland, Ohio. I&rsquo;ve been working with clients since 2005
                 to plan, design, and implement their ideas. I also am an org
                 maintainer at{' '}
                 <a href="https://virtualcoffee.io">Virtual Coffee</a>.
               </p>
-              <p>
+              <p className='text-above-stars'>
                 I&rsquo;ve been an independent developer for over fifteen years,
                 specializing in front-end architecture and development. I have
                 experience building sites using standards-compliant HTML and
