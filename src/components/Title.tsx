@@ -1,24 +1,8 @@
-export default function Title({ title }: { title: React.ReactNode }) {
-  if (typeof title !== 'string') {
-    return title;
-  }
+import clsx from "clsx"
 
-  const titleWords = title.split(' ');
-
-  return (
-    <>
-      {titleWords.map((word, i) => {
-        if (i !== 0 && word.toLowerCase().startsWith('t')) {
-          return (
-            <>
-              {' '}
-              <span className="inline-block w-0">&nbsp;</span> {word}
-            </>
-          );
-        }
-
-        return <> {word}</>;
-      })}
-    </>
-  );
+export default function Title({ title, className }: { title: React.ReactNode, className?: string }) {
+  return (<div className={clsx("page-title", className)}>
+                <h1>{title}</h1>
+                <span className="page-title-backdrop">{title}</span>
+              </div>)
 }

@@ -9,6 +9,7 @@ import { type MDXProps } from 'mdx/types';
 import Comments from '@/components/Comments';
 import { notFound } from 'next/navigation';
 import Star from '@/components/Star';
+import Title from '@/components/Title';
 
 const components = { Codepen };
 
@@ -57,7 +58,8 @@ export default async function Page({ params }: Props) {
         <div className="mx-auto max-w-2xl 2xl:max-w-3xl">
           <article>
             <header className="flex flex-col">
-              <h1 className="font-title mt-6 ">{meta.title}</h1>
+              <Title title={meta.title} className="mt-6" />
+
               <time
                 dateTime={meta.date}
                 className="md:order-first flex gap-3 items-center text-base text-east-bay-700 dark:text-stone-400 lg:text-lg"

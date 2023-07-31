@@ -12,7 +12,6 @@
     @apply font-freeLunch;
   }
   .font-title {
-    backdrop-filter: blur(3px);
     @apply font-free-lunch
     /*
     */
@@ -30,6 +29,29 @@
     sm:text-5xl
     lg:text-6xl;
   }
+
+.page-title {
+  @apply relative;
+}
+  .page-title h1 {
+    @apply font-title relative z-10;
+
+  }
+  .page-title-backdrop {
+    --shadowsize: 2px;
+    --shadowcolor: rgb(255 255 255 / .6);
+    text-shadow: calc(0px - var(--shadowsize)) calc(0px - var(--shadowsize)) 0 var(--shadowcolor),
+    var(--shadowsize) calc(0px - var(--shadowsize)) 0 var(--shadowcolor),
+    calc(0px - var(--shadowsize)) var(--shadowsize) 0 var(--shadowcolor),
+     var(--shadowsize) var(--shadowsize) 0 var(--shadowcolor);
+
+     @apply font-title absolute inset-0 z-0;
+  }
+
+  .dark .page-title-backdrop {
+    --shadowcolor: rgb(28 25 23 / .6);
+  }
+
 
   .link-hover-colors {
     @apply transition-colors duration-150 ease-in-out hover:text-primary-600 dark:hover:text-primary-300;
