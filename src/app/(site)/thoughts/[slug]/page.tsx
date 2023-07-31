@@ -58,7 +58,7 @@ export default async function Page({ params }: Props) {
         <div className="mx-auto max-w-2xl 2xl:max-w-3xl">
           <article>
             <header className="flex flex-col">
-              <Title title={meta.title} className="mt-6" />
+              <Title className="mt-6" >{meta.title}</Title>
 
               <time
                 dateTime={meta.date}

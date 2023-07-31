@@ -16,6 +16,7 @@ import { type Metadata } from 'next';
 import avatarImage from '@/images/avatar.jpg';
 import { RssIcon } from '@heroicons/react/20/solid';
 import { Prose } from '@/components/Prose';
+import Title from '@/components/Title';
 
 function BriefcaseIcon(props: SvgElementProps) {
   return (
@@ -226,7 +227,7 @@ export default async function HomePage() {
     <>
       <Container className="mt-9">
         <div className="max-w-2xl">
-          <h1 className="font-title">Full-Stack Design and Development</h1>
+          <Title>Full-Stack Design and Development</Title>
           <Prose className="mt-6">
             <p className='text-above-stars'>
               I&rsquo;m Dan, an independent developer and designer based in

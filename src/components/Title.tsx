@@ -1,8 +1,8 @@
 import clsx from "clsx"
 
-export default function Title({ title, className }: { title: React.ReactNode, className?: string }) {
+export default function Title({ children, className }: { children: React.ReactNode, className?: string }) {
   return (<div className={clsx("page-title", className)}>
-                <h1>{title}</h1>
-                <span className="page-title-backdrop">{title}</span>
+                <h1>{children}</h1>
+                <span className="page-title-backdrop">{children}</span>
               </div>)
 }

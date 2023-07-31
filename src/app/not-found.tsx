@@ -4,6 +4,7 @@ import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import StarFrame from '@/components/StarFrame';
 import { Container } from '@/components/Container';
+import Title from '@/components/Title';
 
 export default function NotFound() {
   return (
@@ -27,7 +28,7 @@ export default function NotFound() {
             <main className="grid min-h-full place-items-center">
               <div className="text-center">
                 <p className="link-colors text-base font-semibold">404</p>
-                <h1 className="font-title mt-4">Page not found</h1>
+                <Title className="mt-4">Page not found</Title>
                 <p className="mt-6 text-base leading-7 text-gray-600">
                   Sorry, couldn’t find the page you’re looking for.
                 </p>

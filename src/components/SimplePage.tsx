@@ -1,4 +1,5 @@
 import { Prose } from './Prose';
+import Title from './Title';
 
 export type Props = {
   title: string;
@@ -10,7 +11,7 @@ export default function SimplePage({ title, intro, children }: Props) {
   return (
     <>
       <header className="max-w-2xl">
-        <h1 className="font-title">{title}</h1>
+      <Title>{title}</Title>
         <Prose className="text-above-stars mt-6 prose-p:leading-snug">
           {typeof intro === 'string' ? <p>{intro}</p> : intro}
         </Prose>

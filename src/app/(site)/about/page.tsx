@@ -6,6 +6,7 @@ import SocialLink from './SocialLink';
 import MailLink from './MailLink';
 import { type Metadata } from 'next';
 import { Prose } from '@/components/Prose';
+import Title from '@/components/Title';
 
 export const metadata: Metadata = {
   title: `About`,
@@ -29,9 +30,9 @@ export default function About() {
             </div>
           </div>
           <div className="lg:order-first lg:row-span-2">
-            <h1 className="font-title">
+            <Title>
               I&rsquo;m Dan Ott. I do computer stuff.
-            </h1>
+              </Title>
             <Prose className="mt-6">
               <p className='text-above-stars'>
                 I&rsquo;m Dan, an independent developer and designer based in
