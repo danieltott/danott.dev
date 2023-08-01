@@ -148,7 +148,7 @@ module.exports = {
           },
           DEFAULT: {
             css: {
-              '--tw-prose-body': theme('colors.stone.600'),
+              '--tw-prose-body': theme('colors.stone.700'),
               '--tw-prose-headings': theme('colors.stone.900'),
               '--tw-prose-links': theme('colors.primary.700'),
               '--tw-prose-links-hover': theme('colors.primary.600'),

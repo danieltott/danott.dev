@@ -31,7 +31,7 @@
   }
 
   :root {
-    --textshadowsize: 2px;
+    --textshadowsize: 3px;
     --textshadowcolor: rgb(255 255 255 / 0.6);
   }
 
@@ -57,8 +57,6 @@
     @apply font-title relative z-10;
   }
   .page-title-backdrop {
-    --textshadowsize: 3px;
-
     @apply text-shadow-outline font-title absolute inset-0 z-0;
   }
 

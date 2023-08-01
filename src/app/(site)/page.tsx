@@ -174,12 +174,12 @@ function Resume() {
                 {role.company}
               </dd>
               <dt className="sr-only">Role</dt>
-              <dd className="text-xs text-stone-500 dark:text-stone-400 md:text-sm lg:text-base">
+              <dd className="text-xs text-stone-600 dark:text-stone-400 md:text-sm lg:text-base">
                 {role.title}
               </dd>
               <dt className="sr-only">Date</dt>
               <dd
-                className="ml-auto text-xs text-stone-400 dark:text-stone-500 md:text-sm lg:text-base"
+                className="ml-auto text-xs text-stone-500 dark:text-stone-500 md:text-sm lg:text-base"
                 aria-label={`${
                   typeof role.start === 'string' ? role.start : role.start.label
                 } until ${
