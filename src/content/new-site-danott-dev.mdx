@@ -60,7 +60,7 @@ I've been working on this new design for a while now, and I'm really happy with 
 
 - The title font is a font called [<span className="font-free-lunch font-normal not-italic">Free Lunch</span>](https://simplebits.shop/products/free-lunch) by [Dan Cederholm of SimpleBits](https://simplebits.shop/). Dan was kind enough to provide me with an early-release version - thanks Dan!
 
-- The stars are generated using [`konva-react` with random styles applied to them](https://github.com/danieltott/danott.dev/blob/main/src/components/StarKonva.tsx), positioned via [Bezier JS](https://pomax.github.io/bezierjs/). I went through several iterations of this - starting with outputting a ton of SVGs, then using `<canvas>` by hand, then finally using `konva-react` to generate the canvas elements. I'm pretty happy with how it turned out.
+- The stars are generated using [`<svg>` with random styles applied to them](https://github.com/danieltott/danott.dev/blob/main/src/app/stars.svg/route.ts), positioned via [Bezier JS](https://pomax.github.io/bezierjs/). I went through several iterations of this - starting with outputting a ton of inline React SVGs (way too slow and too many DOM elements), then using `<canvas>` by hand (wonky, hard, slow), then using `konva-react` (nice, but sluggish and _huge_ bundle size), then finally using one single SVG route and including it via an `<img>` tag. I'm pretty happy with how it turned out.
 
 - Social Images are generated using [Next.js's <code>ImageResponse</code>](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image#generate-images-using-code-js-ts-tsx)
   <Image src={openGraphImage} alt="dtott.dev social image" />

@@ -100,11 +100,6 @@ export default function Uses() {
                 Bezier JS is used to generate nice curves for the Star Patterns.
               </p>
             </Tool>
-            <Tool title="Konva" href="https://konvajs.org/docs/react/">
-              <p>
-                Generate the stars via <code>&lt;canvas&gt;</code>.
-              </p>
-            </Tool>
             <Tool
               title={
                 <>
