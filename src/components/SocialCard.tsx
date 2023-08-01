@@ -41,8 +41,10 @@ export default function SocialCard({
   meta: ArticleMeta | Metadata;
   preview?: boolean;
 }) {
-
-  const title = meta.title && typeof meta.title === 'object' && 'absolute' in meta.title ? meta.title.absolute : meta.title;
+  const title =
+    meta.title && typeof meta.title === 'object' && 'absolute' in meta.title
+      ? meta.title.absolute
+      : meta.title;
 
   return (
     <div
