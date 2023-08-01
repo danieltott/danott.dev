@@ -1,5 +1,5 @@
 
-import { NextRequest } from "next/server";
+import { type NextRequest } from "next/server";
 
 
 import { getRandomColor, getRandom, randomScale, randomRotate } from '@/components/star-util';
@@ -118,18 +118,7 @@ function getCurve(steps: number, width: number, height: number) {
     xPointA = xHigh * 2.75;
     xPointB = 0 - xHigh * 1.75;
 
-    // if (width > 1408) {
-    //   xLow = flip ? width - (width - 1120) / 2 : 0;
-    //   xHigh = flip ? width : (width - 1120) / 2;
-    // } else {
-    //   xLow = flip ? width - 64 : 0;
-    //   xHigh = flip ? width : 64;
-    // }
-    // xStart = getRandom(xLow, xHigh);
-    // xStop = getRandom(xLow, xHigh);
-    // const xWidth = xHigh - xLow;
-    // xPointA = xLow - xWidth;
-    // xPointB = xHigh + xWidth;
+
   }
 
   const curve1 = new Bezier(
