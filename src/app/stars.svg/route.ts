@@ -5,7 +5,7 @@ import { NextRequest } from "next/server";
 import { getRandomColor, getRandom, randomScale, randomRotate } from '@/components/star-util';
 import { Bezier, type Point } from 'bezier-js';
 
-const STEP_RATIO = 0.03;
+const STEP_RATIO = 0.035;
 
 type StarConfig = {
   id: string;
@@ -108,15 +108,15 @@ function getCurve(steps: number, width: number, height: number) {
     xHigh = width;
     xStart = 0;
     xStop = width;
-    xPointA = width * 2.5;
-    xPointB = 0 - width * 1.5;
+    xPointA = width * 2.75;
+    xPointB = 0 - width * 1.75;
   } else {
     xLow = 0;
     xHigh = width;
     xStart = getRandom(xLow, (xHigh - WIDTH_CUTOFF) / 2);
     xStop = getRandom(xHigh - (xHigh - WIDTH_CUTOFF) / 2, xHigh);
-    xPointA = xHigh * 2.5;
-    xPointB = 0 - xHigh * 1.5;
+    xPointA = xHigh * 2.75;
+    xPointB = 0 - xHigh * 1.75;
 
     // if (width > 1408) {
     //   xLow = flip ? width - (width - 1120) / 2 : 0;
