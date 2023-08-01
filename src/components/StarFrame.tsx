@@ -60,11 +60,13 @@ function StarFrame() {
   }, []);
 
   return (
+    // // eslint-disable-line @next/next/no-img-element
     <img
       aria-hidden="true"
       src={`/stars.svg?w=${windowSize.width}&h=${windowSize.height}`}
       className="absolute inset-0 z-10 h-full w-full"
       loading="lazy"
+      alt=""
     />
   );
 }
