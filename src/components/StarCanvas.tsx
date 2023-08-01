@@ -1,10 +1,16 @@
 'use client';
-import dynamic from 'next/dynamic';
-
-const Canvas = dynamic(() => import('./StarKonva'), {
-  ssr: false,
-});
+import { useEffect, useState } from 'react';
 
 export default function StarCanvas() {
-  return <Canvas />;
+  const [Component, setComponent] = useState<null | JSX.Element>(null);
+
+  useEffect(() => {
+    async function load() {
+      const StarKonva = (await import('./StarKonva')).default;
+      setComponent(<StarKonva />);
+    }
+    load();
+  }, []);
+
+  return Component ? Component : null;
 }
