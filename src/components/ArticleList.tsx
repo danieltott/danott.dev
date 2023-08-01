@@ -17,8 +17,8 @@ export default function ArticleList({
   const { meta, articles: list } = articles;
   return (
     <>
-      <div className="md:border-l md:border-stone-100 md:pl-6 md:dark:border-stone-700/40">
-        <div className="flex max-w-3xl flex-col space-y-16">
+
+        <div className="md:pl-6 flex max-w-3xl flex-col space-y-16">
           {list.map((article) => (
             <article
               className="md:grid md:grid-cols-4 md:items-baseline"
@@ -27,7 +27,7 @@ export default function ArticleList({
               <Card className="md:col-span-3">
                 <Card.Title>
                   <Link
-                    className="link-colors link-hover-colors link-underline"
+                    className="text-above-stars link-colors link-hover-colors link-underline"
                     href={`/thoughts/${article.slug}`}
                   >
                     {article.title}
@@ -36,7 +36,7 @@ export default function ArticleList({
                 <Card.Eyebrow
                   as="time"
                   dateTime={article.date}
-                  className="md:hidden"
+                  className="text-above-stars md:hidden"
                   decorate
                 >
                   {formatDate(article.date)}
@@ -44,7 +44,7 @@ export default function ArticleList({
                 <Card.Description>
                   {article.summary ? (
                     <div
-                      className="my-0 [&>*:first-child]:mt-0 [&>*:last-child]:mb-0"
+                      className="[&>*]:text-above-stars my-0 [&>*:first-child]:mt-0 [&>*:last-child]:mb-0"
                       dangerouslySetInnerHTML={{ __html: article.summary }}
                     />
                   ) : (
@@ -58,7 +58,7 @@ export default function ArticleList({
               <Card.Eyebrow
                 as="time"
                 dateTime={article.date}
-                className="mt-1 hidden md:flex"
+                className="mt-1 hidden md:flex text-above-stars"
                 decorate
               >
                 {formatDate(article.date)}
@@ -66,14 +66,14 @@ export default function ArticleList({
             </article>
           ))}
         </div>
-      </div>
+
 
       <nav className="mt-16 flex items-center justify-between border-t border-stone-100 px-4 dark:border-stone-700/40 sm:px-0">
         <div className="-mt-px flex w-0 flex-1">
           {meta.prev && (
             <Link
               href={`/thoughts/page/${meta.prev}`}
-              className="inline-flex items-center border-t-2 border-transparent pr-1 pt-4 text-sm font-medium text-stone-500 hover:border-stone-200 hover:text-stone-700 dark:text-stone-400 dark:hover:border-stone-300/40 dark:hover:text-stone-300 md:text-base lg:text-lg"
+              className="text-above-stars inline-flex items-center border-t-2 border-transparent pr-1 pt-4 text-sm font-medium text-stone-500 hover:border-stone-200 hover:text-stone-700 dark:text-stone-400 dark:hover:border-stone-300/40 dark:hover:text-stone-300 md:text-base lg:text-lg"
             >
               <ArrowLongLeftIcon
                 className="mr-3 h-5 w-5 text-stone-400"
@@ -89,7 +89,7 @@ export default function ArticleList({
               key={page}
               href={`/thoughts/page/${page}`}
               className={clsx(
-                'inline-flex items-center border-t-2 px-4 pt-4',
+                'text-above-stars inline-flex items-center border-t-2 px-4 pt-4',
                 page === meta.page
                   ? 'link-colors  border-primary-400 dark:border-primary-400'
                   : 'border-transparent text-sm font-medium text-stone-500 hover:border-stone-200 hover:text-stone-700 dark:text-stone-400 dark:hover:border-stone-300/40 dark:hover:text-stone-300 md:text-base lg:text-lg'
@@ -103,7 +103,7 @@ export default function ArticleList({
           {meta.next && (
             <Link
               href={`/thoughts/page/${meta.next}`}
-              className="inline-flex items-center border-t-2 border-transparent pl-1 pt-4 text-sm font-medium text-stone-500 hover:border-stone-200 hover:text-stone-700 dark:text-stone-400 dark:hover:border-stone-300/40 dark:hover:text-stone-300 md:text-base lg:text-lg"
+              className="text-above-stars inline-flex items-center border-t-2 border-transparent pl-1 pt-4 text-sm font-medium text-stone-500 hover:border-stone-200 hover:text-stone-700 dark:text-stone-400 dark:hover:border-stone-300/40 dark:hover:text-stone-300 md:text-base lg:text-lg"
             >
               Next
               <ArrowLongRightIcon
