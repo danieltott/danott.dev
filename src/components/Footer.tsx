@@ -24,7 +24,7 @@ export function Footer() {
   return (
     <footer className="mt-32">
       <Container.Outer>
-        <div className="border-t border-stone-100 pb-16 pt-10 dark:border-stone-700/40">
+        <div className="border-t border-east-bay-50/50 pb-16 pt-10 dark:border-east-bay-700/30">
           <Container.Inner>
             <div className="flex flex-col items-center justify-between gap-6 lg:flex-row">
               <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-1 text-sm font-medium text-stone-800 dark:text-stone-200 md:text-base lg:text-lg">
