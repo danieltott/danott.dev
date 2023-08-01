@@ -197,7 +197,7 @@ function Resume() {
                     ? role.start
                     : role.start.label}
                 </time>{' '}
-                <span aria-hidden="true">—</span>{' '}
+                <span aria-hidden="true">&mdash;</span>{' '}
                 <time
                   dateTime={
                     typeof role.end === 'string' ? role.end : role.end.label

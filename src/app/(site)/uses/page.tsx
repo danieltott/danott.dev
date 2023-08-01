@@ -166,7 +166,7 @@ export default function Uses() {
               <p>
                 I hade always been a &ldquo;two monitors is better than one big
                 one&rdquo; but...I was wrong. Having all of this real estate has
-                been great - especially for streaming / meetings.
+                been great &mdash; especially for streaming / meetings.
               </p>
             </Tool>
 
@@ -213,7 +213,7 @@ export default function Uses() {
             <Tool title="A Door">
               <p>It&rsquo;s a door.</p>
               <p>
-                I attached a solid-wood door to my standing desk - it&rsquo;s
+                I attached a solid-wood door to my standing desk &mdash; it&rsquo;s
                 huge and stable and awesome.
               </p>
             </Tool>
