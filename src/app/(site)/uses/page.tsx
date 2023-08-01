@@ -190,7 +190,7 @@ export default function Uses() {
               <p>Clicky-clacky-colorful goodness.</p>
             </Tool>
             <Tool
-              title="Logitech MX Master 2s"
+              title="Logitech MX Master 3s"
               href="https://www.logitech.com/en-us/products/mice/mx-master-3s.910-006558.html"
             >
               <p>
@@ -213,8 +213,8 @@ export default function Uses() {
             <Tool title="A Door">
               <p>It&rsquo;s a door.</p>
               <p>
-                I attached a solid-wood door to my standing desk &mdash; it&rsquo;s
-                huge and stable and awesome.
+                I attached a solid-wood door to my standing desk &mdash;
+                it&rsquo;s huge and stable and awesome.
               </p>
             </Tool>
             <Tool
