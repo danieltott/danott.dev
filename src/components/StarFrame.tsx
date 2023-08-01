@@ -58,7 +58,7 @@ function StarFrame() {
   }, []);
 
   return (
-    // eslint-disable-line @next/next/no-img-element
+    // eslint-disable-next-line @next/next/no-img-element
     <img
       aria-hidden="true"
       src={`/stars.svg?w=${windowSize.width}&h=${windowSize.height}`}
