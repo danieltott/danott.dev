@@ -135,7 +135,7 @@ export function getRandom(min: number, max: number, round: number = 2) {
 
 export function randomRotate(rotate3d?: boolean) {
   return rotate3d
-    ? `.2 .2 1 ${getRandom(0, 360)}deg`
+    ? `.2, .2, 1, ${getRandom(0, 360)}deg`
     : `${getRandom(0, 360)}deg`;
 }
 

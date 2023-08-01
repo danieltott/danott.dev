@@ -2,7 +2,7 @@
 import { NextRequest } from "next/server";
 
 
-import { getRandomColor, getRandom, randomScale } from '@/components/star-util';
+import { getRandomColor, getRandom, randomScale, randomRotate } from '@/components/star-util';
 import { Bezier, type Point } from 'bezier-js';
 
 const STEP_RATIO = 0.03;
@@ -11,9 +11,8 @@ type StarConfig = {
   id: string;
   x: number;
   y: number;
-  rotation: number;
-  scaleX: number;
-  scaleY: number;
+  rotate: string;
+  scale: number;
   fill: string;
   translateX: number;
   translateY: number;
@@ -23,11 +22,8 @@ type GroupConfig = {
   id: string;
   x: number;
   y: number;
-  rotation: number;
-  scaleX: number;
-  scaleY: number;
-  translateX: number;
-  translateY: number;
+  rotate: string;
+  scale: number;
 };
 
 type Config = [StarConfig, StarConfig, StarConfig, GroupConfig];
@@ -45,58 +41,49 @@ function generateShapes(width: number, height: number): Config[] {
   ): [StarConfig, StarConfig, StarConfig, GroupConfig] => {
     const id = `${idPrefix}-${i}`;
 
-    const scaleX = randomScale(0.4, 2.5);
-    const scaleY = getRandom(0.6, 1.4) * scaleX;
+    const scale = randomScale(0.8, 2.5);
 
-    const lScaleX = randomScale(0.3, 0.8);
-    const lScaleY = getRandom(0.7, 1.3) * lScaleX;
+    const lScale = randomScale(0.4, 0.8);
 
-    const rScaleX = randomScale(0.3, 0.8);
-    const rScaleY = getRandom(0.7, 1.3) * rScaleX;
+    const rScale = randomScale(0.4, 0.8);
 
     return [
       {
         id: `${id}-b`,
         x: 0,
         y: 0,
-        rotation: Math.random() * 360,
+        rotate: `${getRandom(0, 360)}deg`,
         fill: getRandomColor(),
-        translateX: getRandom(-30, 30),
+        scale: 1,
+        translateX: 0,
         translateY: 0,
-        scaleX: 1,
-        scaleY: 1,
       },
       {
         id: `${id}-l`,
         fill: getRandomColor(),
         x: 0,
         y: 0,
-        translateX: getRandom(-60, 60),
-        translateY: getRandom(-60, 60),
-        scaleX: lScaleX,
-        scaleY: lScaleY,
-        rotation: Math.random() * 360,
+        scale: lScale,
+        rotate: `.2, .2, 1, ${getRandom(0, 180)}deg`,
+        translateX: getRandom(-20, 20),
+        translateY: getRandom(-20, 0),
       },
       {
         id: `${id}-r`,
         fill: getRandomColor(),
         x: 0,
         y: 0,
-        translateX: getRandom(-30, 30),
-        translateY: getRandom(-30, 30),
-        scaleX: rScaleX,
-        scaleY: rScaleY,
-        rotation: Math.random() * 360,
+        scale: rScale,
+        rotate: `.2, .2, 1, ${getRandom(180, 360)}deg`,
+        translateX: getRandom(-20, 20),
+        translateY: getRandom(0, 20),
       },
       {
         id: `${id}-l`,
         x: point.x,
         y: point.y,
-        scaleX,
-        scaleY,
-        rotation: Math.random() * 360,
-        translateX: getRandom(-10, 10),
-        translateY: getRandom(-10, 10),
+        scale,
+        rotate: randomRotate(true),
       },
     ];
   };
@@ -167,8 +154,12 @@ function ChildStar( config:  StarConfig ) {
   `href="#star"`,
   `x="${config.x}"`,
   `y="${config.y}"`,
-  `fill="${config.fill}"`,
-  `transform="translate(${config.translateX} ${config.translateY}) rotate(${config.rotation}) scale(${config.scaleX} ${config.scaleY})"`,
+  `style="fill:${config.fill};
+  transform:
+    translate(${config.translateX}px, ${config.translateY}px)
+    ${config.rotate.indexOf(',') === -1 ? `rotate(${config.rotate})` : `rotate3d(${config.rotate})`}
+    translate(${0 - config.translateX}px, ${0 - config.translateY}px)
+    scale(${config.scale});"`,
   `/>`
 ].join(' ')
 
@@ -178,13 +169,7 @@ function Group(config: Config) {
   const [base, left, right, group] = config;
 
   return [
-    [
-    `<g`,
-    `x="${group.x}"`,
-    `y="${group.y}"`,
-    `transform="translate(${group.x} ${group.y}) rotate(${group.rotation}) scale(${group.scaleX} ${group.scaleY})"`,
-    `>`,
-    ].join(' '),
+    `<g style="transform:translate(${group.x}px, ${group.y}px) rotate3d(${group.rotate}) scale(${group.scale})">`,
     ChildStar(base),
     ChildStar(left),
     ChildStar(right),
