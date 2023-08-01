@@ -41,6 +41,9 @@ export default function SocialCard({
   meta: ArticleMeta | Metadata;
   preview?: boolean;
 }) {
+
+  const title = meta.title && typeof meta.title === 'object' && 'absolute' in meta.title ? meta.title.absolute : meta.title;
+
   return (
     <div
       style={{
@@ -176,7 +179,7 @@ export default function SocialCard({
             backgroundClip: 'text',
             color: 'rgba(0, 0, 0, 0)',
             fontFeatureSettings: '"calt", "dlig", "liga"',
-            fontSize: `${meta.title}`.length > 50 ? '75px' : '100px',
+            fontSize: `${title}`.length > 50 ? '75px' : '100px',
             letterSpacing: '-1.5px',
             lineHeight: 1,
             paddingRight: 90,
@@ -186,7 +189,7 @@ export default function SocialCard({
           }}
           className={preview ? 'font-freeLunch' : undefined}
         >
-          {`${meta.title}`}
+          {`${title}`}
         </p>
 
         <p
