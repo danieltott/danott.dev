@@ -1,7 +1,6 @@
 {
   "singleQuote": true,
   "trailingComma": "es5",
-  "pluginSearchDirs": false,
   "plugins": ["prettier-plugin-tailwindcss"],
   "tailwindFunctions": ["clsx"]
 }
