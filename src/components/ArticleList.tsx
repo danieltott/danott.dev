@@ -17,56 +17,54 @@ export default function ArticleList({
   const { meta, articles: list } = articles;
   return (
     <>
-
-        <div className="md:pl-6 flex max-w-3xl flex-col space-y-16">
-          {list.map((article) => (
-            <article
-              className="md:grid md:grid-cols-4 md:items-baseline"
-              key={article.slug}
-            >
-              <Card className="md:col-span-3">
-                <Card.Title>
-                  <Link
-                    className="text-above-stars link-colors link-hover-colors link-underline"
-                    href={`/thoughts/${article.slug}`}
-                  >
-                    {article.title}
-                  </Link>
-                </Card.Title>
-                <Card.Eyebrow
-                  as="time"
-                  dateTime={article.date}
-                  className="text-above-stars md:hidden"
-                  decorate
+      <div className="flex max-w-3xl flex-col space-y-16 md:pl-6">
+        {list.map((article) => (
+          <article
+            className="md:grid md:grid-cols-4 md:items-baseline"
+            key={article.slug}
+          >
+            <Card className="md:col-span-3">
+              <Card.Title>
+                <Link
+                  className="text-above-stars link-colors link-hover-colors link-underline"
+                  href={`/thoughts/${article.slug}`}
                 >
-                  {formatDate(article.date)}
-                </Card.Eyebrow>
-                <Card.Description>
-                  {article.summary ? (
-                    <div
-                      className="[&>*]:text-above-stars my-0 [&>*:first-child]:mt-0 [&>*:last-child]:mb-0"
-                      dangerouslySetInnerHTML={{ __html: article.summary }}
-                    />
-                  ) : (
-                    <p>{article.description}</p>
-                  )}
-                </Card.Description>
-                <Card.Cta href={`/thoughts/${article.slug}`}>
-                  Read article
-                </Card.Cta>
-              </Card>
+                  {article.title}
+                </Link>
+              </Card.Title>
               <Card.Eyebrow
                 as="time"
                 dateTime={article.date}
-                className="mt-1 hidden md:flex text-above-stars"
+                className="text-above-stars md:hidden"
                 decorate
               >
                 {formatDate(article.date)}
               </Card.Eyebrow>
-            </article>
-          ))}
-        </div>
-
+              <Card.Description>
+                {article.summary ? (
+                  <div
+                    className="[&>*]:text-above-stars my-0 [&>*:first-child]:mt-0 [&>*:last-child]:mb-0"
+                    dangerouslySetInnerHTML={{ __html: article.summary }}
+                  />
+                ) : (
+                  <p>{article.description}</p>
+                )}
+              </Card.Description>
+              <Card.Cta href={`/thoughts/${article.slug}`}>
+                Read article
+              </Card.Cta>
+            </Card>
+            <Card.Eyebrow
+              as="time"
+              dateTime={article.date}
+              className="text-above-stars mt-1 hidden md:flex"
+              decorate
+            >
+              {formatDate(article.date)}
+            </Card.Eyebrow>
+          </article>
+        ))}
+      </div>
 
       <nav className="mt-16 flex items-center justify-between border-t border-stone-100 px-4 dark:border-stone-700/40 sm:px-0">
         <div className="-mt-px flex w-0 flex-1">

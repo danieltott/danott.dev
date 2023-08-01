@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 
 export default function StarFrameMounter() {
-  const [mounted,setMounted] = useState(false);
+  const [mounted, setMounted] = useState(false);
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -11,7 +11,6 @@ export default function StarFrameMounter() {
 }
 
 function StarFrame() {
-
   const [windowSize, setWindowSize] = useState({
     width: window.document.body.offsetWidth,
     height: window.document.body.offsetHeight,
@@ -26,7 +25,6 @@ function StarFrame() {
   });
 
   useEffect(() => {
-
     let timeout: number;
 
     const interval = window.setInterval(() => {
@@ -60,7 +58,7 @@ function StarFrame() {
   }, []);
 
   return (
-    // // eslint-disable-line @next/next/no-img-element
+    // eslint-disable-line @next/next/no-img-element
     <img
       aria-hidden="true"
       src={`/stars.svg?w=${windowSize.width}&h=${windowSize.height}`}

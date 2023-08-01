@@ -1,8 +1,11 @@
+import { type NextRequest } from 'next/server';
 
-import { type NextRequest } from "next/server";
-
-
-import { getRandomColor, getRandom, randomScale, randomRotate } from '@/components/star-util';
+import {
+  getRandomColor,
+  getRandom,
+  randomScale,
+  randomRotate,
+} from '@/components/star-util';
 import { Bezier, type Point } from 'bezier-js';
 
 const STEP_RATIO = 0.035;
@@ -117,8 +120,6 @@ function getCurve(steps: number, width: number, height: number) {
     xStop = getRandom(xHigh - (xHigh - WIDTH_CUTOFF) / 2, xHigh);
     xPointA = xHigh * 2.75;
     xPointB = 0 - xHigh * 1.75;
-
-
   }
 
   const curve1 = new Bezier(
@@ -137,21 +138,24 @@ function getCurve(steps: number, width: number, height: number) {
   return curve1.getLUT(steps);
 }
 
-function ChildStar( config:  StarConfig ) {
-
-  return [`<use`,
-  `href="#star"`,
-  `x="${config.x}"`,
-  `y="${config.y}"`,
-  `style="fill:${config.fill};
+function ChildStar(config: StarConfig) {
+  return [
+    `<use`,
+    `href="#star"`,
+    `x="${config.x}"`,
+    `y="${config.y}"`,
+    `style="fill:${config.fill};
   transform:
     translate(${config.translateX}px, ${config.translateY}px)
-    ${config.rotate.indexOf(',') === -1 ? `rotate(${config.rotate})` : `rotate3d(${config.rotate})`}
+    ${
+      config.rotate.indexOf(',') === -1
+        ? `rotate(${config.rotate})`
+        : `rotate3d(${config.rotate})`
+    }
     translate(${0 - config.translateX}px, ${0 - config.translateY}px)
     scale(${config.scale});"`,
-  `/>`
-].join(' ')
-
+    `/>`,
+  ].join(' ');
 }
 
 function Group(config: Config) {
@@ -162,9 +166,8 @@ function Group(config: Config) {
     ChildStar(base),
     ChildStar(left),
     ChildStar(right),
-    `</g>`
-  ].join('')
-
+    `</g>`,
+  ].join('');
 }
 
 // function AnimGroup({ config }: { config: Config }) {
@@ -186,12 +189,13 @@ function Group(config: Config) {
 // #292524
 
 export async function GET(request: NextRequest) {
-  const width = parseInt(request.nextUrl.searchParams.get('w') || '0', 10)
-  const height = parseInt(request.nextUrl.searchParams.get('h') || '0', 10)
+  const width = parseInt(request.nextUrl.searchParams.get('w') || '0', 10);
+  const height = parseInt(request.nextUrl.searchParams.get('h') || '0', 10);
 
-  const stars = generateShapes(width, height)
+  const stars = generateShapes(width, height);
 
-  return new Response(`
+  return new Response(
+    `
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 ${width} ${height}">
     <style>
     path {
@@ -208,11 +212,13 @@ export async function GET(request: NextRequest) {
     ${stars.map(Group).join('')}
 
   </svg>
-    `, {
-    headers: {
-      'content-type': 'image/svg+xml; charset=utf-8',
-    },
-  });
+    `,
+    {
+      headers: {
+        'content-type': 'image/svg+xml; charset=utf-8',
+      },
+    }
+  );
 }
 
 // export function Stars() {
@@ -265,7 +271,6 @@ export async function GET(request: NextRequest) {
 //       clearTimeout(timeout);
 //     };
 //   }, []);
-
 
 // return (<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
 //   <Star />
