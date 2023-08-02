@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import ClientImage from '@/components/ClientImage';
 import screenshot from './images/screenshot.jpg';
 import borderscreenshot from './images/borderscreenshot.jpg';
 
@@ -17,7 +17,7 @@ I know, I know. What this world really needs is a new rounded corners solution. 
 
 Well, this solution offers something new to the world of rounded corners. What it does is this: it crops the content below it, so that anything with a background color or image (headers, paragraphs, even images) automatically get the rounded corner treatment with no extra work. See below:
 
-<Image src={screenshot} alt="Screenshot of cropping corners" />
+<ClientImage src={screenshot} alt="Screenshot of cropping corners" />
 
 In this screenshot, the image is a normal, rectangular image. Nothing was done to it, except inserting it inside one of my rounded corners containers. It's easy enough that you can even have your clients do it in their <abbr title="Content Management System">CMS</abbr>s without the headache of trying to teach them to use the Rounded Rectangle Tool in Photoshop.
 
@@ -35,7 +35,7 @@ Once you've got Super PNG running, use the aforementioned Rounded Rectangle Tool
 
 Once this is done, you should have the outline of a container. Now, zoom in to one of the corners, and, using the marque tool, select a square that is just big enough to contain the corner. Copy it, open a new document, and paste it in. Throw out the background, if there is one, and you should have a corner that looks something like this:
 
-<Image src={borderscreenshot} title="The top-left border at %1200" />
+<ClientImage src={borderscreenshot} title="The top-left border at %1200" />
 
 Once you've got this, simply save it, then rotate it and save it three more times so that you end up with each corner.
 

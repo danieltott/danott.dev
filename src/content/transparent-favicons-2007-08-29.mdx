@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import ClientImage from '@/components/ClientImage';
 import favicon_old from './images/favicon_old.jpg';
 import favicon_new from './images/favicon_new.jpg';
 
@@ -22,7 +22,7 @@ export const meta = {
 
 <p>Here's a screenshot of my site in a Firefox tab with my original favicon:</p>
 
-<Image src={favicon_old} alt="Old Favicon" />
+<ClientImage src={favicon_old} alt="Old Favicon" />
 
 <p>
   As you can see, it looks fine in the location bar, but you can see the white
@@ -30,7 +30,7 @@ export const meta = {
   Here's the new version:
 </p>
 
-<Image src={favicon_new} alt="New Favicon" />
+<ClientImage src={favicon_new} alt="New Favicon" />
 
 <p>Much better! Want to know how to do it?</p>
 

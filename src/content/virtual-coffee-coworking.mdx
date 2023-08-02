@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import ClientImage from '@/components/ClientImage';
 import vcCoworkingZoomSettingsPng from './images/vc-coworking-zoom-settings.png';
 import vcCoworkingMessagePng from './images/vc-coworking-message.png';
 import vcCoworkingDialogPng from './images/vc-coworking-dialog.png';
@@ -61,7 +61,10 @@ The [Zoom webhooks apps](https://marketplace.zoom.us/docs/api-reference/webhook-
 - [Participant/Host joined meeting](https://marketplace.zoom.us/docs/api-reference/webhook-reference/meeting-events/participant-joined-meeting)
 - [Participant/Host left meeting](https://marketplace.zoom.us/docs/api-reference/webhook-reference/meeting-events/participant-left)
 
-<Image src={vcCoworkingZoomSettingsPng} alt="Screenshot of Zoom App settings" />
+<ClientImage
+  src={vcCoworkingZoomSettingsPng}
+  alt="Screenshot of Zoom App settings"
+/>
 
 Note - once app is installed, it will fire this webhook for all meetings for all users on your account, not just the co-working room, so we’ll need to make sure we filter that later.
 
@@ -233,14 +236,14 @@ We get an event of type [`meeting.started`](https://marketplace.zoom.us/docs/api
 
 Once nice thing we can do is take advantage of [Blocks](https://api.slack.com/block-kit) - a neat way to build more interactive messages. So instead of a plain-text message, we get something that looks more like this:
 
-<Image
+<ClientImage
   src={vcCoworkingMessagePng}
   alt="Screenshot of coworking message in Slack"
 />
 
 This also allowed us to very easily put up a dialog to prevent accidental joining and to add some information:
 
-<Image
+<ClientImage
   src={vcCoworkingDialogPng}
   alt="Screenshot of coworking message in Slack"
 />

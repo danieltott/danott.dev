@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import ClientImage from '@/components/ClientImage';
 import meetupbadge from './images/meetupbadge.gif';
 
 export const summary = `<p>Well, as I was telling <a href="http://www.wileymedia.com/weblog/" title="Eric Wiley">Eric </a>, I've officially moved. Sunny <a href="http://maps.google.com/maps?q=Bloomington,+IN,+USA&ie=UTF8&z=12&iwloc=addr&om=1" title="Bloomington, IN" >Bloomington, Indiana </a> is the city I now call home. Emily and I have mostly finished putting everything away and moving around our furniture (you really don't realize how much stuff you have until you have to move everything...), and now all that's left is hanging pictures and organizing shelves. Last week was a crazy, stressful one, but now I finally feel kind of settled in. Emily started orientation today at <a href="http://www.iu.edu/" title="Indiana University">IU </a>, and I've been purposely trying to get lost in order to explore the city. </p>`;
@@ -22,7 +22,7 @@ Speaking of Meetup groups, there aren't any like-minded meetups in the Bloomingt
   href="http://webstandards.meetup.com/129/"
   title="The Indianapolis/Bloomington Web Standards Meetup Group"
 >
-  <Image
+  <ClientImage
     src={meetupbadge}
     alt="Bloomington/Indianapolis Wed Standards Meetup"
   />

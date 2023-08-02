@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import ClientImage from '@/components/ClientImage';
 import monster1 from '@/images/monster1.jpg';
 import monster2 from '@/images/monster2.jpg';
 import openGraphImage from '@/images/opengraph-image.png';
@@ -17,15 +17,17 @@ export const meta = {
 
 export const Images = () => (
   <div className="grid grid-cols-2 gap-4">
-    <Image
+    <ClientImage
       src={monster1}
       alt="Photo of a page from The Monster at the End of This Book"
       style={{ margin: 0 }}
+      sizes="(min-width: 1536px) 352px, (min-width: 800px) 310px, (min-width: 640px) calc((100vw - 8.5rem - .375em) / 2), calc((100vw - 4.5rem - .375em) / 2)"
     />
-    <Image
+    <ClientImage
       src={monster2}
       alt="Photo of a page from The Monster at the End of This Book"
       style={{ margin: 0 }}
+      sizes="(min-width: 1536px) 352px, (min-width: 800px) 310px, (min-width: 640px) calc((100vw - 8.5rem - .375em) / 2), calc((100vw - 4.5rem - .375em) / 2)"
     />
   </div>
 );
@@ -63,4 +65,4 @@ I've been working on this new design for a while now, and I'm really happy with 
 - The stars are generated using [`<svg>` with random styles applied to them](https://github.com/danieltott/danott.dev/blob/main/src/app/stars.svg/route.ts), positioned via [Bezier JS](https://pomax.github.io/bezierjs/). I went through several iterations of this - starting with outputting a ton of inline React SVGs (way too slow and too many DOM elements), then using `<canvas>` by hand (wonky, hard, slow), then using `konva-react` (nice, but sluggish and _huge_ bundle size), then finally using one single SVG route and including it via an `<img>` tag. I'm pretty happy with how it turned out.
 
 - Social Images are generated using [Next.js's <code>ImageResponse</code>](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image#generate-images-using-code-js-ts-tsx)
-  <Image src={openGraphImage} alt="dtott.dev social image" />
+  <ClientImage src={openGraphImage} alt="dtott.dev social image" />

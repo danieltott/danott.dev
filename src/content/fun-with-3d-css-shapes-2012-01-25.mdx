@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import ClientImage from '@/components/ClientImage';
 import img3dshapes from './images/3dshapes.png';
 
 export const summary = `<p>About a year and a half ago, I had some ideas about using 3D CSS to create nonstandard 3D shapes, but never got around to writing a post about it. However, inspired by the incredibly impressive <a href="http://acko.net/blog/making-love-to-webkit/">Acko.net redesign </a>, I decided to finally clean it up and share it with you. Here it is. </p>
@@ -16,7 +16,7 @@ export const meta = {
 About a year and a half ago, I had some ideas about using 3D CSS to create nonstandard 3D shapes, but never got around to writing a post about it. However, inspired by the incredibly impressive [Acko.net redesign](http://acko.net/blog/making-love-to-webkit/), I decided to finally clean it up and share it with you. Here it is.
 
 <a href="https://codepen.io/danieltott/project/editor/XwGzRV">
-  <Image src={img3dshapes} alt="3D Shapes" />
+  <ClientImage src={img3dshapes} alt="3D Shapes" />
 </a>
 
 By stacking and rotating elements in 3D space, you can create some new shapes out of pure CSS. It’s not practical or useful in the least, but it is interesting. These examples work best in Safari, but they will mostly work in Chrome. Check it out: [Pure CSS 3D Shapes](https://codepen.io/danieltott/project/editor/XwGzRV) (remember to click and drag to rotate. Thanks to [Dirk Weber](http://www.eleqtriq.com/)‘s [traqball.js](http://www.eleqtriq.com/2011/11/traqball-2-0/) for that little bit of magic).
