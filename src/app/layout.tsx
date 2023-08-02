@@ -3,6 +3,10 @@ import { Kreon } from 'next/font/google';
 import localFont from 'next/font/local';
 import type { Metadata } from 'next';
 import getUrl from '@/lib/getUrl';
+import { Header } from '@/components/Header';
+import { Footer } from '@/components/Footer';
+import Script from 'next/script';
+import StarFrame from '@/components/StarFrame';
 
 // Font files can be colocated inside of `app`
 const freeLunch = localFont({
@@ -91,7 +95,32 @@ export default function RootLayout({
       <head>
         <script dangerouslySetInnerHTML={{ __html: modeScript }} />
       </head>
-      {children}
+      {process.env.NODE_ENV === 'production' && (
+        <Script
+          data-domain="danott.dev"
+          src="https://plausible.io/js/plausible.js"
+        />
+      )}
+
+      <body className="overflow:hidden relative flex min-h-full flex-col bg-east-bay-50 dark:bg-east-bay-950">
+        <StarFrame />
+
+        <div className="fixed inset-0 z-0 flex justify-center sm:px-8">
+          <div className="flex w-full max-w-7xl lg:px-8">
+            <div className="w-full bg-white ring-1 ring-stone-100 dark:bg-stone-900 dark:ring-stone-300/20" />
+          </div>
+        </div>
+        <div className="fixed inset-0 z-20 flex justify-center opacity-70 sm:px-8">
+          <div className="flex w-full max-w-7xl lg:px-8">
+            <div className="w-full bg-white ring-1 ring-stone-100 dark:bg-stone-900 dark:ring-stone-300/20" />
+          </div>
+        </div>
+        <div className="relative z-30 flex flex-1 flex-col">
+          <Header />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </div>
+      </body>
     </html>
   );
 }

@@ -35,7 +35,7 @@ Metadata {
     meta,
   }: {
     meta: ArticleMeta;
-  } = require(`../../../../content/${params.slug}.mdx`);
+  } = require(`../../../content/${params.slug}.mdx`);
 
   return {
     title: meta.title,
@@ -51,7 +51,7 @@ export default async function Page({ params }: Props) {
     }: {
       default: React.ComponentType<MDXProps>;
       meta: ArticleMeta;
-    } = require(`../../../../content/${params.slug}.mdx`);
+    } = require(`../../../content/${params.slug}.mdx`);
 
     return (
       <div className="xl:relative">
