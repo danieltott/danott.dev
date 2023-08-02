@@ -55,7 +55,10 @@ function generateShapes(width: number, height: number): Config[] {
         id: `${id}-b`,
         x: 0,
         y: 0,
-        rotate: `${getRandom(0, 360)}deg`,
+        rotate: `${getRandom(0, 0.3)}, ${getRandom(0, 0.3)}, ${getRandom(
+          0,
+          1
+        )}, ${getRandom(0, 360)}deg`,
         fill: getRandomColor(),
         scale: 1,
         translateX: 0,
@@ -67,7 +70,10 @@ function generateShapes(width: number, height: number): Config[] {
         x: 0,
         y: 0,
         scale: lScale,
-        rotate: `.2, .2, 1, ${getRandom(0, 180)}deg`,
+        rotate: `${getRandom(0, 0.3)}, ${getRandom(0, 0.3)}, ${getRandom(
+          0,
+          1
+        )}, ${getRandom(0, 180)}deg`,
         translateX: getRandom(-20, 20),
         translateY: getRandom(-20, 0),
       },
@@ -77,7 +83,10 @@ function generateShapes(width: number, height: number): Config[] {
         x: 0,
         y: 0,
         scale: rScale,
-        rotate: `.2, .2, 1, ${getRandom(180, 360)}deg`,
+        rotate: `${getRandom(0, 0.3)}, ${getRandom(0, 0.3)}, ${getRandom(
+          0,
+          1
+        )}, ${getRandom(180, 360)}deg`,
         translateX: getRandom(-20, 20),
         translateY: getRandom(0, 20),
       },
