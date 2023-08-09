@@ -11,6 +11,9 @@ export const size = {
 };
 export const contentType = 'image/png';
 
+export const dynamic = 'force-static';
+export const revalidate = 60 * 60 * 24 * 7; // 1 week
+
 export default async function GET({ params }: { params: { slug: string } }) {
   try {
     const { meta, options } = await getMetaAndOptions(

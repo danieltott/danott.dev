@@ -4,13 +4,14 @@ import SocialCard from '@/components/SocialCard';
 import { getOptions } from '@/lib/socialImages';
 import { metadata } from './page';
 
-export const dynamic = 'force-static';
-
 export const size = {
   width: 1200,
   height: 630,
 };
 export const contentType = 'image/png';
+
+export const dynamic = 'force-static';
+export const revalidate = 60 * 60 * 24 * 7; // 1 week
 
 export default async function GET() {
   try {
