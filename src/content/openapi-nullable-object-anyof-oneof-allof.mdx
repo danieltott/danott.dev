@@ -1,0 +1,275 @@
+import ClientImage from '@/components/ClientImage';
+import monster1 from '@/images/monster1.jpg';
+import monster2 from '@/images/monster2.jpg';
+import openGraphImage from '@/images/opengraph-image.png';
+
+export const summary = `<p>File this in the "notes to self" category. The <a href="https://swagger.io/docs/specification/about/?limit=10&location=Swagger_Documentation&query=nullable">OpenAPI docs are very sparse</a> when it comes to <code>nullable</code>, and it is very unclear how to set an object to nullable when it uses <code>oneOf</code>, <code>allOf</code>, or <code>anyOf</code> in OpenAPI 3.0.</p>
+<p>I've been working on writing an OpenAPI spec for an existing API, and hooking it in to Postman for our team to use. Unfortunately, Postman was giving me a validation error when making requests, but all it would say was "The response body didn't match the specified schema", with no actual details on which parts of the schema were wrong.</p>
+<p>After much struggle and head-desking, I managed to work it out.</p>`;
+
+export const tags = [];
+
+export const meta = {
+  title:
+    'OpenAPI 3.0: How to make objects nullable that use oneOf, allOf, or anyOf',
+  description: `File this in the "notes to self" category. The OpenAPI docs are very sparse when it comes to nullable, and it is very unclear how to set an object to nullable when it uses oneOf, allOf, or anyOf.`,
+  date: '2023-08-09 00:00:00',
+  dateUpdated: '2023-08-09 00:00:00',
+};
+
+File this in the "notes to self" category. The [OpenAPI docs are very sparse](https://swagger.io/docs/specification/about/?limit=10&location=Swagger_Documentation&query=nullable) when it comes to `nullable`, and it is very unclear how to set an object to nullable when it uses `oneOf`, `allOf`, or `anyOf` in OpenAPI 3.0.
+
+I've been working on writing an OpenAPI spec for an existing API, and hooking it in to Postman for our team to use. Unfortunately, Postman was giving me a validation error when making requests, but all it would say was "The response body didn't match the specified schema", with no actual details on which parts of the schema were wrong.
+
+After much struggle and head-desking, I managed to work it out.
+
+To review, here is how you would make a property nullable:
+
+```yml
+properties:
+  myProperty:
+    type: string
+    nullable: true
+```
+
+This also works with normal objects:
+
+```yml
+properties:
+  myProperty:
+    type: object
+    nullable: true
+    properties:
+      mySubProperty:
+        type: string
+```
+
+However, if you have an object that uses `oneOf`, `allOf`, or `anyOf`, setting `nullable: true` on the object itself will not work.
+
+```yml
+properties:
+  # this works great
+  nullableObject:
+    type: object
+    nullable: true
+    properties:
+      id:
+        type: integer
+
+  # this doesn't work
+  notActuallyNullableObjectWithAllOf:
+    type: object
+    nullable: true
+    allOf:
+      - type: object
+        properties:
+          id:
+            type: integer
+      - type: object
+        properties:
+          anotherId:
+            type: integer
+
+  # neither does this
+  notActuallyNullableObjectWithAnyOf:
+    type: object
+    nullable: true
+    anyOf:
+      - type: object
+        properties:
+          id:
+            type: integer
+      - type: object
+        properties:
+          anotherId:
+            type: integer
+```
+
+The solution depends on your approach and which of `oneOf`, `allOf`, or `anyOf` you are using.
+
+## `oneOf` and `anyOf`
+
+If you are using `oneOf` or `anyOf`, you're going to have the easiest time. As long as at least one of your specified schemas is nullable, the entire object will be nullable.
+
+```yml
+# oneOf
+properties:
+  # this won't work
+  notActuallyNullableObjectWithOneOf:
+    type: object
+    nullable: true
+    oneOf:
+      - type: object
+        properties:
+          id:
+            type: integer
+      - type: object
+        properties:
+          anotherId:
+            type: integer
+
+  # neither will this
+  notActuallyNullableObjectWithAnyOfRefs:
+    type: object
+    nullable: true
+    anyOf:
+      - $ref: '#/components/schemas/SomeReferencedObject'
+      - $ref: '#/components/schemas/AnotherReferencedObject'
+
+  # this works great, since nullable: true is set on the first object
+  #
+  # important: do not include type: object at the top level
+  nullableObjectWithOneOf:
+    oneOf:
+      - type: object
+        nullable: true
+        properties:
+          id:
+            type: integer
+      - type: object
+        properties:
+          anotherId:
+            type: integer
+  nullableObjectWithAnyOf:
+    anyOf:
+      - type: object
+        nullable: true
+        properties:
+          id:
+            type: integer
+      - type: object
+        properties:
+          anotherId:
+            type: integer
+```
+
+However, you may run in to a case where you don't want to set `nullable: true` on one of the specified schemas. This is fairly common when using `$ref` to reference a schema that is also being used elsewhere.
+
+```yml
+properties:
+  # this won't work
+  notActuallyNullableObjectWithOneOfRefs:
+    type: object
+    nullable: true
+    oneOf:
+      # I don't want to edit those schemas to set nullable: true, since they're used elsewhere and my _not_ be nullable
+      - $ref: '#/components/schemas/SomeReferencedObject'
+      - $ref: '#/components/schemas/AnotherReferencedObject'
+
+  # neither will this
+  notActuallyNullableObjectWithAnyOfRefs:
+    type: object
+    nullable: true
+    anyOf:
+      - $ref: '#/components/schemas/SomeReferencedObject'
+      - $ref: '#/components/schemas/AnotherReferencedObject'
+```
+
+The solution here is to add an empty choice to the `oneOf` or `anyOf` list, and set `nullable: true` on that. This becomes a valid choice, and will make the entire object nullable.
+
+```yml
+properties:
+  nullableObjectWithOneOfRefs:
+    oneOf:
+      # empty nullable object
+      - type: object
+        nullable: true
+      - $ref: '#/components/schemas/SomeReferencedObject'
+      - $ref: '#/components/schemas/AnotherReferencedObject'
+  nullableObjectWithAnyOfRefs:
+    anyOf:
+      # empty nullable object
+      - type: object
+        nullable: true
+      - $ref: '#/components/schemas/SomeReferencedObject'
+      - $ref: '#/components/schemas/AnotherReferencedObject'
+```
+
+## `allOf`
+
+Getting this to work with `allOf` is a little bit more complicated. The problem is that `allOf` requires _all_ of the specified schemas to have `nullable: true` set, or the entire object will not be nullable.
+
+```yml
+properties:
+  # this won't work
+  notActuallyNullableObjectWithAllOf:
+    type: object
+    nullable: true
+    allOf:
+      - type: object
+        properties:
+          id:
+            type: integer
+      - type: object
+        properties:
+          anotherId:
+            type: integer
+
+  # neither will this, since the secont object is not nullable
+  notActuallyNullableObjectWithAllOfAndNullableOptions:
+    allOf:
+      - type: object
+        nullable: true
+        properties:
+          id:
+            type: integer
+      - type: object
+        properties:
+          anotherId:
+            type: integer
+```
+
+The solution here is to either set `nullable: true` on all of the specified schemas, or _nest the `allOf` array inside of a `oneOf` array, and set `nullable: true` on the first object in the `oneOf` array._ This approach works just as well for inline schemas as it does for `$ref` schemas inside the `anyOf` array.
+
+```yml
+properties:
+  # this works since each `allOf` schema is nullable
+  nullableObjectWithAllOfAndNullableOptions:
+    allOf:
+      - type: object
+        nullable: true
+        properties:
+          id:
+            type: integer
+      - type: object
+        nullable: true
+        properties:
+          anotherId:
+            type: integer
+
+  # this works great as well, without having to adjust the schemas
+  nullableObjectWithAllOf:
+    anyOf:
+      - type: object
+        nullable: true
+      - type: object
+        allOf:
+          - type: object
+            properties:
+              id:
+                type: integer
+          - type: object
+            properties:
+              anotherId:
+                type: integer
+
+  # the same approach works just as well with `$ref`
+  nullableObjectWithAllOfRefs:
+    anyOf:
+      - type: object
+        nullable: true
+      - type: object
+        allOf:
+          - $ref: '#/components/schemas/SomeReferencedObject'
+          - $ref: '#/components/schemas/AnotherReferencedObject'
+```
+
+## How did I figure this out?
+
+As I said before, Postman was letting me know the responses weren't matching the schema, but it wasn't telling me which part of the schema was wrong.
+
+After a couple days of struggling, I finally found [`express-openapi-validator`](https://github.com/cdimascio/express-openapi-validator/). So I set up a quick Express server, and hooked it up to my OpenAPI spec. It gave me a much more detailed error message, and I was able to work out what was wrong and how to fix it.
+
+I figured it might be useful for others to have a little tester that they could run, so I published my test setup on GitHub: [`openapi-3.0-nullable-object-example`](https://github.com/danieltott/openapi-3.0-nullable-object-example). It's a very simple Express server that uses `express-openapi-validator` to validate the responses against the OpenAPI spec.
+
+Enjoy!
