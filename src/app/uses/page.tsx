@@ -112,7 +112,7 @@ export default function Uses() {
               href="https://simplebits.shop/"
             >
               <p>
-                The title font is a special pre-relase version of a font called
+                The title font is a special pre-release version of a font called
                 Free Lunch by Dan Cederholm of SimpleBits.
               </p>
             </Tool>
