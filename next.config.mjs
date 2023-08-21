@@ -11,6 +11,18 @@ const nextConfig = {
     scrollRestoration: true,
     // mdxRs: true,
   },
+  async rewrites() {
+    return [
+      {
+        source: '/t/script.js',
+        destination: 'https://plausible.io/js/script.js',
+      },
+      {
+        source: '/t/event', // Or '/api/event/' if you have `trailingSlash: true` in this config
+        destination: 'https://plausible.io/api/event',
+      },
+    ];
+  },
   async redirects() {
     return [
       // # redirect search to duckduckgo
