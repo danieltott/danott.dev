@@ -14,11 +14,11 @@ const nextConfig = {
   async rewrites() {
     return [
       {
-        source: '/t/script.js',
+        source: '/stats/js/script.js',
         destination: 'https://plausible.io/js/script.js',
       },
       {
-        source: '/t/event', // Or '/api/event/' if you have `trailingSlash: true` in this config
+        source: '/stats/api/event',
         destination: 'https://plausible.io/api/event',
       },
     ];

@@ -96,7 +96,11 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: modeScript }} />
       </head>
       {process.env.NODE_ENV === 'production' && (
-        <Script data-domain="danott.dev" src="/t/script.js" />
+        <Script
+          data-domain="danott.dev"
+          data-api="/stats/api/event"
+          src="/stats/js/script.js"
+        />
       )}
 
       <body className="overflow:hidden relative flex min-h-full flex-col bg-east-bay-50 dark:bg-east-bay-950">
