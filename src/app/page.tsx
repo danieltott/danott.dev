@@ -232,9 +232,11 @@ export default async function HomePage() {
           <Title>Full-Stack Design and Development</Title>
           <Prose className="mt-6">
             <p className="text-above-stars">
-              I&rsquo;m Dan, an independent developer and designer based in
-              Cleveland, Ohio. I&rsquo;ve been working with clients since 2005
-              to plan, design, and implement their ideas. I also am an org
+              I&rsquo;m Dan, a developer and designer with{' '}
+              <a href="https://www.sprokets.com">Sprokets</a>. I&rsquo;ve been
+              working on the web since 2005 to plan, design, and implement
+              projects ranging from old php/mysql apps to modern web apps to
+              mobile apps, and lots of things in between. I am also an org
               maintainer and podcast cohost at{' '}
               <a href="https://virtualcoffee.io">Virtual Coffee</a>.
             </p>
