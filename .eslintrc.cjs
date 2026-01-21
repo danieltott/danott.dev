@@ -16,6 +16,7 @@ module.exports = {
     ],
     '@typescript-eslint/consistent-type-exports': 'error',
     '@typescript-eslint/consistent-type-imports': 'error',
+    'react/no-unescaped-entities': 'off',
   },
   parserOptions: {
     project: true,
